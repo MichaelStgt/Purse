@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.TransactionHistoryCollectionView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="TransactionHistoryCollectionViewModel">
+    <Shell.TitleView>
+        <Label
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}"
+            ToolTipProperties.Text="{x:Static AccessibiltyResources.HistoryCollectionTitleViewTooltip}" />
+    </Shell.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding AddTransactionCommand}"
+            IconImageSource="{x:StaticResource AddIcon}"
+            Text="{x:Static AppResources.Add}" />
+    </ContentPage.ToolbarItems>
+
+    <RefreshView
+        Command="{x:Binding LoadItemCollectionCommand}"
+        IsRefreshing="{x:Binding IsBusy,
+                                 Mode=OneWay}">
+        <CollectionView
+            ItemsSource="{x:Binding ItemCollection,
+                                    Mode=Default}"
+            SelectedItem="{x:Binding SelectedItem}"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    ItemSpacing="4"
+                    Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.EmptyView>
+                <Border
+                    HorizontalOptions="Center"
+                    Style="{x:StaticResource CollectionViewItemBorder}"
+                    VerticalOptions="Center">
+                    <!--  Padding="20"  -->
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{x:Static AppResources.NoTransactions}"
+                            TextColor="Gray" />
+                        <Button
+                            x:Name="AddTransactionButton"
+                            Command="{x:Binding AddItemCommand}"
+                            HorizontalOptions="Center"
+                            ImageSource="{x:StaticResource AddIcon}"
+                            Text="{x:Static AppResources.AddHint}" />
+                    </VerticalStackLayout>
+                </Border>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="Transaction">
+                    <Border
+                        x:Name="ContentContainer"
+                        Style="{x:StaticResource CollectionViewItemBorder}">
+                        <Grid
+                            ColumnDefinitions="*, Auto"
+                            RowDefinitions="Auto, Auto, Auto">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontSize="{x:StaticResource MediumFontSize}"
+                                Text="{x:Binding VendorName}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{x:Binding Date,
+                                                 StringFormat={x:Static FormatResources.DateFormat}}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="1"
+                                Text="{x:Binding Tags}" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                FontSize="{x:StaticResource MediumFontSize}"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                InputTransparent="True"
+                                Text="{x:Binding TotalAmount,
+                                                 StringFormat='{0:C2}'}"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                FontSize="8"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                InputTransparent="True"
+                                Text="{x:Binding PlannedAmount,
+                                                 StringFormat='{0:C2}'}"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="End" />
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light=Transparent, Dark=Transparent}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Gray100}, Dark={x:DynamicResource Primary}}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Gray100}, Dark={x:DynamicResource Primary}}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

@@ -1,0 +1,67 @@
+root = true
+
+[*.cs]
+#### Core EditorConfig Options ####
+indent_size = 4
+indent_style = space
+tab_width = 4
+end_of_line = crlf
+insert_final_newline = false
+
+#### C# Formatting Rules ####
+
+# 1. THE FIX: Force Allman style (Braces on new lines)
+csharp_new_line_before_open_brace = all
+
+# 2. THE FIX: Disable "Single Line" preservation so the formatter is allowed to move the braces
+csharp_preserve_single_line_blocks = false
+csharp_preserve_single_line_statements = false
+# 3. Enforce Braces for all control blocks
+
+# Require braces for control blocks
+csharp_prefer_braces = true:warning
+
+# New line preferences for keywords
+csharp_new_line_before_catch = true
+csharp_new_line_before_else = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_between_query_expression_clauses = true
+
+# Indentation preferences
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_case_contents_when_block = true
+csharp_indent_labels = one_less_than_current
+csharp_indent_switch_labels = true
+
+#### .NET Coding Conventions ####
+dotnet_style_qualification_for_field = true:warning
+dotnet_style_qualification_for_property = true:warning
+dotnet_style_qualification_for_method = true:warning
+dotnet_style_qualification_for_event = true:warning
+dotnet_style_prefer_this_or_me = this:warning
+
+# (Rest of your naming rules and other preferences can follow here...)
+
+# CD1607: The file needs documentation headers.
+dotnet_diagnostic.CD1607.severity = suggestion
+
+# Suppress XML documentation related compiler warnings (CS####)
+# These suppress common XML comment warnings such as CS1584 (XML comment has syntax error)
+# and CS1591 (Missing XML comment for publicly visible type or member).
+# Adjust or remove entries if you want to re-enable specific diagnostics.
+
+dotnet_diagnostic.CS0081.severity = none
+dotnet_diagnostic.CS1570.severity = none
+dotnet_diagnostic.CS1571.severity = none
+dotnet_diagnostic.CS1572.severity = none
+dotnet_diagnostic.CS1573.severity = none
+dotnet_diagnostic.CS1574.severity = none
+dotnet_diagnostic.CS1580.severity = none
+dotnet_diagnostic.CS1581.severity = none
+dotnet_diagnostic.CS1584.severity = none
+dotnet_diagnostic.CS1591.severity = none
+dotnet_diagnostic.CS1658.severity = none

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<RootNamespace>Agents_Container</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include=".\BuildErrors\**\*" Link="BuildErrors\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\Documentation\**\*" Link="Documentation\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\Config\**\*" Link="Config\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\History\**\*" Link="History\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\Notes\**\*" Link="Notes\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\Playbook\**\*" Link="Playbook\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\Reports\**\*" Link="Reports\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\Scripts\**\*" Link="Scripts\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\Templates\**\*" Link="Templates\%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Include=".\ImplementationPlans\**\*" Link="ImplementationPlans\%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+</Project>

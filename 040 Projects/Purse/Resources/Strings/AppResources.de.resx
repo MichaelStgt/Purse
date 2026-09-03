@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddNewTask" xml:space="preserve">
+    <value>Add a new Task</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>Purse</value>
+  </data>
+  <data name="AuthenticationTitle" xml:space="preserve">
+    <value>Unlock {0}</value>
+  </data>
+  <data name="AuthorizationDenied" xml:space="preserve">
+    <value>Authorization Denied</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangePin" xml:space="preserve">
+    <value>Change pin</value>
+  </data>
+  <data name="DataCreated" xml:space="preserve">
+    <value>Data created</value>
+  </data>
+  <data name="DataCreatedMessage" xml:space="preserve">
+    <value>Test data successfully created.</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>{0:MM/dd/yyyy}</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Enter your Pin Code</value>
+  </data>
+  <data name="ErrorsOccurred" xml:space="preserve">
+    <value>Error(s) occurred</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>From date</value>
+  </data>
+  <data name="FromTime" xml:space="preserve">
+    <value>From time</value>
+  </data>
+  <data name="FullDateTimePattern" xml:space="preserve">
+    <value>dddd, MMMM d, yyyy HH:mm:ss tt</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>hour</value>
+  </data>
+  <data name="HourlyRate" xml:space="preserve">
+    <value>Hourly rate</value>
+  </data>
+  <data name="ItemModelType" xml:space="preserve">
+    <value>Item Model Type</value>
+  </data>
+  <data name="LongDatePattern" xml:space="preserve">
+    <value>dddd, MMMM d, yyyy</value>
+  </data>
+  <data name="LongTimePattern" xml:space="preserve">
+    <value>HH:mm:ss</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="PageErrorMessage" xml:space="preserve">
+    <value>You have errors on the Page. Would you like to stay on the page and correct the errors, or just simply discard your changes?</value>
+  </data>
+  <data name="PickerDateFormatLong" xml:space="preserve">
+    <value>dd MMMM yyyy</value>
+  </data>
+  <data name="PickerDateFormatShort" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="RangeErrorMessage" xml:space="preserve">
+    <value>The field {0} must be between a minimum of {1} and a maximum of {2}.</value>
+  </data>
+  <data name="RecreateSampleData" xml:space="preserve">
+    <value>Recreate Sample Data?</value>
+  </data>
+  <data name="RecreateSampleDataMessage" xml:space="preserve">
+    <value>This will overwrite all existing data. Would you like to proceed?</value>
+  </data>
+  <data name="Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="RequiredErrorMessage" xml:space="preserve">
+    <value>{0} cannot be empty</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ShortDatePattern" xml:space="preserve">
+    <value>M/d/yyyy</value>
+  </data>
+  <data name="ShortTimePattern" xml:space="preserve">
+    <value>hh\:mm</value>
+  </data>
+  <data name="SortableDatePattern" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+  <data name="SortableDateTimePattern" xml:space="preserve">
+    <value>yyyy-MM-dd HH:mm:ss</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="TaskItemCollection" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="TaskItemDetail" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="ThroughDate" xml:space="preserve">
+    <value>To date</value>
+  </data>
+  <data name="ThroughTime" xml:space="preserve">
+    <value>To time</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="TransactionDate" xml:space="preserve">
+    <value>Transaction Date</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="WorkingTime" xml:space="preserve">
+    <value>Working time</value>
+  </data>
+  <data name="WorkingTimeCollection" xml:space="preserve">
+    <value>Working time overview</value>
+  </data>
+  <data name="WorkingTimeDetail" xml:space="preserve">
+    <value>Working time detail</value>
+  </data>
+  <data name="WorkItemAutoCompleteViewPlaceholder" xml:space="preserve">
+    <value>Enter some Text to get a list of all given names for Workitems before</value>
+  </data>
+  <data name="PaymentState" xml:space="preserve">
+    <value>Payment state</value>
+  </data>
+  <data name="AddFilterWords" xml:space="preserve">
+    <value>Add words to Filter</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="ClearFilter" xml:space="preserve">
+    <value>Clear Filter</value>
+  </data>
+  <data name="EditTask" xml:space="preserve">
+    <value>Edit Task</value>
+  </data>
+  <data name="AddTask" xml:space="preserve">
+    <value>Add Task</value>
+  </data>
+  <data name="TimeIs" xml:space="preserve">
+    <value>Time is: {0:HH}:{0:mm}:{0:ss}</value>
+  </data>
+  <data name="TimeIs2" xml:space="preserve">
+    <value>Time is: {0:c}</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="_DefineResource" xml:space="preserve">
+    <value>Define a resource for this value or VisualElement</value>
+    <comment>Placeholder to identify Elements for that no Resource is defined</comment>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="UnselectAll" xml:space="preserve">
+    <value>Unselect all</value>
+  </data>
+  <data name="WorkplaceCollection" xml:space="preserve">
+    <value>Workplaces</value>
+  </data>
+  <data name="WorkplaceDetail" xml:space="preserve">
+    <value>Workplace</value>
+  </data>
+  <data name="WorkItemNoResultsFoundText" xml:space="preserve">
+    <value>No work items found for your input</value>
+  </data>
+  <data name="ChooseColor" xml:space="preserve">
+    <value>Choose Color</value>
+  </data>
+  <data name="DefaultItem" xml:space="preserve">
+    <value>Mark as default item</value>
+  </data>
+  <data name="GroupHeaderSummaryText" xml:space="preserve">
+    <value>Summary:</value>
+  </data>
+  <data name="GroupHeaderPaidTitle" xml:space="preserve">
+    <value>Paid summary:</value>
+  </data>
+  <data name="AuthenticationRequestMessage" xml:space="preserve">
+    <value>Authenticate to access Hour Tracker</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>PaidXXX</value>
+  </data>
+  <data name="GroupHeaderOpenTitle" xml:space="preserve">
+    <value>Open summary:</value>
+  </data>
+  <data name="GroupHeaderOpenWorkingHoursTitle" xml:space="preserve">
+    <value>Open hours:</value>
+  </data>
+  <data name="GroupHeaderPaidWorkingHoursTitle" xml:space="preserve">
+    <value>Paid hours:</value>
+  </data>
+  <data name="OpenWithColon" xml:space="preserve">
+    <value>Open:</value>
+  </data>
+  <data name="ComboBoxDefault" xml:space="preserve">
+    <value>Defaults to the most used item name</value>
+  </data>
+  <data name="WarningOccured" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="DeleteSelected" xml:space="preserve">
+    <value>Delete selected items</value>
+  </data>
+  <data name="DeleteConfirmAll" xml:space="preserve">
+    <value>Confirm to delete all selected items</value>
+  </data>
+  <data name="AssignedItemsCount" xml:space="preserve">
+    <value>assigned items</value>
+  </data>
+  <data name="AssignedWorkItems" xml:space="preserve">
+    <value>Assigned Work items</value>
+  </data>
+  <data name="AbbreviatedDatePattern" xml:space="preserve">
+    <value>ddd, MMM d, yyyy</value>
+  </data>
+  <data name="CustomListDatePattern" xml:space="preserve">
+    <value>MM.dd, dddd</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Währung</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Entity</value>
+  </data>
+  <data name="AlphabeticCode" xml:space="preserve">
+    <value>Alphabetic Code</value>
+  </data>
+  <data name="NumericCode" xml:space="preserve">
+    <value>Numeric Code</value>
+  </data>
+  <data name="Symbol" xml:space="preserve">
+    <value>Symbol</value>
+  </data>
+  <data name="MinorUnit" xml:space="preserve">
+    <value>Minor Unit</value>
+  </data>
+  <data name="NumberToBasic" xml:space="preserve">
+    <value>Number to Basic</value>
+  </data>
+  <data name="TransactionHistory" xml:space="preserve">
+    <value>Transaction Historie</value>
+  </data>
+  <data name="ControlGallery" xml:space="preserve">
+    <value>Control Gallery</value>
+  </data>
+  <data name="NoTransactions" xml:space="preserve">
+    <value>Keine Ausgaben erfasst</value>
+  </data>
+  <data name="AddHint" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="TransactionDetail" xml:space="preserve">
+    <value>Ausgabe detail</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Gesamtbetrag</value>
+  </data>
+  <data name="Vendor" xml:space="preserve">
+    <value>Vendor</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="CategoryDetail" xml:space="preserve">
+    <value>Kategorie-Detail</value>
+  </data>
+  <data name="AddCategory" xml:space="preserve">
+    <value>Kategorie hinzufügen</value>
+  </data>
+  <data name="Expenses" xml:space="preserve">
+    <value>Ausgaben</value>
+  </data>
+  <data name="Income" xml:space="preserve">
+    <value>Einkommen</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Straße</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Bundesland</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="Vendors" xml:space="preserve">
+    <value>Verkäufer</value>
+  </data>
+  <data name="IncomeSources" xml:space="preserve">
+    <value>Einnahmequellen</value>
+  </data>
+  <data name="VendorDetail" xml:space="preserve">
+    <value>Verkäufer Details</value>
+  </data>
+  <data name="IncomeSourceDetail" xml:space="preserve">
+    <value>Einnahmequelle Details</value>
+  </data>
+  <data name="EnterVendorName" xml:space="preserve">
+    <value>Kreditorennamen eingeben</value>
+  </data>
+  <data name="EnterVendorDescription" xml:space="preserve">
+    <value>Beschreibung eingeben (Optional)</value>
+  </data>
+  <data name="EnterDescriptionOptional" xml:space="preserve">
+    <value>Beschreibung eingeben (Optional)</value>
+  </data>
+  <data name="EnterIncomeSourceName" xml:space="preserve">
+    <value>Einnahmequellenname eingeben</value>
+  </data>
+  <data name="EnterStreetAddress" xml:space="preserve">
+    <value>Straße eingeben</value>
+  </data>
+  <data name="EnterCity" xml:space="preserve">
+    <value>Stadt eingeben</value>
+  </data>
+  <data name="EnterStateOrProvince" xml:space="preserve">
+    <value>Bundesland eingeben</value>
+  </data>
+  <data name="EnterPostalCode" xml:space="preserve">
+    <value>Postleitzahl eingeben</value>
+  </data>
+  <data name="SelectCategory" xml:space="preserve">
+    <value>Kategorie auswählen</value>
+  </data>
+  <data name="EnterAmount" xml:space="preserve">
+    <value>€ Betrag</value>
+  </data>
+  <data name="EnterPlannedAmount" xml:space="preserve">
+    <value>€ Geplanter Betrag</value>
+  </data>
+  <data name="UnsavedChangesTitle" xml:space="preserve">
+    <value>Ungespeicherte Änderungen</value>
+  </data>
+  <data name="UnsavedChangesErrorsMessage" xml:space="preserve">
+    <value>Es liegen Validierungsfehler auf dieser Seite vor. Möchten Sie hierbleiben und diese beheben, oder die Änderungen verwerfen und die Seite verlassen?</value>
+  </data>
+  <data name="StayAndFixButton" xml:space="preserve">
+    <value>Hierbleiben und beheben</value>
+  </data>
+  <data name="DiscardAndLeaveButton" xml:space="preserve">
+    <value>Verwerfen und verlassen</value>
+  </data>
+</root>

@@ -1,0 +1,327 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net10.0-android</TargetFrameworks>
+		<!--<TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>-->
+		<!--<TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('linux'))">$(TargetFrameworks);net10.0-ios;net10.0-maccatalyst</TargetFrameworks>-->
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
+
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Purse</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+
+		<!-- Enable XAML source generation for faster build times and improved performance.
+		     This generates C# code from XAML at compile time instead of runtime inflation.
+		     To disable, remove this line.
+		     For individual files, you can override by setting Inflator metadata:
+		       <MauiXaml Update="MyPage.xaml" Inflator="Default" /> (reverts to defaults: Runtime for Debug, XamlC for Release)
+		       <MauiXaml Update="MyPage.xaml" Inflator="Runtime" /> (force runtime inflation) -->
+
+		<!--<MauiXamlInflator>SourceGen</MauiXamlInflator>-->
+
+		<!-- Display name -->
+		<ApplicationTitle>Purse</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.purse</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<DefaultLanguage>en-US</DefaultLanguage>
+		<NeutralLanguage>en-US</NeutralLanguage>
+
+		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
+		<WindowsPackageType>None</WindowsPackageType>
+
+		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>-->
+		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>-->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">27.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
+		<NoWarn>$(NoWarn);CA2252</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<!--<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />-->
+
+		<!-- App Icon -->
+		<!--<MauiIcon Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'" Resize="false" Color="#000000" Include="Resources\AppIcon\appicon.windows.svg" ForegroundFile="Resources\AppIcon\appiconfg.windows.svg" ForegroundScale="1.0" BaseSize="456,456" />-->
+		<MauiIcon Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'" Resize="false" Include="Resources\AppIcon\appicon.windows.svg" ForegroundFile="Resources\AppIcon\appiconfg.windows.svg" ForegroundScale="1.0" BaseSize="128,128" />
+
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#121212" ForegroundScale="0.5" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#121212" BaseSize="*,*" Resize="true" />
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
+		<EnablePreviewFeatures>true</EnablePreviewFeatures>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Data\**" />
+		<Compile Remove="Model\**" />
+		<Compile Remove="Services\Data\**" />
+		<EmbeddedResource Remove="Data\**" />
+		<EmbeddedResource Remove="Model\**" />
+		<EmbeddedResource Remove="Services\Data\**" />
+		<MauiCss Remove="Data\**" />
+		<MauiCss Remove="Model\**" />
+		<MauiCss Remove="Services\Data\**" />
+		<MauiXaml Remove="Data\**" />
+		<MauiXaml Remove="Model\**" />
+		<MauiXaml Remove="Services\Data\**" />
+		<None Remove="Data\**" />
+		<None Remove="Model\**" />
+		<None Remove="Services\Data\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Archive\ViewModel\LocalValidationResult.cs" />
+		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.cs" />
+		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel - Copy %282%29.cs" />
+		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel - Copy.cs" />
+		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.ValidationsV1.cs" />
+		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.ValidationsV2.cs" />
+		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.BeforeValidationRefactoring.cs" />
+		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.Validations.BeforeValidationRefactoring.cs" />
+		<Compile Remove="Archive\Messaging\TransactionChangedMessage.cs" />
+		<Compile Remove="Services\DataSeedingService.cs" />
+		<Compile Remove="Services\WindowCreator.original.cs" />
+		<Compile Remove="ViewModel\ObservableViewModel.cs" />
+		<Compile Remove="ViewModel\Transactions\AddTransactionViewModel - Copy.cs" />
+		<Compile Remove="ViewModel\Transactions\Save\TransactionDetailViewModel - Copy.cs" />
+		<Compile Remove="ViewModel\Transactions\Save\TransactionDetailViewModel - Copy.Validations.cs" />
+		<Compile Remove="ViewModel\Transactions\Save\TransactionDetailViewModel.cs" />
+		<Compile Remove="ViewModel\Transactions\Save\TransactionDetailViewModel.Validations.cs" />
+		<Compile Remove="ViewModel\Transactions\Save\TransactionHistoryCollectionViewModel.2026.05.27.cs" />
+		<Compile Remove="ViewModel\Transactions\Save\TransactionHistoryCollectionViewModel.cs" />
+		<Compile Remove="ViewModel\Transactions\Save\TransactionHistoryCollectionViewModel.old.cs" />
+		<Compile Remove="ViewModel\Transactions\TransactionDetailViewModel - Copy %282%29.cs" />
+		<Compile Remove="ViewModel\Transactions\TransactionDetailViewModel.ValidationsV1.cs" />
+		<Compile Remove="ViewModel\Transactions\TransactionDetailViewModel.ValidationsV2.cs" />
+		<Compile Remove="ViewModel\Transactions\TransactionHistoryCollectionViewModel - Copy.cs" />
+		<Compile Remove="ViewModel\Transactions\TransactionHistoryCollectionViewModel.2026.05.27.cs" />
+		<Compile Remove="ViewModel\Transactions\TransactionHistoryCollectionViewModel.old.cs" />
+		<Compile Remove="View\Main\MainPage.Original.xaml.cs" />
+		<Compile Remove="View\PagePlatformHeader.xaml.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<MauiFont Remove="C:\Users\micha\.nuget\packages\syncfusion.maui.core\32.2.7\buildTransitive\..\buildTransitive\Resources\Fonts\MauiMaterialAssets.ttf" />
+	</ItemGroup>
+	<ItemGroup>
+		<MauiImage Remove="Resources\Images\NuvelRegularLatinSmallLetterP.svg" />
+	</ItemGroup>
+	<ItemGroup>
+		<MauiXaml Remove="View\Main\MainPage.Original.xaml" />
+		<MauiXaml Remove="View\PagePlatformHeader.xaml" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Documents\Google Gemini 2026.04.23.mhtml" />
+		<None Remove="Resources\Images\NuvelRegularLatinSmallLetterP.svg" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Datasync.Client" Version="10.1.2" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="14.2.0" />
+		<PackageReference Include="CommunityToolkit.Maui.Core" Version="14.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.9" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.80" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.9" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" Version="34.1.29" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
+		<PackageReference Include="Xamarin.Google.Android.Material" Version="1.14.0.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\LibraryTen\040 Projects\LibraryTen\LibraryTen.csproj" />
+		<ProjectReference Include="..\..\..\LibraryTen\040 Projects\LibraryTen.Maui.Generators\LibraryTen.Maui.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\..\..\MVVMBaseTen\040 Projects\MVVMBaseTen\MVVMBaseTen.csproj" />
+		<ProjectReference Include="..\Purse.Data\Purse.Data.csproj" />
+	</ItemGroup>
+
+	<Import Project="..\..\..\LibraryTen\040 Projects\LibraryTen.Maui.Generators\build\LibraryTen.Maui.Generators.targets" />
+
+	<!--Font naming conventions for generated code:-->
+	<PropertyGroup>
+		<!-- Replaces "Roboto" with "Default" in the property name -->
+		<FontDefaultName>Roboto</FontDefaultName>
+
+		<!-- Adds a suffix to the namespace: YourApp.Resources.Generated -->
+		<FontGenSuffix>Resources</FontGenSuffix>
+
+		<!-- Only generate code for files containing these words -->
+		<FontGenFilter>Black,Bold,Regular,Medium,Thin,Icons,Symbols</FontGenFilter>
+
+		<!-- Removes these words from the property name for cleaner code -->
+		<!-- Example: "Roboto-Regular" becomes "Roboto" (removed "Regular" and "-") -->
+		<FontGenStripWords>Regular,-</FontGenStripWords>
+	</PropertyGroup>
+	<ItemGroup>
+		<CompilerVisibleProperty Include="FontDefaultName" />
+		<CompilerVisibleProperty Include="RootNamespace" />
+		<CompilerVisibleProperty Include="FontGenSuffix" />
+		<CompilerVisibleProperty Include="FontGenFilter" />
+		<CompilerVisibleProperty Include="FontGenStripWords" />
+	</ItemGroup>
+	<ItemGroup>
+		<MauiXaml Update="Controls\NumericEntry2.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Controls\NumericEntry.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Styles\ApplicationColors.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Styles\Converter.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Styles\FontIcons.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Styles\Styles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\About\AboutView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Transactions\TransactionDetailView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\BiometricAuthenticationView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\ControlGallery\ControlGalleryView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\MainWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Main\Desktop\MainView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Main\MainView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Transactions\TransactionHistoryCollectionView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="Controls\NumericEntry2.xaml.cs">
+			<DependentUpon>NumericEntry2.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Controls\NumericEntry.xaml.cs">
+			<DependentUpon>NumericEntry.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\Strings\AccessibiltyResources.Designer.cs">
+			<DependentUpon>AccessibiltyResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Resources\Strings\AppResources.Designer.cs">
+			<DependentUpon>AppResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Resources\Strings\ValidationResources.Designer.cs">
+			<DependentUpon>ValidationResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Resources\Strings\FormatResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>FormatResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="View\About\AboutView.xaml.cs">
+			<DependentUpon>AboutView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="View\Categories\CategoryCollectionView.xaml.cs">
+			<DependentUpon>CategoryCollectionView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="View\Main\Desktop\MainView.xaml.cs">
+			<DependentUpon>MainView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="View\Main\MainView.xaml.cs">
+			<DependentUpon>MainView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="View\Transactions\TransactionDetailView.xaml.cs">
+			<DependentUpon>TransactionDetailView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="View\Transactions\TransactionHistoryCollectionView.xaml.cs">
+			<DependentUpon>TransactionHistoryCollectionView.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\Strings\AccessibiltyResources.de.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\AccessibiltyResources.resx">
+			<LastGenOutput>AccessibiltyResources.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\AppResources.de.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\AppResources.resx">
+			<LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\ValidationResources.de.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\ValidationResources.resx">
+			<LastGenOutput>ValidationResources.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\FormatResources.de.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Strings\FormatResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>FormatResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Archive\ViewModel\" />
+		<Folder Include="Preferences\" />
+		<Folder Include="ViewModel\Transactions\Save\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PRIResource Remove="Data\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<PRIResource Remove="Services\Data\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<PRIResource Remove="Model\**" />
+	</ItemGroup>
+
+</Project>

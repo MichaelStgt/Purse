@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.ControlGalleryView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="ControlGalleryViewModel">
+    <ContentPage.Behaviors>
+        <StatusBarBehavior
+            ApplyOn="OnBehaviorAttachedTo"
+            StatusBarColor="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                               Dark={x:StaticResource OffBlack}}"
+            StatusBarStyle="{x:AppThemeBinding Light=DarkContent,
+                                               Dark=LightContent,
+                                               Default=DarkContent}" />
+    </ContentPage.Behaviors>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding ToolbarItem1Command}"
+            IconImageSource="{x:StaticResource AddIcon}"
+            Order="Primary"
+            Text="{x:Static AppResources.Add}"
+            ToolTipProperties.Text="Click to raise the numbers" />
+    </ContentPage.ToolbarItems>
+    <Shell.TitleView>
+        <Label
+            IsEnabled="False"
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}" />
+    </Shell.TitleView>
+    <Grid
+        ColumnDefinitions="1*"
+        RowDefinitions="Auto, Auto, 1*">
+        <PagePlatformHeader
+            Grid.Row="0"
+            Margin="{x:StaticResource DefaultElementMargin}"
+            FontSize="{x:StaticResource SmallFontSize}"
+            InfoName="Page"
+            IsVisible="{x:DynamicResource DisplayPageHeader}"
+            TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                          Dark={x:StaticResource OffWhite}}"
+            Value="ControlGalleryView" />
+        <!--    -->
+        <!--  Platform="{x:OnPlatform Android='Android', WinUI='Desktop', iOS='iOS', MacCatalyst='MacCatalyst'}"  -->
+        <Label
+            Grid.Row="1"
+            FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+            FontSize="40"
+            HorizontalOptions="Center"
+            Text="{x:Static MaterialSymbols.Nordic_walking}"
+            ToolTipProperties.Text="Material Symbols Outlined: Nordic walking, just to test if the Symbols Font is displayed correctly" />
+        <VerticalStackLayout Grid.Row="2">
+            <Label
+                HorizontalOptions="Center"
+                Text="Welcome to .NET MAUI Control Gallery!"
+                VerticalOptions="Center" />
+            <LabeledContentView
+                Title="The alphabet in Material Symbols Outlined"
+                HorizontalOptions="Center"
+                ResetContentMargin="False">
+                <Label
+                    Padding="4"
+                    FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                    FontSize="20"
+                    Text="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+            </LabeledContentView>
+            <LabeledContentView
+                Title="The Numbers in Material Symbols Outlined"
+                HorizontalOptions="Center"
+                ResetContentMargin="False">
+                <Label
+                    Padding="4"
+                    FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Text="0123456789"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+            </LabeledContentView>
+
+            <Button
+                Command="{x:Binding NavigateToAboutPageCommand}"
+                HorizontalOptions="Center"
+                Text="Navigate to AboutPage" />
+            <Switch
+                IsEnabled="True"
+                IsToggled="False" />
+            <Switch
+                IsEnabled="True"
+                IsToggled="True" />
+            <Switch
+                IsEnabled="False"
+                IsToggled="False" />
+            <Switch
+                IsEnabled="False"
+                IsToggled="True" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

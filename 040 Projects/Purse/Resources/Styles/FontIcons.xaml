@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    x:Class="Purse.Resources.FontIcons"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <FontImageSource
+        x:Key="TabletIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Tablet}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+
+    <FontImageSource
+        x:Key="ChevronRight"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Chevron_right}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+
+    <FontImageSource
+        x:Key="DeskIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Desktop_windows}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <FontImageSource
+        x:Key="PhoneIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Phone_enabled}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+
+    <!--  This one is used for the back button in the toolbar  -->
+    <FontImageSource
+        x:Key="ArrowLeft"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Arrow_back}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <!--  Region ToolbarItem  -->
+
+    <FontImageSource
+        x:Key="AddIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Add}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <FontImageSource
+        x:Key="CancelIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Cancel}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+
+    <FontImageSource
+        x:Key="DeleteIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Delete}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+
+    <FontImageSource
+        x:Key="SaveIcon"
+        FontAutoScalingEnabled="True"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Save}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+
+    <!--  EndRegion ToolbarItem  -->
+    <!--  Region Sheel Item Icons  -->
+    <FontImageSource
+        x:Key="HomeIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Home}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+
+    <FontImageSource
+        x:Key="AboutIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Info}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <FontImageSource
+        x:Key="GalleryIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Gallery_thumbnail}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <FontImageSource
+        x:Key="CategoryIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Category}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <FontImageSource
+        x:Key="VendorIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Store}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <FontImageSource
+        x:Key="IncomeSourceIcon"
+        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+        Glyph="{x:Static MaterialSymbols.Payments}"
+        Size="{x:StaticResource IconFontSize}"
+        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                  Dark={x:StaticResource OffWhite}}" />
+    <!--  EndRegion Sheel Item Icons  -->
+
+    <!--  Region FontIcons  -->
+
+    <!--  EndRegion FontIcons  -->
+
+</ResourceDictionary>

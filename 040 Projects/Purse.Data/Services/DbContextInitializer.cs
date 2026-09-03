@@ -1,0 +1,161 @@
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#undef OFFLINE_SYNC_ENABLED
+
+namespace Purse.Data.Services;
+
+using Microsoft.EntityFrameworkCore;
+using Purse.Shared.Model;
+using Purse.Shared.Resources.Strings;
+using System.Resources;
+using System.Collections;
+using System.Globalization;
+
+/// <summary>
+/// Use this class to initialize the database.
+/// </summary>
+/// <param name="context">The context for the database.</param>
+public class DbContextInitializer(LocalDbContext context)
+    : IDbInitializer
+{
+    public void Initialize()
+    {
+        context.Database.Migrate();
+
+        if (!context.Categories.Any())
+        {
+            var incomeMgr = new ResourceManager($"{typeof(IncomeCategories).Namespace}.{nameof(IncomeCategories)}", typeof(Category).Assembly);
+            var incomeSet = incomeMgr.GetResourceSet(CultureInfo.InvariantCulture, true, true);
+            if (incomeSet != null)
+            {
+                foreach (DictionaryEntry entry in incomeSet)
+                {
+                    string id = entry.Key?.ToString() ?? Guid.NewGuid().ToString("N");
+                    string defaultName = entry.Value?.ToString() ?? string.Empty;
+                    context.Categories.Add(new Category
+                    {
+                        Id = id,
+                        Name = defaultName,
+                        IsIncome = true,
+                        IsSystem = true,
+                        IsDefault = false
+                    });
+                }
+            }
+
+            var expenseMgr = new ResourceManager($"{typeof(ExpenseCategories).Namespace}.{nameof(ExpenseCategories)}", typeof(Category).Assembly);
+            var expenseSet = expenseMgr.GetResourceSet(CultureInfo.InvariantCulture, true, true);
+            if (expenseSet != null)
+            {
+                foreach (DictionaryEntry entry in expenseSet)
+                {
+                    string id = entry.Key?.ToString() ?? Guid.NewGuid().ToString("N");
+                    string defaultName = entry.Value?.ToString() ?? string.Empty;
+                    context.Categories.Add(new Category
+                    {
+                        Id = id,
+                        Name = defaultName,
+                        IsIncome = false,
+                        IsSystem = true,
+                        IsDefault = false
+                    });
+                }
+            }
+
+            context.SaveChanges();
+        }
+
+        if (!context.Countries.Any())
+        {
+            var countryMgr = new ResourceManager($"{typeof(Countries).Namespace}.{nameof(Countries)}", typeof(Category).Assembly);
+            var countrySet = countryMgr.GetResourceSet(CultureInfo.InvariantCulture, true, true);
+            if (countrySet != null)
+            {
+                foreach (DictionaryEntry entry in countrySet)
+                {
+                    string id = entry.Key?.ToString() ?? Guid.NewGuid().ToString("N");
+                    string defaultName = entry.Value?.ToString() ?? string.Empty;
+                    context.Countries.Add(new Country
+                    {
+                        Id = id,
+                        Name = defaultName
+                    });
+                }
+            }
+
+            context.SaveChanges();
+        }
+    }
+
+    public async Task InitializeAsync(CancellationToken cancellationToken = default)
+    {
+        await context.Database.MigrateAsync(cancellationToken);
+
+        if (!await context.Categories.AnyAsync(cancellationToken))
+        {
+            var incomeMgr = new ResourceManager($"{typeof(IncomeCategories).Namespace}.{nameof(IncomeCategories)}", typeof(Category).Assembly);
+            var incomeSet = incomeMgr.GetResourceSet(CultureInfo.InvariantCulture, true, true);
+            if (incomeSet != null)
+            {
+                foreach (DictionaryEntry entry in incomeSet)
+                {
+                    string id = entry.Key?.ToString() ?? Guid.NewGuid().ToString("N");
+                    string defaultName = entry.Value?.ToString() ?? string.Empty;
+                    context.Categories.Add(new Category
+                    {
+                        Id = id,
+                        Name = defaultName,
+                        IsIncome = true,
+                        IsSystem = true,
+                        IsDefault = false
+                    });
+                }
+            }
+
+            var expenseMgr = new ResourceManager($"{typeof(ExpenseCategories).Namespace}.{nameof(ExpenseCategories)}", typeof(Category).Assembly);
+            var expenseSet = expenseMgr.GetResourceSet(CultureInfo.InvariantCulture, true, true);
+            if (expenseSet != null)
+            {
+                foreach (DictionaryEntry entry in expenseSet)
+                {
+                    string id = entry.Key?.ToString() ?? Guid.NewGuid().ToString("N");
+                    string defaultName = entry.Value?.ToString() ?? string.Empty;
+                    context.Categories.Add(new Category
+                    {
+                        Id = id,
+                        Name = defaultName,
+                        IsIncome = false,
+                        IsSystem = true,
+                        IsDefault = false
+                    });
+                }
+            }
+
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        if (!await context.Countries.AnyAsync(cancellationToken))
+        {
+            var countryMgr = new ResourceManager($"{typeof(Countries).Namespace}.{nameof(Countries)}", typeof(Category).Assembly);
+            var countrySet = countryMgr.GetResourceSet(CultureInfo.InvariantCulture, true, true);
+            if (countrySet != null)
+            {
+                foreach (DictionaryEntry entry in countrySet)
+                {
+                    string id = entry.Key?.ToString() ?? Guid.NewGuid().ToString("N");
+                    string defaultName = entry.Value?.ToString() ?? string.Empty;
+                    context.Countries.Add(new Country
+                    {
+                        Id = id,
+                        Name = defaultName
+                    });
+                }
+            }
+
+            await context.SaveChangesAsync(cancellationToken);
+        }
+    }
+}
+

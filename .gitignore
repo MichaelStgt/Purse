@@ -1,0 +1,53 @@
+# Visual Studio / .NET / .NET MAUI
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][In]32/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / IDE user-specific files and settings
+.vs/
+.idea/
+.vscode/
+*.user
+*.userosv
+*.suo
+*.userprefs
+*.sln.docstates
+*.csproj.user
+*.pubxml.user
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Unit test & publishing outputs
+TestResults/
+*.trx
+*.coverage
+*.coveragecleared
+artifacts/
+
+# SQLite database files & Mac/iOS artifacts
+*.db
+*.db-shm
+*.db-wal
+.DS_Store
+*.app
+*.ipa
+*.dSYM
+*.zip

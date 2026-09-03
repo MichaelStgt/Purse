@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.CategoryCollectionView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Purse.Shared.Model;assembly=Purse.Shared"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="CategoryCollectionViewModel">
+
+    <Shell.TitleView>
+        <Label
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}"
+            ToolTipProperties.Text="{x:Static AccessibiltyResources.CategoryCollectionTitleViewTooltip}" />
+    </Shell.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding AddItemCommand}"
+            IconImageSource="{x:StaticResource AddIcon}"
+            Text="{x:Static AppResources.AddCategory}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, Auto, *">
+        <ChipSwitch
+            Grid.Row="0"
+            Command="{x:Binding SwitchTabCommand}"
+            HorizontalOptions="Fill"
+            IsToggled="{x:Binding ShowIncome}"
+            OffText="{x:Static AppResources.Expenses}"
+            OnText="{x:Static AppResources.Income}"
+            Style="{x:StaticResource ChipSwitchDefaultStyle}">
+            <!--Margin="12,10,12,6"
+            CharacterSpacing="2"
+            CornerRadius="4"
+                        FontFamily="{x:Static FontDefinitions.DefaultFontFamily}"
+            FontSize="{x:StaticResource DefaultFontSize}"
+            MinimumHeightRequest="40"
+                        Stroke="{x:AppThemeBinding Light={x:DynamicResource Primary},
+                                       Dark={x:DynamicResource Primary}}"
+            StrokeThickness="0.5"
+            TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                          Dark={x:StaticResource OffWhite}}"
+            ToggleColor="{x:AppThemeBinding Light={x:DynamicResource Primary},
+                                            Dark={x:DynamicResource Primary}}"
+            ToggledTextColor="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                 Dark={x:StaticResource OffWhite}}"
+                       <ChipSwitch.StrokeShape>
+                <RoundRectangle CornerRadius="4" />
+            </ChipSwitch.StrokeShape>
+            -->
+
+        </ChipSwitch>
+
+        <!--  Command="{x:Binding ToggleShowClosedCategoriesCommand}"  -->
+
+        <!--  Segment Toggle Control  -->
+        <!--<Grid
+            Grid.Row="1"
+            Margin="12,10,12,6"
+            ColumnDefinitions="*, *"
+            ColumnSpacing="12"
+            IsVisible="False">
+            <Button
+                Grid.Column="0"
+                BorderColor="{x:StaticResource Primary}"
+                BorderWidth="1"
+                Command="{x:Binding SelectTabCommand}"
+                CommandParameter="{x:Static AppResources.Expenses}"
+                CornerRadius="4"
+                HeightRequest="40"
+                Text="{x:Static AppResources.Expenses}">
+                <Button.Triggers>
+                    <DataTrigger
+                        Binding="{x:Binding ShowExpenses}"
+                        TargetType="Button"
+                        Value="True">
+                        <Setter Property="BackgroundColor" Value="{x:StaticResource Primary}" />
+                        <Setter Property="TextColor" Value="{x:AppThemeBinding Light={x:StaticResource OffWhite}, Dark={x:StaticResource OffWhite}}" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{x:Binding ShowExpenses}"
+                        TargetType="Button"
+                        Value="False">
+                        <Setter Property="BackgroundColor" Value="Transparent" />
+                        <Setter Property="TextColor" Value="{x:AppThemeBinding Light={x:StaticResource Primary}, Dark={x:StaticResource Gray300}}" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button
+                Grid.Column="1"
+                BorderColor="{x:StaticResource Primary}"
+                BorderWidth="1"
+                Command="{x:Binding SelectTabCommand}"
+                CommandParameter="{x:Static AppResources.Income}"
+                CornerRadius="8"
+                HeightRequest="40"
+                Text="{x:Static AppResources.Income}">
+                <Button.Triggers>
+                    <DataTrigger
+                        Binding="{x:Binding ShowIncome}"
+                        TargetType="Button"
+                        Value="True">
+                        <Setter Property="BackgroundColor" Value="{x:StaticResource Primary}" />
+                        <Setter Property="TextColor" Value="{x:AppThemeBinding Light={x:StaticResource OffWhite}, Dark={x:StaticResource OffWhite}}" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{x:Binding ShowIncome}"
+                        TargetType="Button"
+                        Value="False">
+                        <Setter Property="BackgroundColor" Value="Transparent" />
+                        <Setter Property="TextColor" Value="{x:AppThemeBinding Light={x:StaticResource Primary}, Dark={x:StaticResource Gray300}}" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>-->
+
+        <!--  Single RefreshView & CollectionView  -->
+        <RefreshView
+            Grid.Row="2"
+            Command="{x:Binding LoadItemCollectionCommand}"
+            IsRefreshing="{x:Binding IsBusy,
+                                     Mode=OneWay}">
+
+            <CollectionView
+                ItemsSource="{x:Binding FilteredCategories}"
+                SelectedItem="{x:Binding SelectedItem}"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        ItemSpacing="4"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Category">
+                        <Border Style="{x:StaticResource CollectionViewItemBorder}">
+                            <!--
+                                Margin="{x:StaticResource DefaultElementMargin}"
+                                Padding="{x:StaticResource DefaultPadding}"
+                                Stroke="{x:StaticResource Primary}"
+                            -->
+                            <Grid ColumnDefinitions="*, Auto, Auto, Auto">
+                                <Label
+                                    Grid.Column="0"
+                                    FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                                    FontSize="{x:StaticResource MediumFontSize}"
+                                    Text="{x:Binding DisplayName}"
+                                    VerticalOptions="Center" />
+
+                                <!--  Badges  -->
+                                <Border
+                                    x:Name="DefaultBadge"
+                                    Grid.Column="1"
+                                    Margin="4,0,4,0"
+                                    Padding="8,2"
+                                    IsVisible="{x:Binding IsDefault}"
+                                    StrokeThickness="1">
+                                    <Label
+                                        FontSize="{x:StaticResource SmallFontSize}"
+                                        Text="{x:Static AppResources.Default}"
+                                        TextColor="{x:AppThemeBinding Light={x:DynamicResource OffWhite},
+                                                                      Dark={x:DynamicResource OffWhite}}" />
+
+                                </Border>
+                                <Border
+                                    x:Name="SystemBadge"
+                                    Grid.Column="2"
+                                    Margin="4,0,4,0"
+                                    Padding="8,2"
+                                    IsVisible="{x:Binding IsSystem}"
+                                    StrokeThickness="1">
+
+                                    <Label
+                                        FontSize="{x:StaticResource SmallFontSize}"
+                                        Text="System"
+                                        TextColor="{x:AppThemeBinding Light={x:DynamicResource Primary},
+                                                                      Dark={x:DynamicResource OffWhite}}" />
+                                </Border>
+                                <ImageButton
+                                    Grid.Row="0"
+                                    Grid.RowSpan="1"
+                                    Grid.Column="3">
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                            FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                                            Glyph="{x:Static MaterialSymbols.Chevron_right}"
+                                            Size="24"
+                                            Color="Gray" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light=Transparent, Dark=Transparent}" />
+                                            <Setter TargetName="DefaultBadge" Property="Border.BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource Primary}}" />
+                                            <Setter TargetName="SystemBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource OffBlack}, Dark={x:DynamicResource Primary}}" />
+                                            <Setter TargetName="DefaultBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource Primary}}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Gray100}, Dark={x:DynamicResource Primary}}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Gray100}, Dark={x:DynamicResource Primary}}" />
+                                            <Setter TargetName="SystemBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource OffBlack}}" />
+                                            <Setter TargetName="DefaultBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource OffBlack}}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

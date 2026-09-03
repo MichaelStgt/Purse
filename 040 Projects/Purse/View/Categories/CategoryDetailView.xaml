@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.CategoryDetailView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="CategoryDetailViewModel">
+
+    <Shell.TitleView>
+        <Label
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}"
+            ToolTipProperties.Text="{x:Static AccessibiltyResources.CategoryDetailTitleViewTooltip}" />
+    </Shell.TitleView>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior
+            Command="{x:Binding GoBackCommand,
+                                Mode=OneWay}"
+            IconOverride="{x:StaticResource ArrowLeft}"
+            IsVisible="{x:Binding CanGoBack,
+                                  Mode=OneWay}" />
+    </Shell.BackButtonBehavior>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding SaveCommand}"
+            IconImageSource="{x:StaticResource SaveIcon}"
+            Text="{x:Static AppResources.Save}" />
+        <ToolbarItem
+            Command="{x:Binding CancelCommand}"
+            IconImageSource="{x:StaticResource CancelIcon}"
+            Text="{x:Static AppResources.Cancel}" />
+        <ToolbarItem
+            Command="{x:Binding DeleteCommand}"
+            IconImageSource="{x:StaticResource DeleteIcon}"
+            Text="{x:Static AppResources.Delete}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <Grid
+            Padding="{x:StaticResource DefaultPadding}"
+            ColumnDefinitions="*, *"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+            RowSpacing="4">
+
+            <!--  Validation Summary  -->
+            <!--<VerticalStackLayout
+                Grid.ColumnSpan="2"
+                BindableLayout.ItemsSource="{x:Binding ValidationResults}"
+                IsVisible="{x:Binding HasErrors}"
+                Spacing="4">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="ValidationResult">
+                        <Border
+                            Padding="4"
+                            BackgroundColor="{x:StaticResource Primary}"
+                            StrokeThickness="0">
+                            <Label
+                                FontSize="{x:StaticResource SmallFontSize}"
+                                Opacity="1"
+                                Text="{x:Binding ErrorMessage}"
+                                TextColor="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                              Dark={x:StaticResource OffWhite}}" />
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>-->
+
+            <!--  Category Name Input  -->
+            <LabeledContentView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="CategoryName"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <ExtendedEntry
+                    AllowEmptyValue="False"
+                    IsEnabled="{x:Binding IsEditable}"
+                    Placeholder="{x:Static AppResources.EnterCategoryName}"
+                    Text="{x:Binding CategoryName,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  Is Income Option  -->
+            <!--  Title="{x:Static AppResources.IsIncome}"  -->
+            <LabeledContentView
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                PropertyName="IsIncome"
+                ResetContentMargin="False">
+                <Grid
+                    Padding="{x:StaticResource DefaultPadding}"
+                    ColumnDefinitions="*, Auto">
+                    <Label
+                        FontSize="14"
+                        Text="{x:Static AppResources.ToggleIncomeCategory}"
+                        VerticalOptions="Center" />
+                    <Switch
+                        Grid.Column="1"
+                        IsEnabled="{x:Binding IsEditable}"
+                        IsToggled="{x:Binding IsIncome,
+                                              Mode=TwoWay}" />
+                </Grid>
+            </LabeledContentView>
+
+            <!--  Is Default Option  -->
+            <LabeledContentView
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                PropertyName="IsDefault"
+                ResetContentMargin="False">
+                <Grid
+                    Padding="{x:StaticResource DefaultPadding}"
+                    ColumnDefinitions="*, Auto">
+                    <Label
+                        FontSize="14"
+                        Text="{x:Static AppResources.SetPreferredDefault}"
+                        VerticalOptions="Center" />
+                    <Switch
+                        Grid.Column="1"
+                        IsToggled="{x:Binding IsDefault,
+                                              Mode=TwoWay}" />
+                </Grid>
+            </LabeledContentView>
+
+            <!--  System Category Read-Only Indicator  -->
+            <Border
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Margin="{x:StaticResource DefaultElementMargin}"
+                Padding="{x:StaticResource DefaultPadding}"
+                BackgroundColor="{x:StaticResource Primary}"
+                IsVisible="{x:Binding IsSystem}"
+                StrokeThickness="0">
+                <Label
+                    FontSize="12"
+                    HorizontalOptions="Center"
+                    Text="{x:Static AppResources.SystemCategoryDescription}"
+                    TextColor="{x:StaticResource OffWhite}" />
+            </Border>
+            <!--<LabeledContentView
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                Background="Blue"
+                BoundProperty="{x:Binding Item.IsDefault}"
+                FontSize="14">
+                <ExtendedEntry
+                    AllowEmptyValue="False"
+                    IsEnabled="{x:Binding IsDefault}"
+                    Placeholder="{x:Static AppResources.EnterCategoryName}"
+                    Text="{x:Binding CategoryName,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>-->
+
+            <!--<LabeledContentView
+                Grid.Row="6"
+                Grid.ColumnSpan="2"
+                PropertyName="Item.DisplayName">
+                <ExtendedEntry
+                    AllowEmptyValue="False"
+                    IsEnabled="{x:Binding IsEditable}"
+                    Placeholder="{x:Static AppResources.EnterCategoryName}"
+                    Text="{x:Binding Item.DisplayName,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>-->
+            <!--<ExtendedEntry
+                x:Name="RelatedViewSample"
+                Grid.Row="7"
+                AllowEmptyValue="False"
+                IsEnabled="{x:Binding IsEditable}"
+                Placeholder="{x:Static AppResources.EnterCategoryName}"
+                Text="{x:Binding CategoryName,
+                                 Mode=TwoWay}" />-->
+
+            <!--<ValidationErrorLabel
+                Grid.Row="8"
+                ErrorColor="Blue"
+                IsVisible="False"
+                PropertyName="CategoryName"
+                RelatedView="{x:Reference RelatedViewSample}" />-->
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

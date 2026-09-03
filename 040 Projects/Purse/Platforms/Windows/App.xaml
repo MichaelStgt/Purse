@@ -1,0 +1,19 @@
+﻿<maui:MauiWinUIApplication
+    x:Class="Purse.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Purse.WinUI"
+    xmlns:maui="using:Microsoft.Maui">
+
+    <maui:MauiWinUIApplication.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.ThemeDictionaries>
+
+            </ResourceDictionary.ThemeDictionaries>-->
+
+            <Thickness x:Key="TextControlBorderThemeThickness">0,0,0,0</Thickness>
+            <!--  Region This defines the Border around the TextBox when focused  -->
+            <Thickness x:Key="TextControlBorderThemeThicknessFocused">0,0,0,0</Thickness>
+        </ResourceDictionary>
+    </maui:MauiWinUIApplication.Resources>
+</maui:MauiWinUIApplication>

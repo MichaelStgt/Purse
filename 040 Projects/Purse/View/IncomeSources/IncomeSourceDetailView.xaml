@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.IncomeSourceDetailView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Purse.Shared.Model;assembly=Purse.Shared"
+    xmlns:viewmodels="clr-namespace:Purse.ViewModel"
+    x:DataType="viewmodels:IncomeSourceDetailViewModel">
+
+    <Shell.TitleView>
+        <Label
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}" />
+    </Shell.TitleView>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior
+            Command="{x:Binding GoBackCommand,
+                                Mode=OneWay}"
+            IconOverride="{x:StaticResource ArrowLeft}"
+            IsVisible="{x:Binding CanGoBack,
+                                  Mode=OneWay}" />
+    </Shell.BackButtonBehavior>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding SaveCommand}"
+            IconImageSource="{x:StaticResource SaveIcon}"
+            Text="Save" />
+        <ToolbarItem
+            Command="{x:Binding CancelCommand}"
+            IconImageSource="{x:StaticResource CancelIcon}"
+            Text="Cancel" />
+        <ToolbarItem
+            Command="{x:Binding DeleteCommand}"
+            IconImageSource="{x:StaticResource DeleteIcon}"
+            Text="Delete" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <Grid
+            Padding="{x:StaticResource DefaultPadding}"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+            RowSpacing="4">
+
+            <!--  Name Input  -->
+            <LabeledContentView
+                Grid.Row="0"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="IncomeSourceName"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <ExtendedEntry
+                    AllowEmptyValue="False"
+                    Placeholder="{x:Static AppResources.EnterIncomeSourceName}"
+                    Text="{x:Binding IncomeSourceName,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  Description Input  -->
+            <LabeledContentView
+                Grid.Row="1"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="IncomeSourceDescription"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <ExtendedEntry
+                    AllowEmptyValue="True"
+                    Placeholder="{x:Static AppResources.EnterDescriptionOptional}"
+                    Text="{x:Binding IncomeSourceDescription,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  Street Input  -->
+            <LabeledContentView
+                Grid.Row="2"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="Street"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <ExtendedEntry
+                    AllowEmptyValue="True"
+                    Placeholder="{x:Static AppResources.EnterStreetAddress}"
+                    Text="{x:Binding Street,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  City Input  -->
+            <LabeledContentView
+                Grid.Row="3"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="City"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <ExtendedEntry
+                    AllowEmptyValue="True"
+                    Placeholder="{x:Static AppResources.EnterCity}"
+                    Text="{x:Binding City,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  State Input  -->
+            <LabeledContentView
+                Grid.Row="4"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="State"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <ExtendedEntry
+                    AllowEmptyValue="True"
+                    Placeholder="{x:Static AppResources.EnterStateOrProvince}"
+                    Text="{x:Binding State,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  Postal Code Input  -->
+            <LabeledContentView
+                Grid.Row="5"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="PostalCode"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <ExtendedEntry
+                    AllowEmptyValue="True"
+                    Placeholder="{x:Static AppResources.EnterPostalCode}"
+                    Text="{x:Binding PostalCode,
+                                     Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  Country Selection Picker  -->
+            <LabeledContentView
+                Grid.Row="6"
+                FocusedStroke="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                  Dark={x:StaticResource Primary}}"
+                PropertyName="SelectedCountry"
+                ValidationErrorFontSize="{x:StaticResource SmallFontSize}"
+                ValidationErrorTextColor="{x:AppThemeBinding Light={x:StaticResource ErrorTextColorLight},
+                                                             Dark={x:StaticResource ErrorTextColorDark}}">
+                <Picker
+                    ItemDisplayBinding="{Binding Name}"
+                    ItemsSource="{x:Binding Countries}"
+                    SelectedItem="{x:Binding SelectedCountry}" />
+            </LabeledContentView>
+
+            <!--  Save Button  -->
+            <Button
+                Grid.Row="7"
+                Margin="{x:StaticResource DefaultElementMargin}"
+                Command="{x:Binding SaveCommand}"
+                Text="Save" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

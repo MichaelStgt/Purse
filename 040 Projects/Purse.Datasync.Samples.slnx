@@ -1,0 +1,43 @@
+<Solution>
+  <Folder Name="/Datasync/">
+    <File Path="Documentation.txt" />
+  </Folder>
+  <Folder Name="/Datasync/Claude.AI/">
+    <Project Path="../../../041 AI/040 Projects/Purse_1/Purse/Purse.Server/Purse.Server.csproj" />
+    <Project Path="../../../041 AI/040 Projects/Purse_1/Purse/Purse.Shared/Purse.Shared.csproj" />
+    <Project Path="../../../041 AI/040 Projects/Purse_1/Purse/Purse/Purse.csproj" />
+    <Project Path="../../../041 AI/040 Projects/Purse_2/Purse/Purse.Shared/Purse.Shared_2.csproj" />
+    <Project Path="../../../041 AI/040 Projects/Purse_2/Purse/Purse/Purse_2.csproj" />
+  </Folder>
+  <Folder Name="/Datasync/Todo/">
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/samples/datasync-server/src/Sample.Datasync.Server/Sample.Datasync.Server.csproj" />
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/samples/todoapp/TodoApp.MAUI/TodoApp.MAUI.csproj">
+      <Deploy Solution="Debug|*" />
+    </Project>
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/src/CommunityToolkit.Datasync.Server.Abstractions/CommunityToolkit.Datasync.Server.Abstractions.csproj" />
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/src/CommunityToolkit.Datasync.Server.EntityFrameworkCore/CommunityToolkit.Datasync.Server.EntityFrameworkCore.csproj" />
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/src/CommunityToolkit.Datasync.Server.NSwag/CommunityToolkit.Datasync.Server.NSwag.csproj" />
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/src/CommunityToolkit.Datasync.Server.OpenApi/CommunityToolkit.Datasync.Server.OpenApi.csproj" />
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/src/CommunityToolkit.Datasync.Server.Swashbuckle/CommunityToolkit.Datasync.Server.Swashbuckle.csproj" />
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/src/CommunityToolkit.Datasync.Server/CommunityToolkit.Datasync.Server.csproj" />
+  </Folder>
+  <Folder Name="/Datasync/Tutorial/">
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/samples/todoapp-tutorial/ClientApp/ClientApp.csproj" />
+    <Project Path="../../CommunityToolkit.Datasync/040 Projects/samples/todoapp-tutorial/ServerApp/ServerApp.csproj" />
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="../../LibraryTen/040 Projects/LibraryTen.Samples/LibraryTen.Samples.csproj">
+      <Deploy Solution="Debug|*" />
+    </Project>
+  </Folder>
+  <Folder Name="/SolutionItems/">
+    <Project Path="../../LibraryTen/040 Projects/LibraryTen.Maui.Generators/LibraryTen.Maui.Generators.csproj" />
+    <Project Path="../../LibraryTen/040 Projects/LibraryTen/LibraryTen.csproj" />
+    <Project Path="../../MVVMBaseTen/040 Projects/MVVMBaseTen/MVVMBaseTen.csproj" />
+  </Folder>
+  <Project Path="Purse.Server/Purse.Server.csproj" Id="df8d4540-26a6-465d-80ec-cd91b4c03678" />
+  <Project Path="Purse.Shared/Purse.Shared.csproj" Id="8520a20e-90af-4ced-bc31-c0b64156bded" />
+  <Project Path="Purse/Purse.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

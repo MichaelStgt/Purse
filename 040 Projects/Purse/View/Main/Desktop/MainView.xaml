@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.Desktop.MainView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="this"
+    x:DataType="MainViewModel">
+    <Shell.TitleView>
+        <Label
+            IsEnabled="False"
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}"
+            ToolTipProperties.Text="This is the Main View of this Application" />
+    </Shell.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding CountUpCommand}"
+            IconImageSource="{x:StaticResource AddIcon}"
+            Order="Primary"
+            Text="{x:Static AppResources.Add}"
+            
+            ToolTipProperties.Text="Click to raise the numbers" />
+    </ContentPage.ToolbarItems>
+    <Grid ColumnDefinitions="1*" RowDefinitions="Auto, Auto, 1*">
+        <PagePlatformHeader
+            Grid.Row="0"
+            Margin="8,0"
+            FontSize="{x:StaticResource SmallFontSize}"
+            InfoName="Page Name"
+            IsVisible="{x:DynamicResource DisplayPageHeader}"
+            TextColor="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                          Dark={x:StaticResource OffWhite}}"
+            Value="Desktop.MainView" />
+        <ScrollView
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <VerticalStackLayout Padding="12" Spacing="24">
+
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="185"
+                    SemanticProperties.Description="dot net bot in a submarine number ten"
+                    Source="dotnet_bot.png" />
+
+                <Label
+                    SemanticProperties.Description="Welcome to dot net Multi platform App UI"
+                    SemanticProperties.HeadingLevel="Level2"
+                    Style="{x:StaticResource SubHeadline}"
+                    Text="Welcome to &#10;.NET Multi-platform App UI"
+                    ToolTipProperties.Text="Welcome to .NET Multi-platform App UI" />
+                <Button
+                    x:Name="CounterBtn"
+                    Command="{x:Binding CountUpCommand}"
+                    HorizontalOptions="Center"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Text="{x:Binding Text,
+                                     Mode=Default}"
+                    ToolTipProperties.Text="Click to raise the numbers" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span x:Name="DesktopVersionSpan" Text="This is the desktop version of the Main View. " />
+                                <Span Text="The layout is optimized for larger screens and may include additional features or content compared to the mobile version." />
+                                <Span Text="{x:Static x:Environment.NewLine}" />
+                                <Span x:Name="AdditionalFeaturesSpan" Text="" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Switch>
+                    <!--  x  -->
+                </Switch>
+                <Slider>
+                    <!--  x  -->
+                </Slider>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+
+</ContentPage>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.AboutView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="AboutViewModel"
+    Shell.NavBarIsVisible="True">
+    <ContentPage.Behaviors>
+        <StatusBarBehavior
+            ApplyOn="OnBehaviorAttachedTo"
+            StatusBarColor="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                               Dark={x:StaticResource OffBlack}}"
+            StatusBarStyle="{x:AppThemeBinding Light=DarkContent,
+                                               Dark=LightContent,
+                                               Default=DarkContent}" />
+    </ContentPage.Behaviors>
+
+    <Shell.TitleView>
+        <Label
+            IsEnabled="False"
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}" />
+    </Shell.TitleView>
+    <Grid Padding="0" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+        <PagePlatformHeader
+            Grid.Row="0"
+            Margin="{x:StaticResource DefaultElementMargin}"
+            FontSize="{x:StaticResource SmallFontSize}"
+            InfoName="Page Name"
+            IsVisible="{x:DynamicResource DisplayPageHeader}"
+            Platform="Default"
+            TextColor="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                          Dark={x:StaticResource OffWhite}}"
+            Value="AboutPage" />
+        <Grid
+            Grid.Row="1"
+            Margin="{x:StaticResource DefaultElementMargin}"
+            ColumnDefinitions="1*"
+            RowDefinitions="Auto, Auto, Auto">
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0"
+                CharacterSpacing="2.0"
+                FontFamily="{x:Static FontDefinitions.DefaultBlackFontFamily}"
+                FontSize="{x:StaticResource LargeFontSize}"
+                Text="Hour"
+                VerticalOptions="Start" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0"
+                CharacterSpacing="3.0"
+                FontFamily="{x:Static FontDefinitions.DefaultFontFamily}"
+                FontSize="{x:StaticResource LargeFontSize}"
+                Text="Tracker"
+                VerticalOptions="Start" />
+        </Grid>
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{x:Binding Copyright}" />
+        <Label Grid.Row="3" Text="{x:Binding Version}" />
+        <Label Grid.Row="4" Text="{x:Binding CurrentVersion}" />
+        <Label Grid.Row="5" Text="{x:Binding Company}" />
+    </Grid>
+</ContentPage>

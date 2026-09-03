@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Food" xml:space="preserve"><value>Alimentos y comestibles</value></data>
+  <data name="Housing" xml:space="preserve"><value>Vivienda y alquiler</value></data>
+  <data name="Utilities" xml:space="preserve"><value>Servicios públicos (Luz, Agua, Internet)</value></data>
+  <data name="Transportation" xml:space="preserve"><value>Transporte y gasolina</value></data>
+  <data name="Insurance" xml:space="preserve"><value>Seguros</value></data>
+  <data name="Healthcare" xml:space="preserve"><value>Salud y medicina</value></data>
+  <data name="Entertainment" xml:space="preserve"><value>Ocio y entretenimiento</value></data>
+  <data name="Education" xml:space="preserve"><value>Educación</value></data>
+  <data name="Shopping" xml:space="preserve"><value>Compras y ropa</value></data>
+  <data name="OtherExpense" xml:space="preserve"><value>Otros gastos</value></data>
+</root>

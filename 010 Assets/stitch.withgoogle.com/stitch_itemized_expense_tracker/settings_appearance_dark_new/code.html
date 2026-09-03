@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Appearance</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "primary": "#8ed5ff",
+                "on-background": "#dae2fd",
+                "outline": "#87929a",
+                "on-error-container": "#ffdad6",
+                "on-surface-variant": "#bdc8d1",
+                "on-tertiary-fixed": "#111c2d",
+                "tertiary-fixed": "#d8e3fb",
+                "on-tertiary-container": "#394458",
+                "inverse-on-surface": "#283044",
+                "surface-container-low": "#131b2e",
+                "on-primary-fixed": "#001e2c",
+                "inverse-primary": "#00668a",
+                "primary-fixed-dim": "#7bd0ff",
+                "error": "#ffb4ab",
+                "secondary": "#b9c8de",
+                "secondary-container": "#39485a",
+                "surface-container-lowest": "#060e20",
+                "tertiary-container": "#a7b2c9",
+                "on-tertiary": "#263143",
+                "error-container": "#93000a",
+                "tertiary-fixed-dim": "#bcc7de",
+                "inverse-surface": "#dae2fd",
+                "on-secondary-fixed": "#0d1c2d",
+                "on-primary-fixed-variant": "#004c69",
+                "tertiary": "#c2cde5",
+                "primary-container": "#38bdf8",
+                "on-primary-container": "#004965",
+                "on-surface": "#dae2fd",
+                "on-primary": "#00354a",
+                "surface-tint": "#7bd0ff",
+                "surface-variant": "#2d3449",
+                "surface": "#0b1326",
+                "primary-fixed": "#c4e7ff",
+                "on-secondary-container": "#a7b6cc",
+                "on-secondary-fixed-variant": "#39485a",
+                "surface-dim": "#0b1326",
+                "surface-container-high": "#222a3d",
+                "background": "#0b1326",
+                "secondary-fixed-dim": "#b9c8de",
+                "secondary-fixed": "#d4e4fa",
+                "on-tertiary-fixed-variant": "#3c475a",
+                "outline-variant": "#3e484f",
+                "on-secondary": "#233143",
+                "surface-container": "#171f33",
+                "on-error": "#690005",
+                "surface-container-highest": "#2d3449",
+                "surface-bright": "#31394d"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "gutter": "16px",
+                "margin-desktop": "32px",
+                "container-max": "1280px",
+                "unit": "4px",
+                "margin-mobile": "16px"
+        },
+        "fontFamily": {
+                "headline-xl": [
+                        "Hanken Grotesk"
+                ],
+                "headline-lg-mobile": [
+                        "Hanken Grotesk"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Hanken Grotesk"
+                ],
+                "label-mono": [
+                        "JetBrains Mono"
+                ]
+        },
+        "fontSize": {
+                "headline-xl": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-mono": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant/30 z-40">
+<div class="flex items-center justify-between px-gutter h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-on-surface">Settings - Appearance</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex max-w-container-max mx-auto min-h-[calc(100vh-64px)]">
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-2xl mx-auto px-gutter py-8 pb-32">
+<section class="space-y-8">
+<!-- Section Header -->
+<div class="space-y-unit">
+<h2 class="font-body-sm font-semibold text-on-surface-variant/70 uppercase tracking-[0.1em]">Visual Preferences</h2>
+<h3 class="font-headline-lg-mobile text-primary">Appearance</h3>
+</div>
+<!-- Theme Segmented Control -->
+<div class="bg-surface-container-low p-1 rounded-xl relative flex items-center border border-outline-variant/30 w-full">
+<!-- Selector background for 'Dark' (middle) -->
+<div class="absolute h-[calc(100%-8px)] w-[calc(33.33%-4px)] bg-surface-container-highest rounded-lg transition-all duration-300 left-[calc(33.33%+2px)]" id="theme-indicator"></div>
+<button class="relative flex-1 py-3 text-center font-body-md z-10 text-on-surface-variant transition-colors" onclick="updateTheme(0, 'light')">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="light_mode">light_mode</span>
+                            Light
+                        </div>
+</button>
+<button class="relative flex-1 py-3 text-center font-body-md font-semibold z-10 text-on-surface transition-colors" onclick="updateTheme(1, 'dark')">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px] fill-current" data-icon="dark_mode">dark_mode</span>
+                            Dark
+                        </div>
+</button>
+<button class="relative flex-1 py-3 text-center font-body-md z-10 text-on-surface-variant transition-colors" onclick="updateTheme(2, 'system')">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="brightness_auto">brightness_auto</span>
+                            System
+                        </div>
+</button>
+</div>
+<!-- Settings List (Cards) -->
+<div class="space-y-4">
+<!-- Compact Mode Toggle -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="density_medium">density_medium</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Compact Mode</p>
+<p class="text-body-sm text-on-surface-variant">Maximize data visibility by reducing padding</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Increase Contrast Toggle -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-4 flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="contrast">contrast</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Increase Contrast</p>
+<p class="text-body-sm text-on-surface-variant">Better visibility for text and UI elements</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container border-t border-outline-variant/30 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-body-sm text-[10px] uppercase font-semibold mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-sm text-[10px] uppercase font-semibold mt-1">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-body-sm text-[10px] uppercase font-semibold mt-1">Plan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-colors">
+<span class="material-symbols-outlined fill-current" data-icon="settings">settings</span>
+<span class="font-body-sm text-[10px] uppercase font-semibold mt-1">Settings</span>
+</button>
+</nav>
+<script>
+        function updateTheme(index, themeName) {
+            const indicator = document.getElementById('theme-indicator');
+            const buttons = indicator.parentElement.querySelectorAll('button');
+            
+            // Move indicator
+            if (index === 0) indicator.style.left = '4px';
+            if (index === 1) indicator.style.left = 'calc(33.33% + 2px)';
+            if (index === 2) indicator.style.left = 'calc(66.66% - 0px)';
+
+            // Update text styles
+            buttons.forEach((btn, idx) => {
+                const icon = btn.querySelector('.material-symbols-outlined');
+                if (idx === index) {
+                    btn.classList.add('text-on-surface', 'font-semibold');
+                    btn.classList.remove('text-on-surface-variant');
+                    if(icon) icon.classList.add('fill-current');
+                } else {
+                    btn.classList.remove('text-on-surface', 'font-semibold');
+                    btn.classList.add('text-on-surface-variant');
+                    if(icon) icon.classList.remove('fill-current');
+                }
+            });
+
+            console.log(`Theme requested: ${themeName}`);
+        }
+    </script>
+</body></html>

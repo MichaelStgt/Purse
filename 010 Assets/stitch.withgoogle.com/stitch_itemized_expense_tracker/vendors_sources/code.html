@@ -1,0 +1,352 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ledger - Vendors &amp; Sources</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eceef0",
+                    "surface-bright": "#f7f9fb",
+                    "income-green": "#10B981",
+                    "on-tertiary-container": "#009668",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-primary-container": "#7c839b",
+                    "surface": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#76777d",
+                    "transfer-blue": "#6366F1",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "secondary-container": "#2170e4",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-border": "#E2E8F0",
+                    "on-tertiary-fixed": "#002113",
+                    "data-viz-amber": "#F59E0B",
+                    "on-secondary-fixed": "#001a42",
+                    "inverse-surface": "#2d3133",
+                    "surface-tint": "#565e74",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary": "#000000",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "outline-variant": "#c6c6cd",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "primary": "#000000",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-low": "#f2f4f6",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-surface": "#191c1e",
+                    "on-background": "#191c1e",
+                    "secondary": "#0058be",
+                    "on-surface-variant": "#45464d",
+                    "tertiary-container": "#002113",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "primary-fixed": "#dae2fd",
+                    "expense-red": "#EF4444",
+                    "surface-dim": "#d8dadc",
+                    "background": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "container-padding": "24px",
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-md-mobile": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #0058be;
+        }
+
+        .edit-modal {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s linear;
+        }
+        
+        .modal-overlay {
+            backdrop-filter: blur(8px);
+            transition: opacity 0.3s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding h-16 bg-surface dark:bg-inverse-surface border-b border-surface-border dark:border-outline-variant">
+<div class="flex items-center gap-stack-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional business headshot of a financial manager in a clean white office setting. The lighting is soft and high-key, conveying authority and reassurance. The image style is a modern corporate portrait with a shallow depth of field and a minimalist aesthetic using a soft blue and grey palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8uRAPeQcnB_Rl1Fhz2x3cVbuJmDl-hqnaQHy21yHV6b4VAM7YNfbW-I7YONgvV_bo8zPV8bSNGlcpLktegHpXMb99AqA292CWFu7yp2LQ5Ri5Js5sc-JQV1pCFJj65dxq8vI1WTFNG4t9Jyjv5JPUBHcM_FO65h9nA77XVUN8hodhxp4TFcOaX29vnQyQusJjUt2qcPoAREhe__j9x5Nz_qEWOKArBhobfDwUsRDqRqpyRX49U0Ka">
+</div>
+<span class="text-headline-md-mobile font-headline-md-mobile font-bold text-primary dark:text-inverse-primary">Ledger</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="search">search</span>
+</button>
+</header>
+<main class="pt-20 px-container-padding max-w-2xl mx-auto">
+<!-- Dashboard Header -->
+<div class="mb-stack-lg">
+<h1 class="font-headline-md text-headline-md text-primary mb-1">Sources &amp; Directory</h1>
+<p class="text-on-surface-variant font-body-md">Manage your recurring transaction partners and income streams.</p>
+</div>
+<!-- Tabs Container -->
+<div class="sticky top-16 bg-background z-40 pt-2 border-b border-surface-border mb-stack-md">
+<div class="flex gap-stack-lg">
+<button class="relative pb-stack-sm font-label-caps text-label-caps uppercase tracking-widest text-secondary tab-active transition-all" id="tab-vendors" onclick="switchTab('vendors')">
+                    Vendors
+                </button>
+<button class="relative pb-stack-sm font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-all" id="tab-income" onclick="switchTab('income')">
+                    Income Sources
+                </button>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="flex items-center gap-stack-sm mb-stack-md">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-surface-border rounded-lg text-body-md focus:outline-none focus:ring-1 focus:ring-secondary transition-all" placeholder="Filter sources..." type="text">
+</div>
+<button class="px-4 py-2 border border-surface-border rounded-lg flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span class="font-label-caps text-label-caps">Sort</span>
+</button>
+</div>
+<!-- Content List -->
+<div class="space-y-stack-sm" id="list-container">
+<!-- Items injected by JS -->
+</div>
+</main>
+<!-- Drawer / Modal -->
+<div class="fixed inset-0 bg-primary/20 modal-overlay opacity-0 pointer-events-none z-[60]" id="edit-drawer-overlay" onclick="closeDrawer()"></div>
+<div class="fixed bottom-0 left-0 right-0 max-w-2xl mx-auto bg-surface-container-lowest rounded-t-xl edit-modal translate-y-full z-[70] p-container-padding shadow-2xl border-t border-surface-border" id="edit-drawer">
+<div class="w-12 h-1.5 bg-surface-variant rounded-full mx-auto mb-stack-lg"></div>
+<div class="flex justify-between items-start mb-stack-lg">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary" id="drawer-title">Edit Vendor</h2>
+<p class="text-body-md text-on-surface-variant">Update primary transaction mapping</p>
+</div>
+<button class="p-2 hover:bg-surface-container rounded-full" onclick="closeDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="space-y-stack-md" onsubmit="event.preventDefault(); closeDrawer();">
+<div class="space-y-1">
+<label class="block font-label-caps text-label-caps text-on-surface-variant px-1">Display Name</label>
+<input class="w-full px-4 py-3 bg-surface border border-surface-border rounded-lg focus:ring-1 focus:ring-secondary transition-all" id="edit-name" type="text" value="Starbucks Coffee">
+</div>
+<div class="space-y-1">
+<label class="block font-label-caps text-label-caps text-on-surface-variant px-1">Default Category</label>
+<div class="relative">
+<select class="w-full appearance-none px-4 py-3 bg-surface border border-surface-border rounded-lg focus:ring-1 focus:ring-secondary transition-all" id="edit-category">
+<option>Food &amp; Drink</option>
+<option>Transportation</option>
+<option>Entertainment</option>
+<option>Housing</option>
+<option>Salary</option>
+<option>Investment</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="pt-stack-md flex gap-stack-sm">
+<button class="flex-1 py-3 border border-surface-border rounded-lg font-label-caps text-label-caps hover:bg-surface-container-low transition-colors" onclick="closeDrawer()" type="button">Cancel</button>
+<button class="flex-1 py-3 bg-secondary text-on-secondary rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity" type="submit">Save Changes</button>
+</div>
+</form>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-stack-sm h-20 bg-surface-container-lowest dark:bg-surface-container-low border-t border-surface-border dark:border-outline-variant rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-caps font-label-caps mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined text-[24px]" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-caps font-label-caps mt-1">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined text-[24px]" data-icon="add_circle">add_circle</span>
+<span class="text-label-caps font-label-caps mt-1">Add</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold bg-secondary-fixed dark:bg-secondary-container rounded-full px-4 py-1 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[24px]" data-icon="payments">payments</span>
+<span class="text-label-caps font-label-caps">Sources</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-inverse-surface transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined text-[24px]" data-icon="cached">cached</span>
+<span class="text-label-caps font-label-caps mt-1">Recur</span>
+</button>
+</nav>
+<script>
+        const data = {
+            vendors: [
+                { id: 1, name: "Amazon Prime", category: "Entertainment", icon: "shopping_cart", color: "text-secondary" },
+                { id: 2, name: "Starbucks Coffee", category: "Food & Drink", icon: "local_cafe", color: "text-income-green" },
+                { id: 3, name: "Uber Technologies", category: "Transportation", icon: "directions_car", color: "text-transfer-blue" },
+                { id: 4, name: "Whole Foods Market", category: "Groceries", icon: "shopping_basket", color: "text-income-green" },
+                { id: 5, name: "Apple Services", category: "Technology", icon: "devices", color: "text-primary" },
+                { id: 6, name: "City Parking Garage", category: "Transportation", icon: "local_parking", color: "text-on-surface-variant" }
+            ],
+            income: [
+                { id: 101, name: "Tech Corp Payroll", category: "Salary", icon: "work", color: "text-income-green" },
+                { id: 102, name: "Dividend Payouts", category: "Investment", icon: "trending_up", color: "text-transfer-blue" },
+                { id: 103, name: "Freelance Writing", category: "Side Hustle", icon: "edit_note", color: "text-data-viz-amber" },
+                { id: 104, name: "Cashback Rewards", category: "Other Income", icon: "savings", color: "text-secondary" }
+            ]
+        };
+
+        let currentTab = 'vendors';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            const vendorsBtn = document.getElementById('tab-vendors');
+            const incomeBtn = document.getElementById('tab-income');
+
+            if (tab === 'vendors') {
+                vendorsBtn.classList.add('tab-active', 'text-secondary');
+                vendorsBtn.classList.remove('text-on-surface-variant');
+                incomeBtn.classList.remove('tab-active', 'text-secondary');
+                incomeBtn.classList.add('text-on-surface-variant');
+            } else {
+                incomeBtn.classList.add('tab-active', 'text-secondary');
+                incomeBtn.classList.remove('text-on-surface-variant');
+                vendorsBtn.classList.remove('tab-active', 'text-secondary');
+                vendorsBtn.classList.add('text-on-surface-variant');
+            }
+            renderList();
+        }
+
+        function renderList() {
+            const container = document.getElementById('list-container');
+            container.innerHTML = '';
+            
+            data[currentTab].forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-surface-container-lowest border border-surface-border rounded-xl p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group";
+                card.onclick = () => openDrawer(item);
+                
+                card.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center transition-transform group-active:scale-95">
+                            <span class="material-symbols-outlined ${item.color}">${item.icon}</span>
+                        </div>
+                        <div>
+                            <h3 class="font-body-lg text-body-lg text-primary">${item.name}</h3>
+                            <div class="flex items-center gap-1.5 mt-0.5">
+                                <span class="w-2 h-2 rounded-full ${item.color === 'text-income-green' ? 'bg-income-green' : 'bg-secondary'}"></span>
+                                <span class="text-label-caps font-label-caps text-on-surface-variant">${item.category}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-outline-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openDrawer(item) {
+            const overlay = document.getElementById('edit-drawer-overlay');
+            const drawer = document.getElementById('edit-drawer');
+            const title = document.getElementById('drawer-title');
+            const nameInput = document.getElementById('edit-name');
+            const catSelect = document.getElementById('edit-category');
+
+            title.innerText = currentTab === 'vendors' ? 'Edit Vendor' : 'Edit Income Source';
+            nameInput.value = item.name;
+            
+            // Sync category select
+            for (let i = 0; i < catSelect.options.length; i++) {
+                if (catSelect.options[i].text === item.category) {
+                    catSelect.selectedIndex = i;
+                    break;
+                }
+            }
+
+            overlay.classList.remove('pointer-events-none', 'opacity-0');
+            drawer.classList.remove('translate-y-full');
+        }
+
+        function closeDrawer() {
+            const overlay = document.getElementById('edit-drawer-overlay');
+            const drawer = document.getElementById('edit-drawer');
+
+            overlay.classList.add('pointer-events-none', 'opacity-0');
+            drawer.classList.add('translate-y-full');
+        }
+
+        // Initialize
+        renderList();
+    </script>
+</body></html>

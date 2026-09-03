@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="Purse.View.MainWindow"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="MainWindowViewModel">
+    <Window.BindingContext>
+        <MainWindowViewModel />
+    </Window.BindingContext>
+    <Window.TitleBar>
+        <TitleBar
+            x:Name="TitleBar"
+            Title="{x:Binding Title}"
+            BackgroundColor="{x:AppThemeBinding Light={x:StaticResource BackgroundColorLight},
+                                                Default={x:StaticResource BackgroundColorDark}}"
+            IsVisible="{x:Binding ShowTitleBar}" />
+    </Window.TitleBar>
+</Window>

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.TransactionDetailView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="TransactionDetailViewModel">
+    <!--  xmlns:validations="clr-namespace:System.ComponentModel.DataAnnotations;assembly=System.ComponentModel.DataAnnotations"  -->
+    <Shell.TitleView>
+        <Label
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}"
+            ToolTipProperties.Text="{x:Static AccessibiltyResources.HistoryDetailTitleViewTooltip}" />
+    </Shell.TitleView>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior
+            Command="{x:Binding GoBackCommand,
+                                Mode=OneWay}"
+            IconOverride="{x:StaticResource ArrowLeft}"
+            IsVisible="{x:Binding CanGoBack,
+                                  Mode=OneWay}" />
+    </Shell.BackButtonBehavior>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding SaveCommand}"
+            IconImageSource="{x:StaticResource SaveIcon}"
+            Text="{x:Static AppResources.Save}" />
+        <ToolbarItem
+            Command="{x:Binding CancelCommand}"
+            IconImageSource="{x:StaticResource CancelIcon}"
+            Text="{x:Static AppResources.Cancel}" />
+        <ToolbarItem
+            Command="{x:Binding DeleteCommand}"
+            IconImageSource="{x:StaticResource DeleteIcon}"
+            Text="{x:Static AppResources.Delete}" />
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <Grid
+            Padding="{x:StaticResource DefaultPadding}"
+            ColumnDefinitions="1*, 1*"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 1*, Auto, Auto, Auto"
+            RowSpacing="4">
+            <!--  Todo: Move this to the MVVMBaseTen Library as a reusable control, e.g. ValidationSummaryView  -->
+            <VerticalStackLayout
+                Grid.ColumnSpan="2"
+                Margin="{x:StaticResource DefaultElementMargin}"
+                BindableLayout.ItemsSource="{x:Binding ValidationResults}"
+                IsVisible="{x:Binding HasErrors}"
+                Spacing="4">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="ValidationResult">
+                        <Border
+                            BackgroundColor="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                                                Dark={x:StaticResource Primary}}"
+                            StrokeThickness="0">
+                            <Grid
+                                ColumnDefinitions="*, Auto"
+                                ColumnSpacing="10">
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="{x:StaticResource SmallFontSize}"
+                                    Opacity="1"
+                                    Text="{x:Binding ErrorMessage}"
+                                    TextColor="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                                  Dark={x:StaticResource OffWhite}}" />
+                                <!--<Label
+                                    Grid.Column="1"
+                                    Opacity="0.9"
+                                    Text="{x:Binding MemberNames[0]}"
+                                    TextColor="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                                  Dark={x:StaticResource OffWhite}}" />-->
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+            <LabeledContentView
+                Grid.Row="1"
+                BackgroundColor="Transparent"
+                BoundProperty="{Binding SelectedVendor}"
+                PropertyName="SelectedVendor">
+                <!--  Title="{x:Static AppResources.Vendor}"  -->
+                <Picker
+                    Grid.Row="1"
+                    ItemsSource="{x:Binding Vendors}"
+                    SelectedItem="{x:Binding SelectedVendor}" />
+
+            </LabeledContentView>
+            <LabeledContentView
+                Title="{x:Static AppResources.Date}"
+                Grid.Row="1"
+                Grid.Column="1">
+                <DatePicker
+                    Date="{x:Binding TransactionDate}"
+                    Format="{x:Static FormatResources.PickerDateFormatShort}" />
+            </LabeledContentView>
+
+            <LabeledContentView
+                Title="{x:Static AppResources.TotalAmount}"
+                Grid.Row="3"
+                PropertyName="TotalAmount"
+                ResetContentMargin="False"
+                ValidationErrorFontSize="12"
+                ValidationErrorTextColor="Red">
+                <!--<ExtendedEntry
+                    AllowEmptyValue="True"
+                    IsEnabled="False"
+                    IsNumeric="True"
+                    Placeholder="€ Total Amount"
+                    TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                                  Dark={x:StaticResource OffWhite}}"
+                    Value="{x:Binding TotalAmount,
+                                      Mode=TwoWay}" />-->
+                <Label
+                    x:Name="TotalAmountLabel"
+                    Margin="{x:StaticResource DefaultElementMargin}"
+                    FontSize="{x:StaticResource DefaultFontSize}"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="End"
+                    Text="{x:Binding TotalAmount,
+                                     Mode=Default,
+                                     StringFormat='{0:C2}'}" />
+            </LabeledContentView>
+
+            <LabeledContentView
+                Title="Planned Amount"
+                Grid.Row="3"
+                Grid.Column="1"
+                BoundProperty="{x:Binding PlannedAmount}">
+                <ExtendedEntry
+                    x:Name="PlannedAmountEntry"
+                    AllowEmptyValue="True"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="End"
+                    IsNumeric="True"
+                    Placeholder="{x:Static AppResources.EnterPlannedAmount}"
+                    Value="{x:Binding PlannedAmount,
+                                      Mode=TwoWay}" />
+            </LabeledContentView>
+
+            <!--  Independent/standalone ValidationErrorLabel controls to test both options  -->
+            <!--<ValidationErrorLabel
+                Grid.Row="4"
+                Grid.Column="0"
+                ErrorColor="Red"
+                IsVisible="False"
+                PropertyName="TotalAmount"
+                RelatedView="{x:Reference TotalAmountLabel}" />-->
+
+            <!--<ValidationErrorLabel
+                Grid.Row="4"
+                Grid.Column="1"
+                ErrorColor="Red"
+                IsVisible="False"
+                PropertyName="PlannedAmount"
+                RelatedView="{x:Reference PlannedAmountEntry}" />-->
+
+            <LabeledContentView
+                Title="Tags"
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
+                <Label
+                    Margin="{x:StaticResource DefaultElementMargin}"
+                    FontSize="{x:StaticResource DefaultFontSize}"
+                    HorizontalOptions="Fill"
+                    Text="{x:Binding Tags,
+                                     Mode=Default}" />
+            </LabeledContentView>
+            <Label
+                Grid.Row="6"
+                Grid.ColumnSpan="1"
+                FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                Text="Receipt details" />
+
+            <VerticalStackLayout
+                Grid.Row="9"
+                Grid.ColumnSpan="2">
+                <Grid
+                    x:Name="HeaderGrid"
+                    Margin="{x:StaticResource DefaultElementMargin}"
+                    ColumnDefinitions="*,*, 44"
+                    ColumnSpacing="12">
+                    <Border
+                        Stroke="{x:AppThemeBinding Light={x:StaticResource Gray100},
+                                                   Dark={x:StaticResource Primary}}"
+                        StrokeThickness="1">
+                        <Label
+                            FontSize="{x:StaticResource SmallFontSize}"
+                            Text="Category"
+                            TextDecorations="Underline" />
+                    </Border>
+                    <Border
+                        Grid.Column="1"
+                        Stroke="{x:AppThemeBinding Light={x:StaticResource Gray100},
+                                                   Dark={x:StaticResource Primary}}"
+                        StrokeThickness="1">
+                        <Label
+                            FontSize="{x:StaticResource SmallFontSize}"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="End"
+                            Text="Amount"
+                            TextDecorations="Underline">
+                            <!--  x  -->
+                        </Label>
+                    </Border>
+                    <ImageButton
+                        Grid.Column="2"
+                        Margin="0"
+                        Command="{x:Binding AddSplitCommand}"
+                        HeightRequest="36"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End">
+                        <ImageButton.Source>
+                            <FontImageSource
+                                FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                                Glyph="{x:Static MaterialSymbols.Add}"
+                                Size="20"
+                                Color="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                          Dark={x:StaticResource OffWhite}}" />
+                        </ImageButton.Source>
+                    </ImageButton>
+                </Grid>
+                <VerticalStackLayout
+                    Grid.Row="8"
+                    Margin="{x:StaticResource DefaultElementMargin}"
+                    BindableLayout.ItemsSource="{x:Binding Splits}"
+                    IsVisible="True"
+                    Spacing="4">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="TransactionLineItem">
+                            <Grid
+                                ColumnDefinitions="*,*, Auto"
+                                ColumnSpacing="10"
+                                RowSpacing="8">
+                                <Border>
+                                    <SfComboBox
+                                        DropDownItemFontAttributes="None"
+                                        DropDownItemFontSize="16"
+                                        DropDownPlacement="Bottom"
+                                        DropDownStroke="{x:AppThemeBinding Light={x:StaticResource Gray400},
+                                                                           Dark={x:StaticResource Gray600}}"
+                                        DropDownStrokeThickness="1"
+                                        IsClearButtonVisible="False"
+                                        IsEditable="False"
+                                        ItemsSource="{x:Binding Categories,
+                                                                Source={x:RelativeSource AncestorType={x:Type TransactionDetailViewModel}}}"
+                                        MaxDropDownHeight="150"
+                                        Placeholder="{x:Static AppResources.SelectCategory}"
+                                        SelectedItem="{x:Binding Category,
+                                                                 Mode=Default}"
+                                        ShowBorder="False"
+                                        ShowDropdownFooterView="False"
+                                        ShowDropdownHeaderView="False"
+                                        ShowSuggestionsOnFocus="False"
+                                        Stroke="Transparent">
+                                        <SfComboBox.CustomView>
+                                            <Label
+                                                x:Name="customLabel"
+                                                HorizontalOptions="Start"
+                                                Text="{x:Binding Category,
+                                                                 Mode=Default}"
+                                                VerticalTextAlignment="Center" />
+                                        </SfComboBox.CustomView>
+
+                                        <SfComboBox.SelectedDropDownItemTextStyle>
+                                            <DropDownTextStyle
+                                                FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                                                FontSize="16"
+                                                TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                                                              Dark={x:StaticResource OffWhite}}" />
+                                        </SfComboBox.SelectedDropDownItemTextStyle>
+                                    </SfComboBox>
+                                </Border>
+                                <Border Grid.Column="1">
+                                    <ExtendedEntry
+                                        HorizontalOptions="Fill"
+                                        HorizontalTextAlignment="End"
+                                        IsNumeric="True"
+                                        Keyboard="Numeric"
+                                        Placeholder="{x:Static AppResources.EnterAmount}"
+                                        Value="{x:Binding Amount,
+                                                          Mode=TwoWay}" />
+                                </Border>
+                                <ImageButton
+                                    Grid.Column="2"
+                                    Padding="0"
+                                    Aspect="Center"
+                                    Command="{x:Binding BindingContext.RemoveSplitCommand,
+                                                        Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{x:Binding .}"
+                                    HeightRequest="32"
+                                    WidthRequest="32">
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                            FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                                            Glyph="{x:Static MaterialSymbols.Delete}"
+                                            Size="24"
+                                            Color="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                                      Dark={x:StaticResource OffWhite}}" />
+                                        <!--  Size="{x:StaticResource IconFontSize}"  -->
+                                    </ImageButton.Source>
+                                </ImageButton>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+                <!--<Button
+                    Command="{x:Binding AddSplitCommand}"
+                    Text="Add Split"
+                    VerticalOptions="Start" />-->
+                <Button
+                    Grid.RowSpan="13"
+                    Grid.ColumnSpan="2"
+                    Margin="{x:StaticResource DefaultElementMargin}"
+                    Command="{x:Binding AddSplitCommand}"
+                    HeightRequest="36"
+                    HorizontalOptions="Fill"
+                    Text="Add Split"
+                    VerticalOptions="End">
+                    <Button.ImageSource>
+                        <FontImageSource
+                            FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                            Glyph="{x:Static MaterialSymbols.Add}"
+                            Size="20"
+                            Color="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                      Dark={x:StaticResource OffWhite}}" />
+                    </Button.ImageSource>
+                </Button>
+            </VerticalStackLayout>
+
+            <!--<Button
+                Grid.RowSpan="13"
+                Grid.ColumnSpan="2"
+                Margin="0,0,20,20"
+                Command="{x:Binding AddSplitCommand}"
+                CornerRadius="8"
+                HeightRequest="36"
+                HorizontalOptions="End"
+                Text="Add Split"
+                VerticalOptions="End">
+                <Button.ImageSource>
+                    <FontImageSource
+                        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                        Glyph="{x:Static MaterialSymbols.Add}"
+                        Size="20"
+                        Color="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                  Dark={x:StaticResource OffWhite}}" />
+                </Button.ImageSource>
+            </Button>-->
+
+            <!--<ImageButton
+                Grid.RowSpan="8"
+                Grid.ColumnSpan="2"
+                Margin="12"
+                Aspect="Center"
+                Command="{x:Binding AddSplitCommand}"
+                HeightRequest="32"
+                HorizontalOptions="End"
+                IsVisible="False"
+                VerticalOptions="End"
+                WidthRequest="32">
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                        Glyph="{x:Static MaterialSymbols.Delete}"
+                        Size="24"
+                        Color="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                  Dark={x:StaticResource OffWhite}}" />
+                </ImageButton.Source>
+            </ImageButton>-->
+
+
+            <!--<CollectionView
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                Margin="{x:StaticResource DefaultElementMargin}"
+                IsVisible="False"
+                ItemsSource="{x:Binding Splits}"
+                VerticalOptions="Start">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        ItemSpacing="4"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <Grid
+                        ColumnDefinitions="*,*, 44"
+                        ColumnSpacing="12">
+                        <Border
+                            Stroke="{x:AppThemeBinding Light={x:StaticResource Gray100},
+                                                       Dark={x:StaticResource Primary}}"
+                            StrokeThickness="1">
+                            <Label
+                                FontSize="{x:StaticResource SmallFontSize}"
+                                Text="Category"
+                                TextDecorations="Underline">
+                            </Label>
+                        </Border>
+                        <Border
+                            Grid.Column="1"
+                            Stroke="{x:AppThemeBinding Light={x:StaticResource Gray100},
+                                                       Dark={x:StaticResource Primary}}"
+                            StrokeThickness="1">
+                            <Label
+                                Margin="{x:StaticResource DefaultElementMargin}"
+                                FontSize="{x:StaticResource SmallFontSize}"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Text="Amount"
+                                TextDecorations="Underline" />
+                        </Border>
+
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.Footer>
+                    <Grid
+                        ColumnDefinitions="*"
+                        ColumnSpacing="12">
+                        <Button
+                            Command="{x:Binding AddSplitCommand}"
+                            HorizontalOptions="End"
+                            Text="Add Split"
+                            VerticalOptions="Start" />
+                    </Grid>
+
+                </CollectionView.Footer>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="TransactionLineItem">
+                        <Grid
+                            ColumnDefinitions="*,*, 44"
+                            ColumnSpacing="12">
+                            <Border>
+                                <SfComboBox
+                                    DropDownItemFontAttributes="None"
+                                    DropDownItemFontSize="16"
+                                    DropDownPlacement="Bottom"
+                                    DropDownStroke="{x:AppThemeBinding Light={x:StaticResource Gray400},
+                                                                       Dark={x:StaticResource Gray600}}"
+                                    DropDownStrokeThickness="1"
+                                    IsClearButtonVisible="False"
+                                    IsEditable="False"
+                                    ItemsSource="{x:Binding Categories,
+                                                            Source={x:RelativeSource AncestorType={x:Type TransactionDetailViewModel}}}"
+                                    MaxDropDownHeight="150"
+                                    Placeholder="{x:Static AppResources.SelectCategory}"
+                                    SelectedItem="{x:Binding Category,
+                                                             Mode=Default}"
+                                    ShowBorder="False"
+                                    ShowDropdownFooterView="False"
+                                    ShowDropdownHeaderView="False"
+                                    ShowSuggestionsOnFocus="False"
+                                    Stroke="Transparent">
+                                    <SfComboBox.CustomView>
+                                        <Label
+                                            x:Name="customLabel"
+                                            HorizontalOptions="Start"
+                                            Text="{x:Binding Category,
+                                                             Mode=Default}"
+                                            VerticalTextAlignment="Center" />
+                                    </SfComboBox.CustomView>
+
+                                    <SfComboBox.SelectedDropDownItemTextStyle>
+                                        <DropDownTextStyle
+                                            FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                                            FontSize="16"
+                                            TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                                                          Dark={x:StaticResource OffWhite}}" />
+                                    </SfComboBox.SelectedDropDownItemTextStyle>
+                                </SfComboBox>
+                            </Border>
+                            <Border Grid.Column="1">
+                                <ExtendedEntry
+                                    Margin="0"
+                                    HorizontalOptions="Fill"
+                                    HorizontalTextAlignment="End"
+                                    IsNumeric="True"
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static AppResources.EnterAmount}"
+                                    Value="{x:Binding Amount}" />
+                            </Border>
+                            <ImageButton
+                                Grid.Column="2"
+                                Padding="0"
+                                Aspect="AspectFill"
+                                Command="{x:Binding BindingContext.RemoveSplitCommand,
+                                                    Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                CommandParameter="{x:Binding .}"
+                                HeightRequest="32"
+                                WidthRequest="32">
+                                <ImageButton.Source>
+                                    <FontImageSource
+                                        FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                                        Glyph="{x:Static MaterialSymbols.Delete}"
+                                        Size="{x:StaticResource IconFontSize}"
+                                        Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                                                  Dark={x:StaticResource OffWhite}}" />
+                                </ImageButton.Source>
+                            </ImageButton>
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>-->
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

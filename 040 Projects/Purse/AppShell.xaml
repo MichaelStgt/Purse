@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Purse.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:desktop="clr-namespace:Purse.View.Desktop"
+    xmlns:mobile="clr-namespace:Purse.View"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    FlyoutBehavior="Flyout">
+    <ShellContent
+        Title="{x:Static AppResources.TransactionHistory}"
+        ContentTemplate="{x:DataTemplate sharedview:TransactionHistoryCollectionView}"
+        FlyoutIcon="{x:StaticResource HomeIcon}"
+        Route="TransactionHistoryCollectionView" />
+    <ShellContent
+        Title="{x:Static AppResources.Categories}"
+        ContentTemplate="{x:DataTemplate sharedview:CategoryCollectionView}"
+        FlyoutIcon="{x:StaticResource CategoryIcon}"
+        Route="CategoryCollectionView" />
+    <ShellContent
+        Title="Vendors"
+        ContentTemplate="{x:DataTemplate sharedview:VendorsCollectionView}"
+        FlyoutIcon="{x:StaticResource VendorIcon}"
+        Route="VendorsCollectionView" />
+    <ShellContent
+        Title="Income Sources"
+        ContentTemplate="{x:DataTemplate sharedview:IncomeSourcesCollectionView}"
+        FlyoutIcon="{x:StaticResource IncomeSourceIcon}"
+        Route="IncomeSourcesCollectionView" />
+
+    <ShellContent
+        Title="{x:Static AppResources.Home}"
+        ContentTemplate="{x:OnPlatform WinUI={x:DataTemplate desktop:MainView},
+                                       Default={x:DataTemplate sharedview:MainView}}"
+        FlyoutIcon="{x:StaticResource HomeIcon}"
+        Route="MainView" />
+
+    <ShellContent
+        Title="{x:Static AppResources.ControlGallery}"
+        ContentTemplate="{x:DataTemplate sharedview:ControlGalleryView}"
+        FlyoutIcon="{x:StaticResource GalleryIcon}" />
+    <ShellContent
+        Title="{x:Static AppResources.About}"
+        ContentTemplate="{x:DataTemplate sharedview:AboutView}"
+        FlyoutIcon="{x:StaticResource AboutIcon}" />
+</Shell>

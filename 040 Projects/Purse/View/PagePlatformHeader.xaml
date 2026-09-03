@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Purse.View.PagePlatformHeader"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="PagePlatformHeader"
+    Opacity="1">
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <Grid
+                ColumnDefinitions="1*, Auto"
+                RowDefinitions="Auto">
+                <Grid
+                    Padding="12,4"
+                    BackgroundColor="{x:AppThemeBinding Light={x:StaticResource Gray050},
+                                                        Dark={x:StaticResource Gray950}}"
+                    ColumnDefinitions="Auto, *,*, Auto"
+                    IsVisible="{x:TemplateBinding IsCollapsed}"
+                    RowDefinitions="Auto"
+                    VerticalOptions="Center">
+                    <Image
+                        Margin="4,0"
+                        Source="{x:OnIdiom Default={x:StaticResource TabletIcon},
+                                           Desktop={x:StaticResource DeskIcon},
+                                           Phone={x:StaticResource PhoneIcon}}" />
+                    <Label
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0"
+                        FontSize="{x:TemplateBinding FontSize}"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Start"
+                        Text="{x:TemplateBinding Platform}"
+                        TextColor="{x:TemplateBinding TextColor}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontSize="{x:TemplateBinding FontSize}"
+                                    Text="{x:TemplateBinding Platform}"
+                                    TextColor="{x:TemplateBinding TextColor}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="End"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontSize="{x:TemplateBinding FontSize}"
+                                    Text="{x:TemplateBinding InfoName}"
+                                    TextColor="{x:TemplateBinding TextColor}" />
+                                <Span
+                                    FontSize="{x:TemplateBinding FontSize}"
+                                    Text=" "
+                                    TextColor="{x:TemplateBinding TextColor}" />
+                                <Span
+                                    FontSize="{x:TemplateBinding FontSize}"
+                                    Text="{x:TemplateBinding Value}"
+                                    TextColor="{x:TemplateBinding TextColor}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+                <ImageButton
+                    Grid.Column="1"
+                    Background="Transparent"
+                    Clicked="ImageButton_Clicked">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                            Glyph="{x:Static MaterialSymbols.Arrow_circle_down}"
+                            Size="{x:StaticResource IconFontSize}"
+                            Color="{x:AppThemeBinding Light={x:StaticResource OffBlack},
+                                                      Dark={x:StaticResource OffWhite}}" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </Grid>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+</ContentView>

@@ -1,0 +1,331 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ledger - Settings</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#060e20",
+                    "tertiary-fixed": "#d8e3fb",
+                    "surface-container": "#171f33",
+                    "surface-container-low": "#131b2e",
+                    "inverse-primary": "#00668a",
+                    "surface-bright": "#31394d",
+                    "outline": "#87929a",
+                    "on-tertiary-fixed-variant": "#3c475a",
+                    "on-tertiary": "#263143",
+                    "primary-fixed": "#c4e7ff",
+                    "background": "#0b1326",
+                    "inverse-surface": "#dae2fd",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#a7b2c9",
+                    "primary": "#8ed5ff",
+                    "on-primary-container": "#004965",
+                    "primary-fixed-dim": "#7bd0ff",
+                    "surface-tint": "#7bd0ff",
+                    "secondary": "#b9c8de",
+                    "error": "#ffb4ab",
+                    "outline-variant": "#3e484f",
+                    "on-surface": "#dae2fd",
+                    "surface-dim": "#0b1326",
+                    "surface-container-highest": "#2d3449",
+                    "on-primary-fixed": "#001e2c",
+                    "on-tertiary-fixed": "#111c2d",
+                    "on-primary": "#00354a",
+                    "tertiary-fixed-dim": "#bcc7de",
+                    "on-secondary-fixed-variant": "#39485a",
+                    "on-secondary-container": "#a7b6cc",
+                    "on-secondary": "#233143",
+                    "surface-variant": "#2d3449",
+                    "on-primary-fixed-variant": "#004c69",
+                    "on-error": "#690005",
+                    "secondary-fixed": "#d4e4fa",
+                    "on-surface-variant": "#bdc8d1",
+                    "on-tertiary-container": "#394458",
+                    "secondary-container": "#39485a",
+                    "inverse-on-surface": "#283044",
+                    "tertiary": "#c2cde5",
+                    "surface-container-high": "#222a3d",
+                    "primary-container": "#38bdf8",
+                    "on-background": "#dae2fd",
+                    "secondary-fixed-dim": "#b9c8de",
+                    "error-container": "#93000a",
+                    "surface": "#0b1326",
+                    "on-secondary-fixed": "#0d1c2d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "container-padding": "24px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "body-sm": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant/30 z-40">
+<div class="flex items-center justify-between px-container-padding h-16 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-on-surface">Settings</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex max-w-screen-xl mx-auto min-h-[calc(100vh-64px)]">
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-2xl mx-auto px-container-padding py-stack-lg pb-32">
+<section class="space-y-stack-lg">
+<!-- Section Header -->
+<div class="space-y-unit">
+<h2 class="font-label-caps text-on-surface-variant/70 uppercase tracking-[0.1em]">Visual Preferences</h2>
+<h3 class="font-headline-lg-mobile text-primary">Appearance</h3>
+</div>
+<!-- Theme Segmented Control -->
+<div class="bg-surface-container-low p-1 rounded-xl relative flex items-center border border-outline-variant/30 w-full">
+<!-- Selector background for 'Dark' (middle) -->
+<div class="absolute h-[calc(100%-8px)] w-[calc(33.33%-4px)] bg-surface-container-highest rounded-lg transition-all duration-300 left-[calc(33.33%+2px)]" id="theme-indicator"></div>
+<button class="relative flex-1 py-3 text-center font-body-md z-10 text-on-surface-variant transition-colors" onclick="updateTheme(0, 'light')">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="light_mode">light_mode</span>
+                            Light
+                        </div>
+</button>
+<button class="relative flex-1 py-3 text-center font-body-md font-semibold z-10 text-on-surface transition-colors" onclick="updateTheme(1, 'dark')">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px] fill-current" data-icon="dark_mode">dark_mode</span>
+                            Dark
+                        </div>
+</button>
+<button class="relative flex-1 py-3 text-center font-body-md z-10 text-on-surface-variant transition-colors" onclick="updateTheme(2, 'system')">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="brightness_auto">brightness_auto</span>
+                            System
+                        </div>
+</button>
+</div>
+<!-- Settings List (Cards) -->
+<div class="space-y-stack-md">
+<!-- Compact Mode Toggle -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-stack-md flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="density_medium">density_medium</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Compact Mode</p>
+<p class="text-body-sm text-on-surface-variant">Maximize data visibility by reducing padding</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Chart Style Dropdown -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-stack-md flex flex-col gap-4 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="show_chart">show_chart</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Chart Style</p>
+<p class="text-body-sm text-on-surface-variant">Choose how your trends are visualized</p>
+</div>
+</div>
+<div class="relative w-full">
+<select class="appearance-none w-full bg-surface-container-low border border-outline-variant/30 text-on-surface text-body-md rounded-lg focus:ring-primary focus:border-primary block p-3 pr-10 font-medium cursor-pointer">
+<option selected="">Cubic Spline</option>
+<option>Linear Edge</option>
+<option>Bar Horizon</option>
+<option>Dot Matrix</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- Increase Contrast Toggle -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-stack-md flex items-center justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="contrast">contrast</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Increase Contrast</p>
+<p class="text-body-sm text-on-surface-variant">Better visibility for text and UI elements</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Accent Color Picker -->
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl p-stack-md space-y-4 hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Accent Color</p>
+<p class="text-body-sm text-on-surface-variant">Select the highlight color</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pl-1">
+<button class="w-10 h-10 rounded-full bg-primary-container ring-2 ring-offset-2 ring-offset-surface ring-primary active:scale-90 transition-all"></button>
+<button class="w-10 h-10 rounded-full bg-blue-500 hover:ring-2 ring-offset-2 ring-offset-surface ring-blue-500 active:scale-90 transition-all"></button>
+<button class="w-10 h-10 rounded-full bg-emerald-500 hover:ring-2 ring-offset-2 ring-offset-surface ring-emerald-500 active:scale-90 transition-all"></button>
+<button class="w-10 h-10 rounded-full bg-amber-500 hover:ring-2 ring-offset-2 ring-offset-surface ring-amber-500 active:scale-90 transition-all"></button>
+<button class="w-10 h-10 rounded-full bg-rose-500 hover:ring-2 ring-offset-2 ring-offset-surface ring-rose-500 active:scale-90 transition-all"></button>
+</div>
+</div>
+</div>
+<!-- Preview Area -->
+<div class="pt-stack-lg border-t border-outline-variant/30">
+<p class="font-label-caps text-on-surface-variant/70 mb-stack-md uppercase tracking-wider">Preview</p>
+<div class="bg-surface-container-low rounded-2xl p-stack-md border border-outline-variant/20 overflow-hidden">
+<div class="flex flex-col gap-4">
+<!-- Goal Preview -->
+<div class="bg-surface-container-highest p-4 rounded-xl shadow-lg border border-white/5">
+<div class="flex items-center justify-between mb-3">
+<span class="text-label-caps text-on-surface-variant">SAVINGS GOAL</span>
+<span class="font-label-mono text-primary">+$4,200.00</span>
+</div>
+<div class="w-full bg-surface-container h-3 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-2/3 shadow-[0_0_12px_rgba(56,189,248,0.4)]"></div>
+</div>
+</div>
+<!-- Transaction Previews -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div class="bg-surface-container-highest p-3 rounded-xl border border-white/5 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-error-container/20 text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div class="flex-1">
+<p class="font-semibold text-sm text-on-surface">Grocery</p>
+<p class="text-xs text-on-surface-variant">$124.50</p>
+</div>
+</div>
+<div class="bg-surface-container-highest p-3 rounded-xl border border-white/5 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="restaurant">restaurant</span>
+</div>
+<div class="flex-1">
+<p class="font-semibold text-sm text-on-surface">Dining</p>
+<p class="text-xs text-on-surface-variant">$62.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container border-t border-outline-variant/30 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-[10px] mt-1">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-caps text-[10px] mt-1">Plan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-colors">
+<span class="material-symbols-outlined fill-current" data-icon="settings">settings</span>
+<span class="font-label-caps text-[10px] mt-1">Settings</span>
+</button>
+</nav>
+<script>
+        function updateTheme(index, themeName) {
+            const indicator = document.getElementById('theme-indicator');
+            const buttons = indicator.parentElement.querySelectorAll('button');
+            
+            // Move indicator
+            if (index === 0) indicator.style.left = '4px';
+            if (index === 1) indicator.style.left = 'calc(33.33% + 2px)';
+            if (index === 2) indicator.style.left = 'calc(66.66% - 0px)';
+
+            // Update text styles
+            buttons.forEach((btn, idx) => {
+                const icon = btn.querySelector('.material-symbols-outlined');
+                if (idx === index) {
+                    btn.classList.add('text-on-surface', 'font-semibold');
+                    btn.classList.remove('text-on-surface-variant');
+                    if(icon) icon.classList.add('fill-current');
+                } else {
+                    btn.classList.remove('text-on-surface', 'font-semibold');
+                    btn.classList.add('text-on-surface-variant');
+                    if(icon) icon.classList.remove('fill-current');
+                }
+            });
+
+            console.log(`Theme requested: ${themeName}`);
+        }
+    </script>
+</body></html>

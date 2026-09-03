@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.MainView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="MainViewModel">
+    <Shell.TitleView>
+        <Grid
+            ColumnDefinitions="1*"
+            RowDefinitions="Auto, Auto">
+            <!--<Label
+                IsEnabled="False"
+                Style="{x:StaticResource ShellTitleView}"
+                Text="{x:Binding Title}"
+                ToolTipProperties.Text="This is the Main View of this Application" />-->
+            <PagePlatformHeader
+                Grid.Row="0"
+                Grid.ColumnSpan="1"
+                Margin="{x:StaticResource DefaultElementMargin}"
+                FontSize="{x:StaticResource SmallFontSize}"
+                InfoName="Page Name"
+                IsVisible="{x:DynamicResource DisplayPageHeader}"
+                TextColor="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                              Dark={x:StaticResource OffWhite}}"
+                Value="MainView" />
+        </Grid>
+
+    </Shell.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding CountUpCommand}"
+            IconImageSource="{x:StaticResource AddIcon}"
+            Order="Primary"
+            Text="{x:Static AppResources.Add}"
+            ToolTipProperties.Text="Click to raise the numbers" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="12"
+            Spacing="24">
+            <PagePlatformHeader
+                Grid.Row="0"
+                Grid.ColumnSpan="8"
+                Margin="{x:StaticResource DefaultElementMargin}"
+                FontSize="{x:StaticResource SmallFontSize}"
+                InfoName="Page Name"
+                IsVisible="{x:DynamicResource DisplayPageHeader}"
+                TextColor="{x:AppThemeBinding Light={x:StaticResource Primary},
+                                              Dark={x:StaticResource OffWhite}}"
+                Value="MainView" />
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="185"
+                SemanticProperties.Description="dot net bot in a submarine number ten"
+                Source="dotnet_bot.png" />
+
+            <Label
+                SemanticProperties.Description="Welcome to dot net Multi platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                Style="{x:StaticResource SubHeadline}"
+                Text="Welcome to &#10;.NET Multi-platform App UI"
+                ToolTipProperties.Text="Welcome to .NET Multi-platform App UI" />
+            <Label
+                FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                Text="ABC" />
+            <Button
+                x:Name="CounterBtn"
+                Command="{x:Binding CountUpCommand}"
+                HorizontalOptions="Fill"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Text="{x:Binding Text}" />
+            <Button
+                Command="{x:Binding NavigateToAboutPageCommand}"
+                Text="Navigate to About View" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

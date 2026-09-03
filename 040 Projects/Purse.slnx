@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/MauiEF/" />
+  <Folder Name="/Samples/" />
+  <Folder Name="/Solution Items/">
+    <Project Path="../../LibraryTen/040 Projects/LibraryTen.Maui.Generators/LibraryTen.Maui.Generators.csproj" />
+    <Project Path="../../LibraryTen/040 Projects/LibraryTen/LibraryTen.csproj" />
+    <Project Path="../../MVVMBaseTen/040 Projects/MVVMBaseTen/MVVMBaseTen.csproj" />
+  </Folder>
+  <Project Path="../.agents container/Agents Container.csproj">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
+  <Project Path="Purse.Data.Migrator/Purse.Data.Migrator.csproj" Id="1645cd5e-bae5-43d4-b9c7-95a621e92493" />
+  <Project Path="Purse.Data/Purse.Data.csproj" Id="e26491d2-fe04-4d19-92f5-84628c130f89" />
+  <Project Path="Purse.Server/Purse.Server.csproj" Id="df8d4540-26a6-465d-80ec-cd91b4c03678" />
+  <Project Path="Purse.Shared/Purse.Shared.csproj" />
+  <Project Path="Purse/Purse.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

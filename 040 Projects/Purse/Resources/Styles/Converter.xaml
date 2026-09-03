@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <DateToStringConverter
+        x:Key="DateToStringConverter"
+        DateFormat="{x:Static AppResources.ShortDatePattern}" />
+
+    <DateToStringConverter
+        x:Key="DateToLongDateStringConverter"
+        DateFormat="{x:Static AppResources.LongDatePattern}" />
+
+    <DateToStringConverter
+        x:Key="CustomListDateConverter"
+        DateFormat="{x:Static AppResources.CustomListDatePattern}" />
+
+</ResourceDictionary>

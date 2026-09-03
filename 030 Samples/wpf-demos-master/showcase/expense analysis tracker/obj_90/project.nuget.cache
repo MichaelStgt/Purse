@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "42oI9sRn5wU=",
+  "success": true,
+  "projectFilePath": "C:\\Repos\\040 MauiNet9\\Purse\\030 Samples\\wpf-demos-master\\showcase\\expense analysis tracker\\syncfusion.expenseanalysis.wpf_lib_90.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\micha\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.compression.base\\29.1.33\\syncfusion.compression.base.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.data.wpf\\29.1.33\\syncfusion.data.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.datagridexcelexport.wpf\\29.1.33\\syncfusion.datagridexcelexport.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.gridcommon.wpf\\29.1.33\\syncfusion.gridcommon.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.licensing\\29.1.33\\syncfusion.licensing.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.linq.base\\29.1.33\\syncfusion.linq.base.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.pdf.wpf\\29.1.33\\syncfusion.pdf.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.sfchart.wpf\\29.1.33\\syncfusion.sfchart.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.sfgauge.wpf\\29.1.33\\syncfusion.sfgauge.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.sfgrid.wpf\\29.1.33\\syncfusion.sfgrid.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.sfskinmanager.wpf\\29.1.33\\syncfusion.sfskinmanager.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.shared.wpf\\29.1.33\\syncfusion.shared.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.themes.fluentlight.wpf\\29.1.33\\syncfusion.themes.fluentlight.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.themes.windows11light.wpf\\29.1.33\\syncfusion.themes.windows11light.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.tools.wpf\\29.1.33\\syncfusion.tools.wpf.29.1.33.nupkg.sha512",
+    "C:\\Users\\micha\\.nuget\\packages\\syncfusion.xlsio.wpf\\29.1.33\\syncfusion.xlsio.wpf.29.1.33.nupkg.sha512"
+  ],
+  "logs": []
+}

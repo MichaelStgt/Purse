@@ -1,0 +1,5 @@
+Documentation for Datasync:
+https://communitytoolkit.github.io/Datasync/
+
+Github repository for Datasync:
+https://github.com/MichaelStgt/Datasync

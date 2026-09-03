@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Purse.View.IncomeSourcesCollectionView"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Purse.Shared.Model;assembly=Purse.Shared"
+    xmlns:viewmodels="clr-namespace:Purse.ViewModel"
+    x:DataType="viewmodels:IncomeSourcesCollectionViewModel">
+
+    <Shell.TitleView>
+        <Label
+            Style="{x:StaticResource ShellTitleView}"
+            Text="{x:Binding Title}" />
+    </Shell.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{x:Binding AddIncomeSourceCommand}"
+            IconImageSource="{x:StaticResource AddIcon}"
+            Text="Add Income Source" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="*">
+        <RefreshView
+            Grid.Row="0"
+            Command="{x:Binding LoadItemCollectionCommand}"
+            IsRefreshing="{x:Binding IsBusy,
+                                     Mode=OneWay}">
+
+            <CollectionView
+                ItemsSource="{x:Binding ItemCollection}"
+                SelectedItem="{x:Binding SelectedItem}"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        ItemSpacing="4"
+                        Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout
+                        Padding="{x:StaticResource DefaultPadding}"
+                        HorizontalOptions="Center"
+                        Spacing="4"
+                        VerticalOptions="Center">
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="No income sources found."
+                            TextColor="Gray" />
+                        <Button
+                            Command="{x:Binding AddIncomeSourceCommand}"
+                            HorizontalOptions="Center"
+                            ImageSource="{x:StaticResource AddIcon}"
+                            Text="Add New Income Source" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:IncomeSource">
+                        <Border Style="{x:StaticResource CollectionViewItemBorder}">
+                            <Grid
+                                ColumnDefinitions="*, Auto"
+                                RowDefinitions="Auto, Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                                    FontSize="{x:StaticResource MediumFontSize}"
+                                    Text="{x:Binding Name}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="{x:StaticResource SmallFontSize}"
+                                    IsVisible="{x:Binding Description,
+                                                          Converter={StaticResource StringNotNullOrEmptyToBoolConverter}}"
+                                    Text="{x:Binding Description}"
+                                    TextColor="Gray" />
+                                <ImageButton
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1">
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                            FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                                            Glyph="{x:Static MaterialSymbols.Chevron_right}"
+                                            Size="24"
+                                            Color="Gray" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light=Transparent, Dark=Transparent}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Gray100}, Dark={x:DynamicResource Primary}}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Gray100}, Dark={x:DynamicResource Primary}}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>
