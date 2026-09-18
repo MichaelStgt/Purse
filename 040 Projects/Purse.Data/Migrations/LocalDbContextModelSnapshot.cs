@@ -93,8 +93,8 @@ namespace Purse.Data.Migrations
                     b.Property<bool>("IsIncome")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsSystem")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("MonthlyBudget")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()

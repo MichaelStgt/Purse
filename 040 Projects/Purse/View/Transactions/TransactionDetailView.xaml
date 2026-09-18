@@ -80,10 +80,7 @@
                 BoundProperty="{Binding SelectedVendor}"
                 PropertyName="SelectedVendor">
                 <!--  Title="{x:Static AppResources.Vendor}"  -->
-                <Picker
-                    Grid.Row="1"
-                    ItemsSource="{x:Binding Vendors}"
-                    SelectedItem="{x:Binding SelectedVendor}" />
+                <Border Grid.Row="1" Stroke="{x:AppThemeBinding Light={x:StaticResource Gray300}, Dark={x:StaticResource Gray700}}" StrokeThickness="1" BackgroundColor="{x:AppThemeBinding Light={x:StaticResource OffWhite}, Dark={x:StaticResource OffBlack}}"><Border.GestureRecognizers><TapGestureRecognizer Command="{Binding OpenVendorOverlayCommand}" /></Border.GestureRecognizers><Label Text="{Binding SelectedVendor, TargetNullValue={x:Static AppResources.SelectVendor}}" Margin="10,0" VerticalOptions="Center" FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}" FontSize="16" /></Border>
 
             </LabeledContentView>
             <LabeledContentView

@@ -54,9 +54,54 @@ namespace Purse.ViewModel
         /// <returns><![CDATA[Task<IReadOnlyList<Transaction>>]]>.</returns>
         protected override async Task<IReadOnlyList<Transaction>> LoadItemsAsync(CancellationToken cancellationToken)
         {
-            return await this.dbContext.ReadItemsAsync<Transaction>(
+            var items = await this.dbContext.ReadItemsAsync<Transaction>(
                 query => query.OrderByDescending(t => t.Date),
                 cancellationToken);
+
+            var categories = await this.dbContext.Categories.ToListAsync(cancellationToken);
+            var lineItems = await this.dbContext.TransactionLineItems.ToListAsync(cancellationToken);
+
+            foreach (var t in items)
+            {
+                var tSplits = lineItems.Where(l => l.TransactionId == t.Id).ToList();
+                if (tSplits.Count > 0)
+                {
+                    decimal net = 0m;
+                    foreach (var s in tSplits)
+                    {
+                        var cat = categories.FirstOrDefault(c =>
+                            string.Equals(c.DisplayName, s.Category, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(c.Name, s.Category, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(c.Id, s.Category, StringComparison.OrdinalIgnoreCase));
+
+                        bool isIncome = cat?.IsIncome ?? false;
+                        decimal amt = (decimal)s.Amount;
+                        if (isIncome)
+                        {
+                            net += Math.Abs(amt);
+                        }
+                        else
+                        {
+                            net -= Math.Abs(amt);
+                        }
+                    }
+                    t.TotalAmount = (double)net;
+                }
+                else
+                {
+                    var cat = categories.FirstOrDefault(c =>
+                        string.Equals(c.DisplayName, t.Tags, StringComparison.OrdinalIgnoreCase) ||
+                        string.Equals(c.Name, t.Tags, StringComparison.OrdinalIgnoreCase) ||
+                        string.Equals(c.Id, t.Tags, StringComparison.OrdinalIgnoreCase));
+
+                    if (cat != null && !cat.IsIncome)
+                    {
+                        t.TotalAmount = -Math.Abs(t.TotalAmount);
+                    }
+                }
+            }
+
+            return items;
         }
 
         /// <summary>

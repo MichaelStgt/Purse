@@ -1,4 +1,4 @@
-﻿// <copyright file="GlobalXmlns.cs" company="Behr, Michael">
+// <copyright file="GlobalXmlns.cs" company="Behr, Michael">
 // Copyright Behr, Michael.
 // All rights reserved.
 // Use of this code is subject to the terms of our license.
@@ -21,6 +21,9 @@ using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
 [assembly: XmlnsDefinition(
     "http://schemas.microsoft.com/dotnet/maui/global",
     "Purse.Resources")]
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "Purse.Converters")]
 [assembly: XmlnsDefinition(
     "http://schemas.microsoft.com/dotnet/maui/global",
     "Purse.Resources.Strings")]
@@ -72,6 +75,10 @@ using XmlnsPrefixAttribute = Microsoft.Maui.Controls.XmlnsPrefixAttribute;
 [assembly: XmlnsDefinition(
     "http://schemas.microsoft.com/dotnet/maui/global",
     "Syncfusion.Maui.Inputs", AssemblyName = "Syncfusion.Maui.Inputs")]
+
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
+    "CommunityToolkit.Maui.Views", AssemblyName = "CommunityToolkit.Maui")]
 
 [assembly: XmlnsDefinition(
     "http://schemas.microsoft.com/dotnet/maui/global",

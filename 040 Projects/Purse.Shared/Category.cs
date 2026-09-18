@@ -11,6 +11,7 @@ namespace Purse.Shared.Model
     using MVVMBaseTen.Model;
     using Purse.Shared.Resources.Strings;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Resources;
 
     /// <summary>
@@ -40,10 +41,13 @@ namespace Purse.Shared.Model
         public partial bool IsIncome { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this is a pre-defined system category.
+        /// The target monthly budget limit for this category.
         /// </summary>
         [ObservableProperty]
-        public partial bool IsSystem { get; set; }
+        public partial decimal MonthlyBudget { get; set; }
+
+        [NotMapped]
+        public int TransactionCount { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this category is a default for new entries.
@@ -60,23 +64,20 @@ namespace Purse.Shared.Model
         {
             get
             {
-                if (this.IsSystem)
+                try
                 {
-                    try
-                    {
-                        string? localized = this.IsIncome
-                            ? IncomeManager.GetString(this.Id)
-                            : ExpenseManager.GetString(this.Id);
+                    string? localized = this.IsIncome
+                        ? IncomeManager.GetString(this.Id)
+                        : ExpenseManager.GetString(this.Id);
 
-                        if (!string.IsNullOrEmpty(localized))
-                        {
-                            return localized;
-                        }
-                    }
-                    catch
+                    if (!string.IsNullOrEmpty(localized))
                     {
-                        // Fallback in case of resource loading exceptions
+                        return localized;
                     }
+                }
+                catch
+                {
+                    // Fallback in case of resource loading exceptions
                 }
 
                 return this.Name;

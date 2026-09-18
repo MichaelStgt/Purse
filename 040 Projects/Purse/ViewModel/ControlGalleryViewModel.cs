@@ -1,4 +1,4 @@
-﻿// <copyright file="ControlGalleryViewModel.cs" company="Behr, Michael">
+// <copyright file="ControlGalleryViewModel.cs" company="Behr, Michael">
 // Copyright Behr, Michael.
 // All rights reserved.
 // Use of this code is subject to the terms of our license.
@@ -20,7 +20,7 @@ namespace Purse.ViewModel
         public ControlGalleryViewModel()
         {
 
-            this.Title = "Control Gallery";
+            this.Title = AppResources.ControlGallery;
             this.Description = "This ViewModel and the corresponding View is for Testing Purposes and Color Management";
         }
 

@@ -1,0 +1,333 @@
+﻿Purse/
+├── .agents
+│   ├── instructions
+│   │   └── instructions.md
+│   ├── rules
+│   │   ├── 00-project-brief.md
+│   │   └── 01-dotnet-standards.md
+│   ├── skills
+│   │   ├── optimize-dotnet-performance
+│   │   │   └── skill.md
+│   │   └── optimizing-ef-core-queries
+│   │       └── skill.md
+│   └── todo
+├── .agents container
+│   ├── BuildErrors
+│   │   ├── 001 Android build.md
+│   │   └── README.md
+│   ├── Config
+│   │   └── README.md
+│   ├── Documentation
+│   │   └── TechnicalDocumentation.md
+│   ├── History
+│   │   └── README.md
+│   ├── ImplementationPlans
+│   │   └── VendorAddressAndNavigationInterception_Plan.md
+│   ├── Notes
+│   │   └── README.md
+│   ├── Playbook
+│   │   ├── 000 Update Gemini Chat.md
+│   │   ├── 001 Vendor.md
+│   │   ├── 002 Vendor Collection and Datail ViewModel.md
+│   │   ├── 003 Vendor and IncomeSource XAML UI Definition.md
+│   │   ├── 003.1 Error Handling.md
+│   │   ├── 004 Preparing the Transaction Logic.md
+│   │   ├── 005 Changes to Transaction ViewModel and UI.md
+│   │   ├── 006 Vendor Selection.md
+│   │   ├── 007 Review the ObservableCollectionViewModel.md
+│   │   ├── 008 Country.md
+│   │   ├── 009 Automatic Route and ViewModel registration.md
+│   │   └── 010 ValidationErrorLabel.md
+│   ├── Reports
+│   │   ├── README.md
+│   │   └── VendorAddressAndNavigationInterception_Walkthrough.md
+│   ├── Scripts
+│   │   └── README.md
+│   ├── Templates
+│   │   └── README.md
+│   ├── Agents Container.csproj
+│   └── Route and ViewModel Registration.md
+├── 040 Projects
+│   ├── Purse
+│   │   ├── Archive
+│   │   │   ├── Messaging
+│   │   │   │   └── TransactionChangedMessage.cs
+│   │   │   └── ViewModel
+│   │   │       ├── LocalValidationResult.cs
+│   │   │       ├── MyViewModel.cs
+│   │   │       ├── TransactionDetailViewModel - Copy (2).cs
+│   │   │       ├── TransactionDetailViewModel - Copy.cs
+│   │   │       ├── TransactionDetailViewModel.BeforeValidationRefactoring.cs
+│   │   │       ├── TransactionDetailViewModel.Validations.BeforeValidationRefactoring.cs
+│   │   │       ├── TransactionDetailViewModel.ValidationsV1.cs
+│   │   │       └── TransactionDetailViewModel.ValidationsV2.cs
+│   │   ├── Controls
+│   │   │   ├── NumericEntry.xaml
+│   │   │   ├── NumericEntry.xaml.cs
+│   │   │   ├── NumericEntry2.xaml
+│   │   │   ├── NumericEntry2.xaml.cs
+│   │   │   ├── SafePicker.cs
+│   │   │   └── SafePicker2.cs
+│   │   ├── Data
+│   │   │   └── LocalDbContextFactory.cs
+│   │   ├── Internal
+│   │   │   └── AppPreferences.cs
+│   │   ├── Messaging
+│   │   │   └── ConversionCompletedMessage.cs
+│   │   ├── Platforms
+│   │   │   ├── Android
+│   │   │   │   ├── Resources
+│   │   │   │   │   └── values
+│   │   │   │   │       └── colors.xml
+│   │   │   │   ├── AndroidManifest.xml
+│   │   │   │   ├── MainActivity.cs
+│   │   │   │   └── MainApplication.cs
+│   │   │   ├── iOS
+│   │   │   │   ├── Resources
+│   │   │   │   │   └── PrivacyInfo.xcprivacy
+│   │   │   │   ├── AppDelegate.cs
+│   │   │   │   ├── Info.plist
+│   │   │   │   └── Program.cs
+│   │   │   ├── MacCatalyst
+│   │   │   │   ├── AppDelegate.cs
+│   │   │   │   ├── Entitlements.plist
+│   │   │   │   ├── Info.plist
+│   │   │   │   └── Program.cs
+│   │   │   └── Windows
+│   │   │       ├── app.manifest
+│   │   │       ├── App.xaml
+│   │   │       ├── App.xaml.cs
+│   │   │       └── Package.appxmanifest
+│   │   ├── Preferences
+│   │   ├── Properties
+│   │   │   └── launchSettings.json
+│   │   ├── Resources
+│   │   │   ├── AppIcon
+│   │   │   │   ├── appicon.svg
+│   │   │   │   ├── appicon.windows.svg
+│   │   │   │   ├── appiconfg.svg
+│   │   │   │   └── appiconfg.windows.svg
+│   │   │   ├── Fonts
+│   │   │   │   ├── MaterialSymbolsOutlinedRegular.ttf
+│   │   │   │   ├── RobotoBlack.ttf
+│   │   │   │   ├── RobotoBold.ttf
+│   │   │   │   ├── RobotoExtraBold.ttf
+│   │   │   │   ├── RobotoMedium.ttf
+│   │   │   │   ├── RobotoRegular.ttf
+│   │   │   │   └── RobotoThin.ttf
+│   │   │   ├── Images
+│   │   │   │   ├── dotnet_bot.png
+│   │   │   │   └── NuvelRegularLatinSmallLetterP.svg
+│   │   │   ├── Raw
+│   │   │   │   └── currencycodes.csv
+│   │   │   ├── Splash
+│   │   │   │   └── splash.svg
+│   │   │   ├── Strings
+│   │   │   │   ├── AccessibiltyResources.de.resx
+│   │   │   │   ├── AccessibiltyResources.Designer.cs
+│   │   │   │   ├── AccessibiltyResources.resx
+│   │   │   │   ├── AppResources.de.resx
+│   │   │   │   ├── AppResources.Designer.cs
+│   │   │   │   ├── AppResources.resx
+│   │   │   │   ├── FormatResources.de.resx
+│   │   │   │   ├── FormatResources.Designer.cs
+│   │   │   │   ├── FormatResources.resx
+│   │   │   │   ├── ValidationResources.de.resx
+│   │   │   │   ├── ValidationResources.Designer.cs
+│   │   │   │   └── ValidationResources.resx
+│   │   │   ├── Styles
+│   │   │   │   ├── ApplicationColors.xaml
+│   │   │   │   ├── ApplicationColors.xaml.cs
+│   │   │   │   ├── Converter.xaml
+│   │   │   │   ├── FontIcons.xaml
+│   │   │   │   ├── FontIcons.xaml.cs
+│   │   │   │   ├── Screenshot_20260325_004011_Lite.jpg
+│   │   │   │   ├── Styles.xaml
+│   │   │   │   └── Styles.xaml.cs
+│   │   │   ├── MaterialDesignIcons.cs
+│   │   │   └── MaterialSymbols.cs
+│   │   ├── Services
+│   │   │   ├── Data
+│   │   │   │   ├── New
+│   │   │   │   │   ├── AlertService.cs
+│   │   │   │   │   ├── DbContextInitializer.cs
+│   │   │   │   │   ├── IDbInitializer.cs
+│   │   │   │   │   └── SqliteHelper.cs
+│   │   │   │   ├── LocalDbContext.cs
+│   │   │   │   └── SyncService.cs
+│   │   │   ├── Old
+│   │   │   │   ├── SQLiteAsyncService.cs
+│   │   │   │   └── SQLiteAsyncTable.cs
+│   │   │   ├── AlertService.cs
+│   │   │   ├── DataSeedingService.cs
+│   │   │   ├── WindowCreator.cs
+│   │   │   └── WindowCreator.original.cs
+│   │   ├── View
+│   │   │   ├── About
+│   │   │   │   ├── AboutView.xaml
+│   │   │   │   └── AboutView.xaml.cs
+│   │   │   ├── Categories
+│   │   │   │   ├── CategoryCollectionView.xaml
+│   │   │   │   ├── CategoryCollectionView.xaml.cs
+│   │   │   │   ├── CategoryDetailView.xaml
+│   │   │   │   └── CategoryDetailView.xaml.cs
+│   │   │   ├── ControlGallery
+│   │   │   │   ├── ControlGalleryView.xaml
+│   │   │   │   └── ControlGalleryView.xaml.cs
+│   │   │   ├── IncomeSources
+│   │   │   │   ├── IncomeSourceDetailView.xaml
+│   │   │   │   ├── IncomeSourceDetailView.xaml.cs
+│   │   │   │   ├── IncomeSourcesCollectionView.xaml
+│   │   │   │   └── IncomeSourcesCollectionView.xaml.cs
+│   │   │   ├── Main
+│   │   │   │   ├── Desktop
+│   │   │   │   │   ├── MainView.xaml
+│   │   │   │   │   └── MainView.xaml.cs
+│   │   │   │   ├── MainView.xaml
+│   │   │   │   └── MainView.xaml.cs
+│   │   │   ├── Transactions
+│   │   │   │   ├── TransactionDetailView.xaml
+│   │   │   │   ├── TransactionDetailView.xaml.cs
+│   │   │   │   ├── TransactionHistoryCollectionView.xaml
+│   │   │   │   └── TransactionHistoryCollectionView.xaml.cs
+│   │   │   ├── Vendors
+│   │   │   │   ├── VendorDetailView.xaml
+│   │   │   │   ├── VendorDetailView.xaml.cs
+│   │   │   │   ├── VendorsCollectionView.xaml
+│   │   │   │   └── VendorsCollectionView.xaml.cs
+│   │   │   ├── BiometricAuthenticationView.xaml
+│   │   │   ├── BiometricAuthenticationView.xaml.cs
+│   │   │   ├── MainWindow.xaml
+│   │   │   ├── MainWindow.xaml.cs
+│   │   │   ├── PagePlatformHeader.xaml
+│   │   │   └── PagePlatformHeader.xaml.cs
+│   │   ├── ViewModel
+│   │   │   ├── About
+│   │   │   │   └── AboutViewModel.cs
+│   │   │   ├── Authentication
+│   │   │   │   └── AuthenticationViewModel.cs
+│   │   │   ├── Categories
+│   │   │   │   ├── CategoryCollectionViewModel.cs
+│   │   │   │   └── CategoryDetailViewModel.cs
+│   │   │   ├── IncomeSources
+│   │   │   │   ├── IncomeSourceDetailViewModel.cs
+│   │   │   │   └── IncomeSourcesCollectionViewModel.cs
+│   │   │   ├── Main
+│   │   │   │   └── MainViewModel.cs
+│   │   │   ├── Shell
+│   │   │   │   └── AppShellViewModel.cs
+│   │   │   ├── Transactions
+│   │   │   │   ├── Save
+│   │   │   │   │   ├── TransactionDetailViewModel - Copy.cs
+│   │   │   │   │   ├── TransactionDetailViewModel - Copy.Validations.cs
+│   │   │   │   │   ├── TransactionDetailViewModel.cs
+│   │   │   │   │   ├── TransactionDetailViewModel.Validations.cs
+│   │   │   │   │   ├── TransactionHistoryCollectionViewModel.2026.05.27.cs
+│   │   │   │   │   ├── TransactionHistoryCollectionViewModel.cs
+│   │   │   │   │   └── TransactionHistoryCollectionViewModel.old.cs
+│   │   │   │   ├── MyViewModel.cs
+│   │   │   │   ├── TransactionDetailViewModel.cs
+│   │   │   │   ├── TransactionDetailViewModel.Validations.cs
+│   │   │   │   └── TransactionHistoryCollectionViewModel.cs
+│   │   │   ├── Vendors
+│   │   │   │   ├── VendorDetailViewModel.cs
+│   │   │   │   └── VendorsCollectionViewModel.cs
+│   │   │   ├── ControlGalleryViewModel.cs
+│   │   │   └── MainWindowViewModel.cs
+│   │   ├── .editorconfig
+│   │   ├── App.xaml
+│   │   ├── App.xaml.cs
+│   │   ├── AppShell.xaml
+│   │   ├── AppShell.xaml.cs
+│   │   ├── GlobalSuppressions.cs
+│   │   ├── GlobalUsings.cs
+│   │   ├── GlobalXmlns.cs
+│   │   ├── license.txt
+│   │   ├── MauiProgram.cs
+│   │   ├── Purse.csproj
+│   │   └── Purse.csproj.user
+│   ├── Purse.Data
+│   │   ├── Commands
+│   │   │   ├── PackageManagerConsole
+│   │   │   │   └── migration commands.md
+│   │   │   └── Terminal
+│   │   │       └── Migration Commands.md
+│   │   ├── Migrations
+│   │   │   ├── 20260625193127_InitialMigration.cs
+│   │   │   ├── 20260625193127_InitialMigration.Designer.cs
+│   │   │   ├── 20260706094730_AddVendorAndIncomeSource.cs
+│   │   │   ├── 20260706094730_AddVendorAndIncomeSource.Designer.cs
+│   │   │   ├── 20260706095925_AddCountryAndRefactorAddress.cs
+│   │   │   ├── 20260706095925_AddCountryAndRefactorAddress.Designer.cs
+│   │   │   └── LocalDbContextModelSnapshot.cs
+│   │   ├── Services
+│   │   │   ├── AlertService.cs
+│   │   │   ├── DbContextInitializer.cs
+│   │   │   ├── DesignTimeDbContextFactory.cs
+│   │   │   ├── IDbInitializer.cs
+│   │   │   └── SqliteHelper.cs
+│   │   ├── LocalDbContext - Copy.cs
+│   │   ├── LocalDbContext.cs
+│   │   ├── LocalDbContext.Query.cs
+│   │   └── Purse.Data.csproj
+│   ├── Purse.Data.Migrator
+│   │   ├── LocalDbContextFactory.cs
+│   │   ├── migration_dummy.db
+│   │   ├── Program.cs
+│   │   └── Purse.Data.Migrator.csproj
+│   ├── Purse.Server
+│   │   ├── Controllers
+│   │   │   ├── TransactionController.cs
+│   │   │   └── TransactionLineController.cs
+│   │   ├── Data
+│   │   │   └── AppDbContext.cs
+│   │   ├── Model
+│   │   │   ├── Transaction.cs
+│   │   │   └── TransactionLineItem.cs
+│   │   ├── Models
+│   │   ├── Properties
+│   │   │   ├── launchSettings.json
+│   │   │   └── serviceDependencies.json
+│   │   ├── appsettings.Development.json
+│   │   ├── appsettings.json
+│   │   ├── Program.cs
+│   │   └── Purse.Server.csproj
+│   ├── Purse.Shared
+│   │   ├── Resources
+│   │   │   └── Strings
+│   │   │       ├── AppResources.Designer.cs
+│   │   │       ├── AppResources.resx
+│   │   │       ├── Countries.de.resx
+│   │   │       ├── Countries.Designer.cs
+│   │   │       ├── Countries.es.resx
+│   │   │       ├── Countries.resx
+│   │   │       ├── ExpenseCategories.de.resx
+│   │   │       ├── ExpenseCategories.Designer.cs
+│   │   │       ├── ExpenseCategories.es.resx
+│   │   │       ├── ExpenseCategories.resx
+│   │   │       ├── IncomeCategories.de.resx
+│   │   │       ├── IncomeCategories.Designer.cs
+│   │   │       ├── IncomeCategories.es.resx
+│   │   │       └── IncomeCategories.resx
+│   │   ├── Category.cs
+│   │   ├── Country.cs
+│   │   ├── IncomeSource.cs
+│   │   ├── Purse.Shared.csproj
+│   │   ├── Transaction.cs
+│   │   ├── TransactionLineItem.cs
+│   │   └── Vendor.cs
+│   ├── .bookmarks.json
+│   ├── Dialog.txt
+│   ├── Documentation.txt
+│   ├── favorites.json
+│   ├── Purse.SharedOld.zip
+│   └── Purse.slnx
+├── docs
+│   ├── New folder
+│   ├── architecture.md
+│   └── progress.md
+├── .gitignore
+├── agents.md
+├── project_structure.txt
+├── README.md
+└── Screenshot_20260811_134451_Lite.jpg

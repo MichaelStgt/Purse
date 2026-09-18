@@ -24,3 +24,18 @@ CRITICAL RULES:
 
 \- Before any heavy refactoring, always ask for my approval and provide a detailed plan of the changes you intend to make.
 \- Before any heavy refactoring, always make copies of the files you intend to modify. Add a time Stamp and a brief description of the changes and place them in the 'Archive' folder.
+
+## MVVM Observable Properties (CommunityToolkit.Mvvm)
+Always use the modern C# 11+ `partial property` syntax for `[ObservableProperty]`. You must never use private backing fields.
+
+**Correct:**
+```csharp
+[ObservableProperty]
+public partial bool IsOverlayVisible { get; set; }
+
+## Localization and String Resources
+You must never use hardcoded strings for user-facing text in XAML or C# files (including button text, placeholders, page titles, string formats, alert messages, and menu entries). Even if the prompt suggests a hardcoded string, you must localize it.
+*   **Always** create an entry in `Purse.Shared\Resources\Strings\AppResources.resx`.
+*   **Always** provide meaningful translations for German (`AppResources.de.resx`) and Spanish (`AppResources.es.resx`).
+*   **In XAML:** Reference the resources using the `x:Static` extension (e.g., `Text="{x:Static strings:AppResources.MyKey}"`).
+*   **In C#:** Access the resources directly via the strongly-typed class (e.g., `AppResources.MyKey`).

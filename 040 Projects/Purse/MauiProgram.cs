@@ -112,7 +112,7 @@ namespace Purse
             }
             string dbPath = System.IO.Path.Combine(dbFolder, "purse.db");
 
-            //Debug.WriteLine($"The Database for this App is located at: {dbPath}");
+            Debug.WriteLine($"The Database for this App is located at: {dbPath}");
             builder.Services.AddDbContext<LocalDbContext>(options =>
                 options.UseSqlite(
                     $"Data Source={dbPath}",
@@ -130,6 +130,8 @@ namespace Purse
 
             builder.Services.AddTransient<Purse.ViewModel.TransactionDetailViewModel>();
             builder.Services.AddTransient<Purse.View.TransactionDetailView>();
+            builder.Services.AddSingleton<Purse.ViewModel.TransactionLineItemPopupParameters>();
+            // builder.Services.AddTransientPopup<TransactionLineItemPopup, TransactionLineItemPopupViewModel>();
 
             builder.Services.AddTransient<Purse.ViewModel.CategoryCollectionViewModel>();
             builder.Services.AddTransient<Purse.View.CategoryCollectionView>();

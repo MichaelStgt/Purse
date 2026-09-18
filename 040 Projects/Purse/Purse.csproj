@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android</TargetFrameworks>
@@ -56,6 +56,7 @@
 		<NoWarn>$(NoWarn);CA2252</NoWarn>
 	</PropertyGroup>
 
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<!--<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />-->
@@ -82,6 +83,13 @@
 		<DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
 		<EnablePreviewFeatures>true</EnablePreviewFeatures>
 	</PropertyGroup>
+
+	<!-- Disable Resizetizer during background AI/IntelliSense builds to prevent file locks -->
+	<PropertyGroup Condition="'$(DesignTimeBuild)' == 'true'">
+		<MauiGenerateAppIcon>false</MauiGenerateAppIcon>
+		<MauiGenerateSplash>false</MauiGenerateSplash>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<Compile Remove="Data\**" />
 		<Compile Remove="Model\**" />
@@ -101,6 +109,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="Archive\ViewModel\LocalValidationResult.cs" />
+		<Compile Remove="Archive\ViewModel\MyViewModel.cs" />
 		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.cs" />
 		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel - Copy %282%29.cs" />
 		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel - Copy.cs" />
@@ -113,6 +122,7 @@
 		<Compile Remove="Services\WindowCreator.original.cs" />
 		<Compile Remove="ViewModel\ObservableViewModel.cs" />
 		<Compile Remove="ViewModel\Transactions\AddTransactionViewModel - Copy.cs" />
+		<Compile Remove="ViewModel\Transactions\MyViewModel.cs" />
 		<Compile Remove="ViewModel\Transactions\Save\TransactionDetailViewModel - Copy.cs" />
 		<Compile Remove="ViewModel\Transactions\Save\TransactionDetailViewModel - Copy.Validations.cs" />
 		<Compile Remove="ViewModel\Transactions\Save\TransactionDetailViewModel.cs" />

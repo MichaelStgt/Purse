@@ -18,12 +18,12 @@
         FlyoutIcon="{x:StaticResource CategoryIcon}"
         Route="CategoryCollectionView" />
     <ShellContent
-        Title="Vendors"
+        Title="{x:Static AppResources.Vendors}"
         ContentTemplate="{x:DataTemplate sharedview:VendorsCollectionView}"
         FlyoutIcon="{x:StaticResource VendorIcon}"
         Route="VendorsCollectionView" />
     <ShellContent
-        Title="Income Sources"
+        Title="{x:Static AppResources.IncomeSources}"
         ContentTemplate="{x:DataTemplate sharedview:IncomeSourcesCollectionView}"
         FlyoutIcon="{x:StaticResource IncomeSourceIcon}"
         Route="IncomeSourcesCollectionView" />

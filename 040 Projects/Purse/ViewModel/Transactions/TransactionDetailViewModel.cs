@@ -61,7 +61,7 @@ namespace Purse.ViewModel
             this.Splits = new ObservableCollection<TransactionLineItem>();
             this.Splits.CollectionChanged += this.Splits_CollectionChanged;
 
-            this.Vendors = new() { "Aldi", "Lidl", "Edeka", "REWE", "Kaufland", "Penny", "Netto", "dm", "Rossmann" };
+            this.Vendors = new();
             this.Categories = new() { "General" };
 
             // Load categories from database asynchronously
@@ -89,6 +89,7 @@ namespace Purse.ViewModel
         [NotifyDataErrorInfo]
         [Display(Name = "Planned Amount")]
         [GreaterThan(nameof(TotalAmount), "Planned amount should be greater than total amount.")]
+        [Obsolete("Move this to the TransactionDetailViewModel.Validations.cs file")]
         public partial double PlannedAmount
         {
             get; set;
@@ -160,7 +161,7 @@ namespace Purse.ViewModel
         /// Gets or sets the Vendors.
         /// </summary>
         [ObservableProperty]
-        public partial List<string> Vendors
+        public partial ObservableCollection<Vendor> Vendors
         {
             get; set;
         }
@@ -491,7 +492,7 @@ namespace Purse.ViewModel
             await this.initCategoriesTask;
 
             this.TransactionId = this.Item?.Id;
-            this.SelectedVendor = this.Vendors.FirstOrDefault();
+            this.SelectedVendor = this.Vendors.FirstOrDefault()?.Name;
             this.TotalAmount = 0;
             this.PlannedAmount = 0;
             this.TransactionDate = this.Item?.Date ?? DateTime.Today;
@@ -522,6 +523,8 @@ namespace Purse.ViewModel
             try
             {
                 var dbCategories = await this.dbContext.Categories.ToListAsync();
+                this.AvailableCategories = new System.Collections.ObjectModel.ObservableCollection<Category>(dbCategories);
+
                 if (dbCategories.Count > 0)
                 {
                     var categoryNames = dbCategories
@@ -540,15 +543,21 @@ namespace Purse.ViewModel
                         this.defaultCategoryName = defaultCat.DisplayName;
                     }
                 }
-                else
+
+                var dbVendors = await this.dbContext.Vendors.ToListAsync();
+                this.Vendors.Clear();
+                foreach (var vendor in dbVendors.OrderBy(v => v.Name))
                 {
-                    this.Categories = new() { "Lebensmittel", "Freizeit", "Miete", "Versicherung", "Mobilität", "Drogerie", "Tabak", "Alkohol" };
-                    this.defaultCategoryName = this.Categories.FirstOrDefault();
+                    this.Vendors.Add(vendor);
+                }
+                if (string.IsNullOrWhiteSpace(this.SelectedVendor))
+                {
+                    this.SelectedVendor = this.Vendors.FirstOrDefault()?.Name;
                 }
             }
             catch (Exception ex)
             {
-                this.Categories = new() { "Lebensmittel", "Freizeit", "Miete", "Versicherung", "Mobilität", "Drogerie", "Tabak", "Alkohol" };
+                this.Categories = new() { "Lebensmittel", "Freizeit", "Miete", "Versicherung", "Mobilit�t", "Drogerie", "Tabak", "Alkohol" };
                 this.defaultCategoryName = this.Categories.FirstOrDefault();
                 System.Diagnostics.Debug.WriteLine($"Failed to load categories: {ex.Message}");
             }
@@ -647,5 +656,151 @@ namespace Purse.ViewModel
         }
 
         #endregion
+        private TransactionLineItem? currentEditingSplit;
+        [ObservableProperty]
+        public partial bool IsCategoryOverlayVisible
+        {
+            get; set;
+        }
+        [ObservableProperty]
+        public partial bool IsVendorOverlayVisible
+        {
+            get; set;
+        }
+        [ObservableProperty] public partial System.Collections.ObjectModel.ObservableCollection<Category> AvailableCategories { get; set; } = new();
+        [ObservableProperty]
+        public partial Category? OverlaySelectedCategory
+        {
+            get; set;
+        }
+        [ObservableProperty]
+        public partial string? OverlaySearchText
+        {
+            get; set;
+        }
+        [ObservableProperty]
+        public partial Vendor? OverlaySelectedVendor
+        {
+            get; set;
+        }
+        [ObservableProperty]
+        public partial string? OverlayVendorSearchText
+        {
+            get; set;
+        }
+
+        [RelayCommand]
+        private void OpenOverlay(TransactionLineItem? split)
+        {
+            this.currentEditingSplit = split;
+            if (split != null)
+            {
+                this.OverlaySearchText = split.Category;
+                this.OverlaySelectedCategory = this.AvailableCategories.FirstOrDefault(c => string.Equals(c.DisplayName, split.Category, StringComparison.OrdinalIgnoreCase) || string.Equals(c.Name, split.Category, StringComparison.OrdinalIgnoreCase));
+            }
+            else
+            {
+                this.OverlaySearchText = string.Empty;
+                this.OverlaySelectedCategory = null;
+            }
+            this.IsCategoryOverlayVisible = true;
+        }
+        [RelayCommand]
+        private void CancelOverlay()
+        {
+            this.IsCategoryOverlayVisible = false;
+            this.currentEditingSplit = null;
+        }
+        [RelayCommand]
+        private void SaveOverlay()
+        {
+            string categoryName = this.OverlaySelectedCategory?.Name ?? this.OverlaySearchText ?? string.Empty;
+            if (this.currentEditingSplit == null)
+            {
+                var newLineItem = new TransactionLineItem { Amount = 0, Category = categoryName };
+                this.Splits.Add(newLineItem);
+            }
+            else
+            {
+                this.currentEditingSplit.Category = categoryName;
+            }
+            this.UpdateSplitProperties();
+            this.IsCategoryOverlayVisible = false;
+            this.currentEditingSplit = null;
+        }
+        [RelayCommand]
+        private void CancelVendorOverlay()
+        {
+            this.IsVendorOverlayVisible = false;
+        }
+        [RelayCommand]
+        private void SaveVendorOverlay()
+        {
+            string vendorName = this.OverlaySelectedVendor?.Name ?? this.OverlayVendorSearchText ?? string.Empty;
+            this.SelectedVendor = vendorName;
+            this.IsVendorOverlayVisible = false;
+        }
+        [RelayCommand]
+        private void OpenVendorOverlay()
+        {
+            this.OverlayVendorSearchText = this.SelectedVendor;
+            this.OverlaySelectedVendor = this.Vendors.FirstOrDefault(v => string.Equals(v.Name, this.SelectedVendor, StringComparison.OrdinalIgnoreCase));
+            this.IsVendorOverlayVisible = true;
+        }
+        [RelayCommand]
+        private async Task CreateExpenseCategory()
+        {
+            string name = this.OverlaySearchText?.Trim() ?? string.Empty;
+            if (string.IsNullOrEmpty(name))
+                return;
+            var cat = new Category { Name = name, IsIncome = false };
+            this.dbContext.Categories.Add(cat);
+            await this.dbContext.SaveChangesAsync();
+            this.AvailableCategories.Add(cat);
+            this.OverlaySelectedCategory = cat;
+        }
+        [RelayCommand]
+        private async Task CreateIncomeCategory()
+        {
+            string name = this.OverlaySearchText?.Trim() ?? string.Empty;
+            if (string.IsNullOrEmpty(name))
+                return;
+            var cat = new Category { Name = name, IsIncome = true };
+            this.dbContext.Categories.Add(cat);
+            await this.dbContext.SaveChangesAsync();
+            this.AvailableCategories.Add(cat);
+            this.OverlaySelectedCategory = cat;
+        }
+        [RelayCommand]
+        private async Task CreateVendor()
+        {
+            string name = this.OverlayVendorSearchText?.Trim() ?? string.Empty;
+            if (string.IsNullOrEmpty(name))
+                return;
+            var v = new Vendor { Name = name };
+            this.dbContext.Vendors.Add(v);
+            await this.dbContext.SaveChangesAsync();
+            this.Vendors.Add(v);
+            this.OverlaySelectedVendor = v;
+        }
+        [RelayCommand]
+        private async Task EditSelectedCategory()
+        {
+            if (this.OverlaySelectedCategory != null)
+            {
+                await Shell.Current.GoToAsync($"///CategoryDetail?CategoryId={this.OverlaySelectedCategory.Id}");
+            }
+        }
+        [RelayCommand]
+        private async Task EditSelectedVendor()
+        {
+            if (this.OverlaySelectedVendor != null)
+            {
+                await Shell.Current.GoToAsync($"///VendorDetail?VendorId={this.OverlaySelectedVendor.Id}");
+            }
+        }
     }
 }
+
+
+

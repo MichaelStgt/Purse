@@ -13,7 +13,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Command="{x:Binding AddTransactionCommand}"
+            Command="{x:Binding AddItemCommand}"
             IconImageSource="{x:StaticResource AddIcon}"
             Text="{x:Static AppResources.Add}" />
     </ContentPage.ToolbarItems>
@@ -78,19 +78,35 @@
                                 Grid.Column="0"
                                 Grid.ColumnSpan="1"
                                 Text="{x:Binding Tags}" />
-                            <Label
+                            <HorizontalStackLayout
                                 Grid.Row="0"
                                 Grid.RowSpan="2"
                                 Grid.Column="1"
-                                FontSize="{x:StaticResource MediumFontSize}"
                                 HorizontalOptions="End"
-                                HorizontalTextAlignment="End"
-                                InputTransparent="True"
-                                Text="{x:Binding TotalAmount,
-                                                 StringFormat='{0:C2}'}"
-                                VerticalOptions="Center" />
+                                Spacing="4"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontFamily="{x:Static FontDefinitions.MaterialSymbolsOutlinedFontFamily}"
+                                    FontSize="{x:StaticResource MediumFontSize}"
+                                    InputTransparent="True"
+                                    Text="{x:Binding TotalAmount,
+                                                     Converter={x:StaticResource AmountToIconConverter}}"
+                                    TextColor="{x:Binding TotalAmount,
+                                                          Converter={x:StaticResource AmountToColorConverter}}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="{x:StaticResource MediumFontSize}"
+                                    HorizontalOptions="End"
+                                    HorizontalTextAlignment="End"
+                                    InputTransparent="True"
+                                    Text="{x:Binding TotalAmount,
+                                                     StringFormat='{0:C2}'}"
+                                    TextColor="{x:Binding TotalAmount,
+                                                          Converter={x:StaticResource AmountToColorConverter}}"
+                                    VerticalOptions="Center" />
+                            </HorizontalStackLayout>
 
-                            <Label
+                            <!--<Label
                                 Grid.Row="2"
                                 Grid.RowSpan="2"
                                 Grid.Column="1"
@@ -101,7 +117,7 @@
                                 Text="{x:Binding PlannedAmount,
                                                  StringFormat='{0:C2}'}"
                                 VerticalOptions="End"
-                                VerticalTextAlignment="End" />
+                                VerticalTextAlignment="End" />-->
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">

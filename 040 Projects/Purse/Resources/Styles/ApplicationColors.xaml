@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
 <ResourceDictionary
     x:Class="Purse.Resources.ApplicationColors"
@@ -14,6 +14,10 @@
     <Color x:Key="ErrorColor">#b3261e</Color>
     <Color x:Key="ErrorTextColorLight">#122840</Color>
     <Color x:Key="ErrorTextColorDark">#b3261e</Color>
+
+    <!--  Financial Net Amount Colors  -->
+    <Color x:Key="Basil">#2E7D32</Color>
+    <Color x:Key="Tomato">#D32F2F</Color>
 
 
     <!--  We keep these two Colors to change the Background of any Page or the Shell at any time  -->

@@ -124,6 +124,33 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Income Source.
+        /// </summary>
+        public static string AddIncomeSource {
+            get {
+                return ResourceManager.GetString("AddIncomeSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?? Add Manually.
+        /// </summary>
+        public static string AddManuallyBtn {
+            get {
+                return ResourceManager.GetString("AddManuallyBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Income Source.
+        /// </summary>
+        public static string AddNewIncomeSource {
+            get {
+                return ResourceManager.GetString("AddNewIncomeSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add a new Task.
         /// </summary>
         public static string AddNewTask {
@@ -133,11 +160,38 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Vendor.
+        /// </summary>
+        public static string AddNewVendor {
+            get {
+                return ResourceManager.GetString("AddNewVendor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Split.
+        /// </summary>
+        public static string AddSplit {
+            get {
+                return ResourceManager.GetString("AddSplit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Task.
         /// </summary>
         public static string AddTask {
             get {
                 return ResourceManager.GetString("AddTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Vendor.
+        /// </summary>
+        public static string AddVendor {
+            get {
+                return ResourceManager.GetString("AddVendor", resourceCulture);
             }
         }
         
@@ -232,11 +286,38 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This category cannot be deleted because it is currently used in {0} transaction(s)..
+        /// </summary>
+        public static string CannotDeleteCategoryMessageFormat {
+            get {
+                return ResourceManager.GetString("CannotDeleteCategoryMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot Delete Category.
+        /// </summary>
+        public static string CannotDeleteCategoryTitle {
+            get {
+                return ResourceManager.GetString("CannotDeleteCategoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Categories.
         /// </summary>
         public static string Categories {
             get {
                 return ResourceManager.GetString("Categories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        public static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
             }
         }
         
@@ -340,6 +421,24 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Expense Category.
+        /// </summary>
+        public static string CreateExpenseCategory {
+            get {
+                return ResourceManager.GetString("CreateExpenseCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Income Category.
+        /// </summary>
+        public static string CreateIncomeCategory {
+            get {
+                return ResourceManager.GetString("CreateIncomeCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Currency.
         /// </summary>
         public static string Currency {
@@ -421,6 +520,24 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to delete the category &apos;{0}&apos;?.
+        /// </summary>
+        public static string DeleteCategoryMessageFormat {
+            get {
+                return ResourceManager.GetString("DeleteCategoryMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Category.
+        /// </summary>
+        public static string DeleteCategoryTitle {
+            get {
+                return ResourceManager.GetString("DeleteCategoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm to delete all selected items.
         /// </summary>
         public static string DeleteConfirmAll {
@@ -448,11 +565,29 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discard and Leave.
+        /// </summary>
+        public static string DiscardAndLeaveButton {
+            get {
+                return ResourceManager.GetString("DiscardAndLeaveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Task.
         /// </summary>
         public static string EditTask {
             get {
                 return ResourceManager.GetString("EditTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to € Amount.
+        /// </summary>
+        public static string EnterAmount {
+            get {
+                return ResourceManager.GetString("EnterAmount", resourceCulture);
             }
         }
         
@@ -466,11 +601,92 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter City.
+        /// </summary>
+        public static string EnterCity {
+            get {
+                return ResourceManager.GetString("EnterCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Description (Optional).
+        /// </summary>
+        public static string EnterDescriptionOptional {
+            get {
+                return ResourceManager.GetString("EnterDescriptionOptional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Income Source Name.
+        /// </summary>
+        public static string EnterIncomeSourceName {
+            get {
+                return ResourceManager.GetString("EnterIncomeSourceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter your Pin Code.
         /// </summary>
         public static string EnterPin {
             get {
                 return ResourceManager.GetString("EnterPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to € Planned Amount.
+        /// </summary>
+        public static string EnterPlannedAmount {
+            get {
+                return ResourceManager.GetString("EnterPlannedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Postal Code.
+        /// </summary>
+        public static string EnterPostalCode {
+            get {
+                return ResourceManager.GetString("EnterPostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter State/Province.
+        /// </summary>
+        public static string EnterStateOrProvince {
+            get {
+                return ResourceManager.GetString("EnterStateOrProvince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Street Address.
+        /// </summary>
+        public static string EnterStreetAddress {
+            get {
+                return ResourceManager.GetString("EnterStreetAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Vendor Description (Optional).
+        /// </summary>
+        public static string EnterVendorDescription {
+            get {
+                return ResourceManager.GetString("EnterVendorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Vendor Name.
+        /// </summary>
+        public static string EnterVendorName {
+            get {
+                return ResourceManager.GetString("EnterVendorName", resourceCulture);
             }
         }
         
@@ -718,11 +934,38 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No income sources found..
+        /// </summary>
+        public static string NoIncomeSourcesFound {
+            get {
+                return ResourceManager.GetString("NoIncomeSourcesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No items added yet..
+        /// </summary>
+        public static string NoItemsAdded {
+            get {
+                return ResourceManager.GetString("NoItemsAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No transactions yet..
         /// </summary>
         public static string NoTransactions {
             get {
                 return ResourceManager.GetString("NoTransactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No vendors found..
+        /// </summary>
+        public static string NoVendorsFound {
+            get {
+                return ResourceManager.GetString("NoVendorsFound", resourceCulture);
             }
         }
         
@@ -853,6 +1096,15 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receipt details.
+        /// </summary>
+        public static string ReceiptDetails {
+            get {
+                return ResourceManager.GetString("ReceiptDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recreate Sample Data?.
         /// </summary>
         public static string RecreateSampleData {
@@ -907,11 +1159,29 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ?? Scan Receipt.
+        /// </summary>
+        public static string ScanReceiptBtn {
+            get {
+                return ResourceManager.GetString("ScanReceiptBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select all.
         /// </summary>
         public static string SelectAll {
             get {
                 return ResourceManager.GetString("SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a category.
+        /// </summary>
+        public static string SelectCategory {
+            get {
+                return ResourceManager.GetString("SelectCategory", resourceCulture);
             }
         }
         
@@ -966,6 +1236,15 @@ namespace Purse.Resources.Strings {
         public static string State {
             get {
                 return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stay and Fix.
+        /// </summary>
+        public static string StayAndFixButton {
+            get {
+                return ResourceManager.GetString("StayAndFixButton", resourceCulture);
             }
         }
         
@@ -1096,6 +1375,15 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} transactions.
+        /// </summary>
+        public static string TransactionCountFormat {
+            get {
+                return ResourceManager.GetString("TransactionCountFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction Date.
         /// </summary>
         public static string TransactionDate {
@@ -1123,6 +1411,15 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transaction Split.
+        /// </summary>
+        public static string TransactionSplit {
+            get {
+                return ResourceManager.GetString("TransactionSplit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Undo.
         /// </summary>
         public static string Undo {
@@ -1132,11 +1429,38 @@ namespace Purse.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are validation errors on this page. Would you like to stay and fix them, or discard changes and leave?.
+        /// </summary>
+        public static string UnsavedChangesErrorsMessage {
+            get {
+                return ResourceManager.GetString("UnsavedChangesErrorsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsaved Changes.
+        /// </summary>
+        public static string UnsavedChangesTitle {
+            get {
+                return ResourceManager.GetString("UnsavedChangesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unselect all.
         /// </summary>
         public static string UnselectAll {
             get {
                 return ResourceManager.GetString("UnselectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?? Upload Receipt.
+        /// </summary>
+        public static string UploadReceiptBtn {
+            get {
+                return ResourceManager.GetString("UploadReceiptBtn", resourceCulture);
             }
         }
         
@@ -1237,140 +1561,24 @@ namespace Purse.Resources.Strings {
             get {
                 return ResourceManager.GetString("WorkplaceDetail", resourceCulture);
             }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter Vendor Name.
-        /// </summary>
-        public static string EnterVendorName {
+        }        public static string CreateNewVendor {
             get {
-                return ResourceManager.GetString("EnterVendorName", resourceCulture);
+                return ResourceManager.GetString("CreateNewVendor", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter Vendor Description (Optional).
-        /// </summary>
-        public static string EnterVendorDescription {
+        public static string EditSelectedVendor {
             get {
-                return ResourceManager.GetString("EnterVendorDescription", resourceCulture);
+                return ResourceManager.GetString("EditSelectedVendor", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter Description (Optional).
-        /// </summary>
-        public static string EnterDescriptionOptional {
+        public static string EditSelectedCategory {
             get {
-                return ResourceManager.GetString("EnterDescriptionOptional", resourceCulture);
+                return ResourceManager.GetString("EditSelectedCategory", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter Income Source Name.
-        /// </summary>
-        public static string EnterIncomeSourceName {
+        public static string SelectVendor {
             get {
-                return ResourceManager.GetString("EnterIncomeSourceName", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter Street Address.
-        /// </summary>
-        public static string EnterStreetAddress {
-            get {
-                return ResourceManager.GetString("EnterStreetAddress", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter City.
-        /// </summary>
-        public static string EnterCity {
-            get {
-                return ResourceManager.GetString("EnterCity", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter State/Province.
-        /// </summary>
-        public static string EnterStateOrProvince {
-            get {
-                return ResourceManager.GetString("EnterStateOrProvince", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Enter Postal Code.
-        /// </summary>
-        public static string EnterPostalCode {
-            get {
-                return ResourceManager.GetString("EnterPostalCode", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Select a category.
-        /// </summary>
-        public static string SelectCategory {
-            get {
-                return ResourceManager.GetString("SelectCategory", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to â‚¬ Amount.
-        /// </summary>
-        public static string EnterAmount {
-            get {
-                return ResourceManager.GetString("EnterAmount", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to â‚¬ Planned Amount.
-        /// </summary>
-        public static string EnterPlannedAmount {
-            get {
-                return ResourceManager.GetString("EnterPlannedAmount", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Unsaved Changes.
-        /// </summary>
-        public static string UnsavedChangesTitle {
-            get {
-                return ResourceManager.GetString("UnsavedChangesTitle", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to There are validation errors on this page. Would you like to stay and fix them, or discard changes and leave?.
-        /// </summary>
-        public static string UnsavedChangesErrorsMessage {
-            get {
-                return ResourceManager.GetString("UnsavedChangesErrorsMessage", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Stay and Fix.
-        /// </summary>
-        public static string StayAndFixButton {
-            get {
-                return ResourceManager.GetString("StayAndFixButton", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Discard and Leave.
-        /// </summary>
-        public static string DiscardAndLeaveButton {
-            get {
-                return ResourceManager.GetString("DiscardAndLeaveButton", resourceCulture);
+                return ResourceManager.GetString("SelectVendor", resourceCulture);
             }
         }
     }

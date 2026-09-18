@@ -17,7 +17,7 @@
         <ToolbarItem
             Command="{x:Binding AddVendorCommand}"
             IconImageSource="{x:StaticResource AddIcon}"
-            Text="Add Vendor" />
+            Text="{x:Static AppResources.AddVendor}" />
     </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="*">
@@ -41,17 +41,16 @@
                     <VerticalStackLayout
                         Padding="24"
                         HorizontalOptions="Center"
-                        Spacing="12"
                         VerticalOptions="Center">
                         <Label
+                            Margin="0,0,0,16"
                             HorizontalOptions="Center"
-                            Text="No vendors found."
-                            TextColor="Gray" />
+                            Text="{x:Static AppResources.NoVendorsFound}"
+                            TextColor="{x:AppThemeBinding Light={x:StaticResource Gray500}, Dark={x:StaticResource Gray400}}" />
                         <Button
-                            Command="{x:Binding AddVendorCommand}"
+                            Command="{x:Binding BindingContext.AddVendorCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
                             HorizontalOptions="Center"
-                            ImageSource="{x:StaticResource AddIcon}"
-                            Text="Add New Vendor" />
+                            Text="{x:Static AppResources.AddNewVendor}" />
                     </VerticalStackLayout>
                 </CollectionView.EmptyView>
 

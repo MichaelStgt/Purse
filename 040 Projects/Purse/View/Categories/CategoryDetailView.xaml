@@ -78,7 +78,6 @@
                                                              Dark={x:StaticResource ErrorTextColorDark}}">
                 <ExtendedEntry
                     AllowEmptyValue="False"
-                    IsEnabled="{x:Binding IsEditable}"
                     Placeholder="{x:Static AppResources.EnterCategoryName}"
                     Text="{x:Binding CategoryName,
                                      Mode=TwoWay}" />
@@ -100,7 +99,6 @@
                         VerticalOptions="Center" />
                     <Switch
                         Grid.Column="1"
-                        IsEnabled="{x:Binding IsEditable}"
                         IsToggled="{x:Binding IsIncome,
                                               Mode=TwoWay}" />
                 </Grid>
@@ -126,21 +124,7 @@
                 </Grid>
             </LabeledContentView>
 
-            <!--  System Category Read-Only Indicator  -->
-            <Border
-                Grid.Row="4"
-                Grid.ColumnSpan="2"
-                Margin="{x:StaticResource DefaultElementMargin}"
-                Padding="{x:StaticResource DefaultPadding}"
-                BackgroundColor="{x:StaticResource Primary}"
-                IsVisible="{x:Binding IsSystem}"
-                StrokeThickness="0">
-                <Label
-                    FontSize="12"
-                    HorizontalOptions="Center"
-                    Text="{x:Static AppResources.SystemCategoryDescription}"
-                    TextColor="{x:StaticResource OffWhite}" />
-            </Border>
+
             <!--<LabeledContentView
                 Grid.Row="5"
                 Grid.ColumnSpan="2"

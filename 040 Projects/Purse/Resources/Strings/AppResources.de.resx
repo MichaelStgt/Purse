@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -537,5 +537,17 @@
   </data>
   <data name="DiscardAndLeaveButton" xml:space="preserve">
     <value>Verwerfen und verlassen</value>
+  </data>
+  <data name="CreateNewVendor" xml:space="preserve">
+    <value>Neuen Anbieter erstellen</value>
+  </data>
+  <data name="EditSelectedVendor" xml:space="preserve">
+    <value>Ausgewählten Anbieter bearbeiten</value>
+  </data>
+  <data name="EditSelectedCategory" xml:space="preserve">
+    <value>Ausgewählte Kategorie bearbeiten</value>
+  </data>
+  <data name="SelectVendor" xml:space="preserve">
+    <value>Anbieter auswählen</value>
   </data>
 </root>

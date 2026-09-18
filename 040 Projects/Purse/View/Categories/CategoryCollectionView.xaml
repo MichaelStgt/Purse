@@ -134,18 +134,21 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Category">
                         <Border Style="{x:StaticResource CollectionViewItemBorder}">
-                            <!--
-                                Margin="{x:StaticResource DefaultElementMargin}"
-                                Padding="{x:StaticResource DefaultPadding}"
-                                Stroke="{x:StaticResource Primary}"
-                            -->
                             <Grid ColumnDefinitions="*, Auto, Auto, Auto">
-                                <Label
+                                <VerticalStackLayout
                                     Grid.Column="0"
-                                    FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
-                                    FontSize="{x:StaticResource MediumFontSize}"
-                                    Text="{x:Binding DisplayName}"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                                        FontSize="{x:StaticResource MediumFontSize}"
+                                        Text="{x:Binding DisplayName}" />
+                                    <Label
+                                        FontSize="{x:StaticResource SmallFontSize}"
+                                        Text="{x:Binding TransactionCount,
+                                                         StringFormat={x:Static AppResources.TransactionCountFormat}}"
+                                        TextColor="{x:AppThemeBinding Light={x:StaticResource Gray400},
+                                                                      Dark={x:StaticResource Gray400}}" />
+                                </VerticalStackLayout>
 
                                 <!--  Badges  -->
                                 <Border
@@ -162,21 +165,8 @@
                                                                       Dark={x:DynamicResource OffWhite}}" />
 
                                 </Border>
-                                <Border
-                                    x:Name="SystemBadge"
-                                    Grid.Column="2"
-                                    Margin="4,0,4,0"
-                                    Padding="8,2"
-                                    IsVisible="{x:Binding IsSystem}"
-                                    StrokeThickness="1">
 
-                                    <Label
-                                        FontSize="{x:StaticResource SmallFontSize}"
-                                        Text="System"
-                                        TextColor="{x:AppThemeBinding Light={x:DynamicResource Primary},
-                                                                      Dark={x:DynamicResource OffWhite}}" />
-                                </Border>
-                                <ImageButton
+                                <!--<ImageButton
                                     Grid.Row="0"
                                     Grid.RowSpan="1"
                                     Grid.Column="3">
@@ -187,7 +177,7 @@
                                             Size="24"
                                             Color="Gray" />
                                     </ImageButton.Source>
-                                </ImageButton>
+                                </ImageButton>-->
 
                             </Grid>
                             <VisualStateManager.VisualStateGroups>
@@ -196,7 +186,7 @@
                                         <VisualState.Setters>
                                             <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light=Transparent, Dark=Transparent}" />
                                             <Setter TargetName="DefaultBadge" Property="Border.BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource Primary}}" />
-                                            <Setter TargetName="SystemBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource OffBlack}, Dark={x:DynamicResource Primary}}" />
+                                            <!--<Setter TargetName="SystemBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource OffBlack}, Dark={x:DynamicResource Primary}}" />-->
                                             <Setter TargetName="DefaultBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource Primary}}" />
                                         </VisualState.Setters>
                                     </VisualState>
@@ -208,7 +198,7 @@
                                     <VisualState Name="PointerOver">
                                         <VisualState.Setters>
                                             <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light={x:DynamicResource Gray100}, Dark={x:DynamicResource Primary}}" />
-                                            <Setter TargetName="SystemBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource OffBlack}}" />
+                                            <!--<Setter TargetName="SystemBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource OffBlack}}" />-->
                                             <Setter TargetName="DefaultBadge" Property="Border.Stroke" Value="{x:AppThemeBinding Light={x:DynamicResource Primary}, Dark={x:DynamicResource OffBlack}}" />
                                         </VisualState.Setters>
                                     </VisualState>

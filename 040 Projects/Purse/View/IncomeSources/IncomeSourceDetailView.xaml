@@ -26,15 +26,15 @@
         <ToolbarItem
             Command="{x:Binding SaveCommand}"
             IconImageSource="{x:StaticResource SaveIcon}"
-            Text="Save" />
+            Text="{x:Static AppResources.Save}" />
         <ToolbarItem
             Command="{x:Binding CancelCommand}"
             IconImageSource="{x:StaticResource CancelIcon}"
-            Text="Cancel" />
+            Text="{x:Static AppResources.Cancel}" />
         <ToolbarItem
             Command="{x:Binding DeleteCommand}"
             IconImageSource="{x:StaticResource DeleteIcon}"
-            Text="Delete" />
+            Text="{x:Static AppResources.Delete}" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
@@ -159,7 +159,7 @@
                 Grid.Row="7"
                 Margin="{x:StaticResource DefaultElementMargin}"
                 Command="{x:Binding SaveCommand}"
-                Text="Save" />
+                Text="{x:Static AppResources.Save}" />
         </Grid>
     </ScrollView>
 </ContentPage>

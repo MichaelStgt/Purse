@@ -39,5 +39,30 @@ namespace Purse.ViewModel
         #region Methods
 
         #endregion
+
+        // ====================================================================
+        // REFERENCE: Cross-Property Validation Example (Planned Amount)
+        // The following code demonstrates how to validate values across 
+        // multiple properties. It is currently decommissioned.
+        // ====================================================================
+        /*
+        /// <summary>
+        /// Gets or sets the planned amount.
+        /// </summary>
+        [ObservableProperty]
+        [NotifyDataErrorInfo]
+        [Display(Name = "Planned Amount")]
+        [GreaterThan(nameof(TotalAmount), "Planned amount should be greater than total amount.")]
+        public partial decimal PlannedAmount
+        {
+            get; set;
+        }
+
+        // Inside TotalAmount property:
+        // [NotifyPropertyChangedFor(nameof(PlannedAmount))]
+
+        // Inside OnTotalAmountChanged:
+        // this.ValidateProperty(this.PlannedAmount, nameof(this.PlannedAmount));
+        */
     }
 }

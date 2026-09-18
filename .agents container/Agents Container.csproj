@@ -20,4 +20,25 @@
 		<None Include=".\ImplementationPlans\**\*" Link="ImplementationPlans\%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="History\011 Refactor TransactionLineItem UI.md" Link="Playbook\011 Refactor TransactionLineItem UI.md" />
+	  <None Update="History\013 Fix PlatformView Lifecycle Crash.md" Link="Playbook\013 Fix PlatformView Lifecycle Crash.md" />
+	  <None Update="History\014 Fix Popup Race Conditions.md" Link="Playbook\014 Fix Popup Race Conditions.md" />
+	  <None Update="History\015 Fix Popup Close Crash via Code-Behind.md" Link="Playbook\015 Fix Popup Close Crash via Code-Behind.md" />
+	  <None Update="History\017 Revert to Stable State.md" Link="Playbook\017 Revert to Stable State.md" />
+	  <None Update="History\018 Audit File Structure.md" Link="Playbook\018 Audit File Structure.md" />
+	  <None Update="History\019 Refactor to In-Page Overlay.md" Link="Playbook\019 Refactor to In-Page Overlay.md" />
+	  <None Update="History\020 Refine Overlay UI.md" Link="Playbook\020 Refine Overlay UI.md" />
+	  <None Update="History\007 Review the ObservableCollectionViewModel.md" Link="History\007 Review the ObservableCollectionViewModel.md" />
+	  <None Update="History\008 Country.md" Link="History\008 Country.md" />
+	  <None Update="History\009 Automatic Route and ViewModel registration.md" Link="History\009 Automatic Route and ViewModel registration.md" />
+	  <None Update="History\010 ValidationErrorLabel.md" Link="History\010 ValidationErrorLabel.md" />
+	  <None Update="History\006 Vendor Selection.md" Link="History\006 Vendor Selection.md" />
+	  <None Update="History\005 Changes to Transaction ViewModel and UI.md" Link="History\005 Changes to Transaction ViewModel and UI.md" />
+	  <None Update="History\004 Preparing the Transaction Logic.md" Link="History\004 Preparing the Transaction Logic.md" />
+	  <None Update="History\001 Vendor.md" Link="History\001 Vendor.md" />
+	  <None Update="History\002 Vendor Collection and Datail ViewModel.md" Link="History\002 Vendor Collection and Datail ViewModel.md" />
+	  <None Update="History\003 Vendor and IncomeSource XAML UI Definition.md" Link="History\003 Vendor and IncomeSource XAML UI Definition.md" />
+	</ItemGroup>
+
 </Project>

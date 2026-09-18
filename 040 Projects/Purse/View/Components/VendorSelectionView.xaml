@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Purse.View.Components.VendorSelectionView"
+             IsVisible="{Binding IsVendorOverlayVisible}">
+    <Grid BackgroundColor="#A0000000" ZIndex="100">
+        <Border Padding="20"
+                BackgroundColor="{x:AppThemeBinding Light={x:StaticResource OffWhite}, Dark={x:StaticResource OffBlack}}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="350">
+            <VerticalStackLayout Spacing="15">
+                <Label FontAttributes="Bold"
+                       FontSize="Title"
+                       HorizontalOptions="Center"
+                       Text="{x:Static AppResources.SelectVendor}" />
+
+                <SfComboBox DisplayMemberPath="Name"
+                            DropDownItemFontAttributes="None"
+                            DropDownItemFontSize="16"
+                            DropDownPlacement="Bottom"
+                            DropDownStroke="{x:AppThemeBinding Light={x:StaticResource Gray400}, Dark={x:StaticResource Gray600}}"
+                            DropDownStrokeThickness="1"
+                            IsClearButtonVisible="False"
+                            IsDropDownOpen="{Binding IsVendorDropdownOpen, Mode=TwoWay}"
+                            IsEditable="True"
+                            IsFilteringEnabled="True"
+                            ItemsSource="{Binding Vendors}"
+                            MaxDropDownHeight="250"
+                            Placeholder="{x:Static AppResources.SelectVendor}"
+                            SelectedItem="{Binding OverlaySelectedVendor, Mode=TwoWay}"
+                            ShowBorder="False"
+                            ShowDropdownFooterView="True"
+                            DropdownFooterViewHeight="120"
+                            ShowDropdownHeaderView="False"
+                            ShowSuggestionsOnFocus="False"
+                            Text="{Binding OverlayVendorSearchText, Mode=TwoWay}"
+                            TextSearchMode="Contains">
+                    <SfComboBox.SelectedDropDownItemTextStyle>
+                        <DropDownTextStyle FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                                           FontSize="16"
+                                           TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack}, Dark={x:StaticResource OffWhite}}" />
+                    </SfComboBox.SelectedDropDownItemTextStyle>
+                    <SfComboBox.DropdownFooterView>
+                        <VerticalStackLayout Padding="{x:StaticResource DefaultPadding}"
+                                             BackgroundColor="{x:AppThemeBinding Light={x:StaticResource OffWhite}, Dark={x:StaticResource OffBlack}}"
+                                             VerticalOptions="Fill">
+                            <Button Command="{Binding BindingContext.CreateVendorCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    Text="{x:Static AppResources.CreateNewVendor}" />
+                            <Button Command="{Binding BindingContext.EditSelectedVendorCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" Text="{x:Static AppResources.EditSelectedVendor}"> <Button.Triggers> <DataTrigger TargetType="Button" Binding="{Binding OverlaySelectedVendor}" Value="{x:Null}"> <Setter Property="IsEnabled" Value="False" /> </DataTrigger> </Button.Triggers> </Button>
+                        </VerticalStackLayout>
+                    </SfComboBox.DropdownFooterView>
+                </SfComboBox>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+                    <Button Grid.Column="0" Command="{Binding BindingContext.SaveVendorOverlayCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" Text="{x:Static AppResources.Save}" />
+                    <Button Grid.Column="1" Command="{Binding BindingContext.CancelVendorOverlayCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" Text="{x:Static AppResources.Cancel}" BackgroundColor="{x:AppThemeBinding Light={x:StaticResource Gray200}, Dark={x:StaticResource Gray800}}" TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack}, Dark={x:StaticResource OffWhite}}" />
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentView>
+

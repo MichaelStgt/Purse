@@ -15,6 +15,7 @@ namespace Purse.ViewModel
     using Purse.Shared.Model;
     using Purse.View;
     using System.Collections.ObjectModel;
+    using Microsoft.EntityFrameworkCore;
 
     /// <summary>
     /// The category history/management collection view model.
@@ -63,9 +64,30 @@ namespace Purse.ViewModel
         /// </summary>
         protected override async Task<IReadOnlyList<Category>> LoadItemsAsync(CancellationToken cancellationToken)
         {
-            return await this.dbContext.ReadItemsAsync<Category>(
+            var categories = await this.dbContext.ReadItemsAsync<Category>(
                 query => query.OrderBy(c => c.Name),
                 cancellationToken);
+
+            var categoryUsage = await this.dbContext.Set<TransactionLineItem>()
+                .Where(t => t.Category != null)
+                .GroupBy(t => t.Category)
+                .Select(g => new { CategoryName = g.Key, Count = g.Count() })
+                .ToDictionaryAsync(k => k.CategoryName!, v => v.Count, cancellationToken);
+
+            foreach (var category in categories)
+            {
+                int count = 0;
+                if (category.Name != null && categoryUsage.TryGetValue(category.Name, out int cName))
+                    count += cName;
+                if (category.DisplayName != null && category.DisplayName != category.Name && categoryUsage.TryGetValue(category.DisplayName, out int cDisplay))
+                    count += cDisplay;
+                if (category.Id != null && categoryUsage.TryGetValue(category.Id, out int cId))
+                    count += cId;
+                    
+                category.TransactionCount = count;
+            }
+
+            return categories;
         }
 
         /// <summary>

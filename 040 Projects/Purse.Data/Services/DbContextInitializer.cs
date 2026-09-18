@@ -39,7 +39,7 @@ public class DbContextInitializer(LocalDbContext context)
                         Id = id,
                         Name = defaultName,
                         IsIncome = true,
-                        IsSystem = true,
+                        MonthlyBudget = 0m,
                         IsDefault = false
                     });
                 }
@@ -58,7 +58,7 @@ public class DbContextInitializer(LocalDbContext context)
                         Id = id,
                         Name = defaultName,
                         IsIncome = false,
-                        IsSystem = true,
+                        MonthlyBudget = 0m,
                         IsDefault = false
                     });
                 }
@@ -87,6 +87,46 @@ public class DbContextInitializer(LocalDbContext context)
 
             context.SaveChanges();
         }
+
+        if (!context.Vendors.Any())
+        {
+            try
+            {
+                using var stream = Microsoft.Maui.Storage.FileSystem.OpenAppPackageFileAsync("german_vendors.csv").GetAwaiter().GetResult();
+                using var reader = new System.IO.StreamReader(stream);
+                var isHeader = true;
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (isHeader)
+                    {
+                        isHeader = false;
+                        continue;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
+                    var parts = line.Split(';');
+                    if (parts.Length >= 6)
+                    {
+                        context.Vendors.Add(new Vendor
+                        {
+                            Id = Guid.NewGuid().ToString("N"),
+                            Name = parts[0],
+                            Street = parts[1],
+                            City = parts[2],
+                            PostalCode = parts[3],
+                            Description = $"Phone: {parts[4]}, Website: {parts[5]}"
+                        });
+                    }
+                }
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to seed vendors: {ex.Message}");
+            }
+        }
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken = default)
@@ -108,7 +148,7 @@ public class DbContextInitializer(LocalDbContext context)
                         Id = id,
                         Name = defaultName,
                         IsIncome = true,
-                        IsSystem = true,
+                        MonthlyBudget = 0m,
                         IsDefault = false
                     });
                 }
@@ -127,7 +167,7 @@ public class DbContextInitializer(LocalDbContext context)
                         Id = id,
                         Name = defaultName,
                         IsIncome = false,
-                        IsSystem = true,
+                        MonthlyBudget = 0m,
                         IsDefault = false
                     });
                 }
@@ -156,6 +196,47 @@ public class DbContextInitializer(LocalDbContext context)
 
             await context.SaveChangesAsync(cancellationToken);
         }
+
+        if (!await context.Vendors.AnyAsync(cancellationToken))
+        {
+            try
+            {
+                using var stream = await Microsoft.Maui.Storage.FileSystem.OpenAppPackageFileAsync("german_vendors.csv");
+                using var reader = new System.IO.StreamReader(stream);
+                var isHeader = true;
+                while (!reader.EndOfStream)
+                {
+                    var line = await reader.ReadLineAsync(cancellationToken);
+                    if (isHeader)
+                    {
+                        isHeader = false;
+                        continue;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
+                    var parts = line.Split(';');
+                    if (parts.Length >= 6)
+                    {
+                        context.Vendors.Add(new Vendor
+                        {
+                            Id = Guid.NewGuid().ToString("N"),
+                            Name = parts[0],
+                            Street = parts[1],
+                            City = parts[2],
+                            PostalCode = parts[3],
+                            Description = $"Phone: {parts[4]}, Website: {parts[5]}"
+                        });
+                    }
+                }
+                await context.SaveChangesAsync(cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to seed vendors: {ex.Message}");
+            }
+        }
     }
 }
+
 

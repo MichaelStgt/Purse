@@ -55,14 +55,7 @@ namespace Purse.ViewModel
             get; set;
         }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether this is a pre-defined system category.
-        /// </summary>
-        [ObservableProperty]
-        public partial bool IsSystem
-        {
-            get; set;
-        }
+
 
         /// <summary>
         /// Gets or sets a value indicating whether this is a default category.
@@ -110,11 +103,9 @@ namespace Purse.ViewModel
             this.CategoryId = item.Id;
             this.CategoryName = item.DisplayName; // Display translated name
             this.IsIncome = item.IsIncome;
-            this.IsSystem = item.IsSystem;
             this.IsDefault = item.IsDefault;
 
-            // System categories are read-only (user cannot rename or delete them)
-            this.IsEditable = !item.IsSystem;
+            this.IsEditable = true;
         }
 
         /// <summary>
@@ -124,12 +115,8 @@ namespace Purse.ViewModel
         {
             ArgumentNullException.ThrowIfNull(item);
 
-            // User can only modify custom categories
-            if (!item.IsSystem)
-            {
-                item.Name = this.CategoryName;
-                item.IsIncome = this.IsIncome;
-            }
+            item.Name = this.CategoryName;
+            item.IsIncome = this.IsIncome;
             item.IsDefault = this.IsDefault;
         }
 
@@ -205,20 +192,20 @@ namespace Purse.ViewModel
                 return false;
             }
 
-            if (this.IsSystem)
+            if (this.Item?.TransactionCount > 0)
             {
                 await Shell.Current.DisplayAlertAsync(
-                    "Action Denied",
-                    "System categories cannot be deleted.",
+                    AppResources.CannotDeleteCategoryTitle,
+                    string.Format(AppResources.CannotDeleteCategoryMessageFormat, this.Item.TransactionCount),
                     "OK");
                 return false;
             }
 
             return await Shell.Current.DisplayAlertAsync(
-                "Delete Category",
-                $"Do you want to delete the category '{this.CategoryName}'?",
-                "Delete",
-                "Cancel");
+                AppResources.DeleteCategoryTitle,
+                string.Format(AppResources.DeleteCategoryMessageFormat, this.CategoryName),
+                AppResources.Delete,
+                AppResources.Cancel);
         }
 
         /// <summary>
@@ -226,10 +213,6 @@ namespace Purse.ViewModel
         /// </summary>
         protected override async Task DeleteItemAsync(Category item)
         {
-            if (item.IsSystem)
-            {
-                return;
-            }
 
             if (this.dbContext.Entry(item).State == EntityState.Detached)
             {
@@ -252,7 +235,6 @@ namespace Purse.ViewModel
             return new Category
             {
                 IsIncome = false,
-                IsSystem = false,
                 IsDefault = false
             };
         }
@@ -262,7 +244,20 @@ namespace Purse.ViewModel
         /// </summary>
         protected override async Task<Category?> LoadItemByIdAsync(string id)
         {
-            return await this.dbContext.Categories.FindAsync(id);
+            var category = await this.dbContext.Categories.FindAsync(id);
+            if (category != null)
+            {
+                var names = new List<string> { category.Name };
+                if (category.DisplayName != category.Name)
+                {
+                    names.Add(category.DisplayName);
+                }
+                names.Add(id);
+
+                category.TransactionCount = await this.dbContext.Set<TransactionLineItem>()
+                    .CountAsync(t => t.Category != null && names.Contains(t.Category));
+            }
+            return category;
         }
 
         /// <summary>
@@ -278,7 +273,6 @@ namespace Purse.ViewModel
                 this.CategoryId = null;
                 this.CategoryName = string.Empty;
                 this.IsIncome = false;
-                this.IsSystem = false;
                 this.IsDefault = false;
                 this.IsEditable = true;
                 return;
