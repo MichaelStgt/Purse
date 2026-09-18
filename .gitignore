@@ -51,3 +51,8 @@ artifacts/
 *.ipa
 *.dSYM
 *.zip
+
+# Exclude heavy reference and asset folders
+010 Assets/
+020 Documents/
+030 Samples/
