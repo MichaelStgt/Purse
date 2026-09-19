@@ -1,4 +1,4 @@
-// <copyright file="TransactionDetailViewModel.cs" company="Behr, Michael">
+﻿// <copyright file="TransactionDetailViewModel.cs" company="Behr, Michael">
 // Copyright Behr, Michael.
 // All rights reserved.
 // Use of this code is subject to the terms of our license.
@@ -86,9 +86,9 @@ namespace Purse.ViewModel
         /// Gets or sets the planned amount.
         /// </summary>
         [ObservableProperty]
-        [NotifyDataErrorInfo]
+        // [NotifyDataErrorInfo]
         [Display(Name = "Planned Amount")]
-        [GreaterThan(nameof(TotalAmount), "Planned amount should be greater than total amount.")]
+        // [GreaterThan(nameof(TotalAmount), "Planned amount should be greater than total amount.")]
         [Obsolete("Move this to the TransactionDetailViewModel.Validations.cs file")]
         public partial double PlannedAmount
         {
@@ -100,11 +100,10 @@ namespace Purse.ViewModel
         /// </summary>
         [ObservableProperty]
         [NotifyDataErrorInfo]
-        [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(ValidationResources))]
-        [MinLength(1)]
-        [MaxLength(100)]
+        [Required(ErrorMessageResourceName = nameof(ValidationResources.RequiredErrorMessage), ErrorMessageResourceType = typeof(ValidationResources))]
         [Display(Name = "Name", ResourceType = typeof(AppResources))]
-        public partial string? SelectedVendor
+        [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
+        public partial Vendor? SelectedVendor
         {
             get; set;
         }
@@ -132,9 +131,9 @@ namespace Purse.ViewModel
         /// </summary>
         [ObservableProperty]
         [NotifyDataErrorInfo]
-        [NotifyPropertyChangedFor(nameof(PlannedAmount))]
         [Display(Name = nameof(AppResources.TotalAmount), ResourceType = typeof(AppResources))]
         [Range(0.01, 10000000.0, ErrorMessageResourceName = nameof(ValidationResources.RangeErrorMessage), ErrorMessageResourceType = typeof(ValidationResources))]
+        [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
         public partial double TotalAmount
         {
             get; set;
@@ -144,6 +143,7 @@ namespace Purse.ViewModel
         /// Gets or sets the transaction date.
         /// </summary>
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(SaveCommand))]
         public partial DateTime TransactionDate { get; set; } = DateTime.Today;
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Purse.ViewModel
             ArgumentNullException.ThrowIfNull(item);
 
             this.TransactionId = item.Id;
-            this.SelectedVendor = item.VendorName;
+            this.SelectedVendor = this.Vendors.FirstOrDefault(v => v.Name == item.VendorName);
             this.TotalAmount = item.TotalAmount;
             this.PlannedAmount = item.PlannedAmount;
             this.TransactionDate = item.Date;
@@ -198,6 +198,19 @@ namespace Purse.ViewModel
         public override async Task SaveCommandImplementation()
         {
             this.ValidateAllProperties();
+
+            if (this.HasErrors)
+            {
+                var errorDetails = string.Join("\n", this.GetErrors().Select(e => $" {string.Join(",", e.MemberNames)}: {e.ErrorMessage}"));
+                await Microsoft.Maui.Controls.Shell.Current.DisplayAlert("Diagnostic: Validation Failed", errorDetails, "OK");
+                return;
+            }
+
+            if (this.SelectedVendor == null)
+            {
+                await Microsoft.Maui.Controls.Shell.Current.DisplayAlert("Diagnostic: Missing Data", "SelectedVendor is null.", "OK");
+                return;
+            }
 
             if (!this.CanGoBack)
             {
@@ -290,7 +303,7 @@ namespace Purse.ViewModel
         {
             ArgumentNullException.ThrowIfNull(item);
 
-            item.VendorName = this.SelectedVendor;
+            item.VendorName = this.SelectedVendor?.Name;
             item.TotalAmount = this.TotalAmount;
             item.PlannedAmount = this.PlannedAmount;
             item.Date = this.TransactionDate;
@@ -308,9 +321,9 @@ namespace Purse.ViewModel
                 return false;
             }
 
-            string itemName = string.IsNullOrWhiteSpace(this.SelectedVendor)
+            string itemName = this.SelectedVendor == null
                 ? "this transaction"
-                : $"the transaction '{this.SelectedVendor}'";
+                : $"the transaction '{this.SelectedVendor?.Name}'";
 
             return await Shell.Current.DisplayAlertAsync(
                 "Delete transaction",
@@ -492,7 +505,7 @@ namespace Purse.ViewModel
             await this.initCategoriesTask;
 
             this.TransactionId = this.Item?.Id;
-            this.SelectedVendor = this.Vendors.FirstOrDefault()?.Name;
+            this.SelectedVendor = this.Vendors.FirstOrDefault();
             this.TotalAmount = 0;
             this.PlannedAmount = 0;
             this.TransactionDate = this.Item?.Date ?? DateTime.Today;
@@ -550,14 +563,14 @@ namespace Purse.ViewModel
                 {
                     this.Vendors.Add(vendor);
                 }
-                if (string.IsNullOrWhiteSpace(this.SelectedVendor))
+                if (this.SelectedVendor == null)
                 {
-                    this.SelectedVendor = this.Vendors.FirstOrDefault()?.Name;
+                    this.SelectedVendor = this.Vendors.FirstOrDefault();
                 }
             }
             catch (Exception ex)
             {
-                this.Categories = new() { "Lebensmittel", "Freizeit", "Miete", "Versicherung", "Mobilit�t", "Drogerie", "Tabak", "Alkohol" };
+                this.Categories = new() { "Lebensmittel", "Freizeit", "Miete", "Versicherung", "Mobilität", "Drogerie", "Tabak", "Alkohol" };
                 this.defaultCategoryName = this.Categories.FirstOrDefault();
                 System.Diagnostics.Debug.WriteLine($"Failed to load categories: {ex.Message}");
             }
@@ -631,7 +644,7 @@ namespace Purse.ViewModel
         /// The OnSelectedVendorChanged.
         /// </summary>
         /// <param name="value">The value<see cref="string?"/>.</param>
-        partial void OnSelectedVendorChanged(string? value)
+        partial void OnSelectedVendorChanged(Vendor? value)
         {
             Console.WriteLine($"Name has changed to {value}");
         }
@@ -640,7 +653,7 @@ namespace Purse.ViewModel
         /// The OnSelectedVendorChanging.
         /// </summary>
         /// <param name="value">The value<see cref="string?"/>.</param>
-        partial void OnSelectedVendorChanging(string? value)
+        partial void OnSelectedVendorChanging(Vendor? value)
         {
             Console.WriteLine($"Name is about to change to {value}");
         }
@@ -656,149 +669,6 @@ namespace Purse.ViewModel
         }
 
         #endregion
-        private TransactionLineItem? currentEditingSplit;
-        [ObservableProperty]
-        public partial bool IsCategoryOverlayVisible
-        {
-            get; set;
-        }
-        [ObservableProperty]
-        public partial bool IsVendorOverlayVisible
-        {
-            get; set;
-        }
-        [ObservableProperty] public partial System.Collections.ObjectModel.ObservableCollection<Category> AvailableCategories { get; set; } = new();
-        [ObservableProperty]
-        public partial Category? OverlaySelectedCategory
-        {
-            get; set;
-        }
-        [ObservableProperty]
-        public partial string? OverlaySearchText
-        {
-            get; set;
-        }
-        [ObservableProperty]
-        public partial Vendor? OverlaySelectedVendor
-        {
-            get; set;
-        }
-        [ObservableProperty]
-        public partial string? OverlayVendorSearchText
-        {
-            get; set;
-        }
-
-        [RelayCommand]
-        private void OpenOverlay(TransactionLineItem? split)
-        {
-            this.currentEditingSplit = split;
-            if (split != null)
-            {
-                this.OverlaySearchText = split.Category;
-                this.OverlaySelectedCategory = this.AvailableCategories.FirstOrDefault(c => string.Equals(c.DisplayName, split.Category, StringComparison.OrdinalIgnoreCase) || string.Equals(c.Name, split.Category, StringComparison.OrdinalIgnoreCase));
-            }
-            else
-            {
-                this.OverlaySearchText = string.Empty;
-                this.OverlaySelectedCategory = null;
-            }
-            this.IsCategoryOverlayVisible = true;
-        }
-        [RelayCommand]
-        private void CancelOverlay()
-        {
-            this.IsCategoryOverlayVisible = false;
-            this.currentEditingSplit = null;
-        }
-        [RelayCommand]
-        private void SaveOverlay()
-        {
-            string categoryName = this.OverlaySelectedCategory?.Name ?? this.OverlaySearchText ?? string.Empty;
-            if (this.currentEditingSplit == null)
-            {
-                var newLineItem = new TransactionLineItem { Amount = 0, Category = categoryName };
-                this.Splits.Add(newLineItem);
-            }
-            else
-            {
-                this.currentEditingSplit.Category = categoryName;
-            }
-            this.UpdateSplitProperties();
-            this.IsCategoryOverlayVisible = false;
-            this.currentEditingSplit = null;
-        }
-        [RelayCommand]
-        private void CancelVendorOverlay()
-        {
-            this.IsVendorOverlayVisible = false;
-        }
-        [RelayCommand]
-        private void SaveVendorOverlay()
-        {
-            string vendorName = this.OverlaySelectedVendor?.Name ?? this.OverlayVendorSearchText ?? string.Empty;
-            this.SelectedVendor = vendorName;
-            this.IsVendorOverlayVisible = false;
-        }
-        [RelayCommand]
-        private void OpenVendorOverlay()
-        {
-            this.OverlayVendorSearchText = this.SelectedVendor;
-            this.OverlaySelectedVendor = this.Vendors.FirstOrDefault(v => string.Equals(v.Name, this.SelectedVendor, StringComparison.OrdinalIgnoreCase));
-            this.IsVendorOverlayVisible = true;
-        }
-        [RelayCommand]
-        private async Task CreateExpenseCategory()
-        {
-            string name = this.OverlaySearchText?.Trim() ?? string.Empty;
-            if (string.IsNullOrEmpty(name))
-                return;
-            var cat = new Category { Name = name, IsIncome = false };
-            this.dbContext.Categories.Add(cat);
-            await this.dbContext.SaveChangesAsync();
-            this.AvailableCategories.Add(cat);
-            this.OverlaySelectedCategory = cat;
-        }
-        [RelayCommand]
-        private async Task CreateIncomeCategory()
-        {
-            string name = this.OverlaySearchText?.Trim() ?? string.Empty;
-            if (string.IsNullOrEmpty(name))
-                return;
-            var cat = new Category { Name = name, IsIncome = true };
-            this.dbContext.Categories.Add(cat);
-            await this.dbContext.SaveChangesAsync();
-            this.AvailableCategories.Add(cat);
-            this.OverlaySelectedCategory = cat;
-        }
-        [RelayCommand]
-        private async Task CreateVendor()
-        {
-            string name = this.OverlayVendorSearchText?.Trim() ?? string.Empty;
-            if (string.IsNullOrEmpty(name))
-                return;
-            var v = new Vendor { Name = name };
-            this.dbContext.Vendors.Add(v);
-            await this.dbContext.SaveChangesAsync();
-            this.Vendors.Add(v);
-            this.OverlaySelectedVendor = v;
-        }
-        [RelayCommand]
-        private async Task EditSelectedCategory()
-        {
-            if (this.OverlaySelectedCategory != null)
-            {
-                await Shell.Current.GoToAsync($"///CategoryDetail?CategoryId={this.OverlaySelectedCategory.Id}");
-            }
-        }
-        [RelayCommand]
-        private async Task EditSelectedVendor()
-        {
-            if (this.OverlaySelectedVendor != null)
-            {
-                await Shell.Current.GoToAsync($"///VendorDetail?VendorId={this.OverlaySelectedVendor.Id}");
-            }
-        }
     }
 }
 

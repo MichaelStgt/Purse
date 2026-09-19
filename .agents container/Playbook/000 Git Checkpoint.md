@@ -8,7 +8,7 @@ The current application state has been tested and confirmed stable. Commit the c
 ### 1. Secure Current Changes
 *   Open the terminal in the repository root (`C:\Repos\040 MauiNet10\Purse`).
 *   Stage all modified, deleted, and untracked files: `git add .`
-*   Commit the changes: `git commit -m "feat: chore: nuke heavy reference folders and recover stable baseline"`
+*   Commit the changes: `git commit -m "chore: nuke heavy reference folders and recover stable baseline"`
 
 ### 2. Merge to Master
 *   Switch to the main branch: `git checkout master`

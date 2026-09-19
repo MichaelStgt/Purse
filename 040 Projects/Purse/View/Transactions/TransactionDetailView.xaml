@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="Purse.View.TransactionDetailView"
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:Purse.View.Components"
     x:DataType="TransactionDetailViewModel">
     <!--  xmlns:validations="clr-namespace:System.ComponentModel.DataAnnotations;assembly=System.ComponentModel.DataAnnotations"  -->
     <Shell.TitleView>
@@ -80,13 +81,59 @@
                 BoundProperty="{Binding SelectedVendor}"
                 PropertyName="SelectedVendor">
                 <!--  Title="{x:Static AppResources.Vendor}"  -->
-                <Border Grid.Row="1" Stroke="{x:AppThemeBinding Light={x:StaticResource Gray300}, Dark={x:StaticResource Gray700}}" StrokeThickness="1" BackgroundColor="{x:AppThemeBinding Light={x:StaticResource OffWhite}, Dark={x:StaticResource OffBlack}}"><Border.GestureRecognizers><TapGestureRecognizer Command="{Binding OpenVendorOverlayCommand}" /></Border.GestureRecognizers><Label Text="{Binding SelectedVendor, TargetNullValue={x:Static AppResources.SelectVendor}}" Margin="10,0" VerticalOptions="Center" FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}" FontSize="16" /></Border>
-
+                <!--<Border
+                    Grid.Row="1"
+                    BackgroundColor="{x:AppThemeBinding Light={x:StaticResource OffWhite},
+                                                        Dark={x:StaticResource OffBlack}}"
+                    Stroke="{x:AppThemeBinding Light={x:StaticResource Gray300},
+                                               Dark={x:StaticResource Gray700}}"
+                    StrokeThickness="1">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{x:Binding OpenVendorOverlayCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label
+                        Margin="10,0"
+                        FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                        FontSize="16"
+                        InputTransparent="True"
+                        Text="{Binding SelectedVendor, TargetNullValue={x:Static AppResources.SelectVendor}}"
+                        VerticalOptions="Center" />
+                </Border>-->
+                <!--  Vendor Selection  -->
+                <SfComboBox DisplayMemberPath="Name"
+                            DropDownItemFontAttributes="None"
+                            DropDownItemFontSize="16"
+                            DropDownPlacement="Bottom"
+                            DropDownStroke="{x:AppThemeBinding Light={x:StaticResource Gray400}, Dark={x:StaticResource Gray600}}"
+                            DropDownStrokeThickness="1"
+                            IsClearButtonVisible="True"
+                            IsEditable="True"
+                            IsFilteringEnabled="True"
+                            ItemsSource="{Binding Vendors}"
+                            MaxDropDownHeight="250"
+                            Placeholder="{x:Static AppResources.SelectVendor}"
+                            SelectedItem="{Binding SelectedVendor, Mode=TwoWay}"
+                            ShowBorder="False"
+                            ShowDropdownFooterView="False"
+                            ShowDropdownHeaderView="False"
+                            ShowSuggestionsOnFocus="False"
+                            TextMemberPath="Name"
+                            TextSearchMode="Contains">
+                    <SfComboBox.SelectedDropDownItemTextStyle>
+                        <DropDownTextStyle FontFamily="{x:Static FontDefinitions.DefaultMediumFontFamily}"
+                                           FontSize="16"
+                                           TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack}, Dark={x:StaticResource OffWhite}}" />
+                    </SfComboBox.SelectedDropDownItemTextStyle>
+                </SfComboBox>
             </LabeledContentView>
             <LabeledContentView
                 Title="{x:Static AppResources.Date}"
                 Grid.Row="1"
-                Grid.Column="1">
+                Grid.Column="1"
+                Stroke="Transparent">
+                <!--<DatePicker
+                    Date="{x:Binding TransactionDate}"
+                    Format="{x:Static FormatResources.PickerDateFormatShort}" />-->
                 <DatePicker
                     Date="{x:Binding TransactionDate}"
                     Format="{x:Static FormatResources.PickerDateFormatShort}" />
@@ -103,7 +150,7 @@
                     AllowEmptyValue="True"
                     IsEnabled="False"
                     IsNumeric="True"
-                    Placeholder="€ Total Amount"
+                    Placeholder="â‚¬ Total Amount"
                     TextColor="{x:AppThemeBinding Light={x:StaticResource OffBlack},
                                                   Dark={x:StaticResource OffWhite}}"
                     Value="{x:Binding TotalAmount,
@@ -119,7 +166,7 @@
                                      StringFormat='{0:C2}'}" />
             </LabeledContentView>
 
-            <LabeledContentView
+            <!--<LabeledContentView
                 Title="Planned Amount"
                 Grid.Row="3"
                 Grid.Column="1"
@@ -133,7 +180,7 @@
                     Placeholder="{x:Static AppResources.EnterPlannedAmount}"
                     Value="{x:Binding PlannedAmount,
                                       Mode=TwoWay}" />
-            </LabeledContentView>
+            </LabeledContentView>-->
 
             <!--  Independent/standalone ValidationErrorLabel controls to test both options  -->
             <!--<ValidationErrorLabel
@@ -230,6 +277,33 @@
                                 ColumnDefinitions="*,*, Auto"
                                 ColumnSpacing="10"
                                 RowSpacing="8">
+                                <!--  Category Selection Trigger (Inside the Split DataTemplate)  -->
+                                <!--<Border
+                                    Padding="12,8"
+                                    BackgroundColor="Transparent"
+                                    Stroke="{x:StaticResource Primary}"
+                                    StrokeThickness="1">
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type TransactionDetailViewModel}}, Path=OpenCategoryOverlayCommand}"
+                                            CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Grid ColumnDefinitions="*, Auto">
+                                        <Label
+                                            Grid.Column="0"
+                                            Text="{Binding Category}"
+                                            VerticalOptions="Center" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontFamily="MaterialSymbolsOutlined"
+                                            Text="&#xe5c5;"
+                                            TextColor="{x:StaticResource Primary}"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </Border>-->
                                 <Border>
                                     <SfComboBox
                                         DropDownItemFontAttributes="None"
@@ -238,7 +312,7 @@
                                         DropDownStroke="{x:AppThemeBinding Light={x:StaticResource Gray400},
                                                                            Dark={x:StaticResource Gray600}}"
                                         DropDownStrokeThickness="1"
-                                        IsClearButtonVisible="False"
+                                        IsClearButtonVisible="True"
                                         IsEditable="False"
                                         ItemsSource="{x:Binding Categories,
                                                                 Source={x:RelativeSource AncestorType={x:Type TransactionDetailViewModel}}}"
@@ -435,7 +509,7 @@
                                     DropDownStroke="{x:AppThemeBinding Light={x:StaticResource Gray400},
                                                                        Dark={x:StaticResource Gray600}}"
                                     DropDownStrokeThickness="1"
-                                    IsClearButtonVisible="False"
+                                    IsClearButtonVisible="True"
                                     IsEditable="False"
                                     ItemsSource="{x:Binding Categories,
                                                             Source={x:RelativeSource AncestorType={x:Type TransactionDetailViewModel}}}"

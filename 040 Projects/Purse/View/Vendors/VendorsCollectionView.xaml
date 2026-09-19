@@ -46,9 +46,11 @@
                             Margin="0,0,0,16"
                             HorizontalOptions="Center"
                             Text="{x:Static AppResources.NoVendorsFound}"
-                            TextColor="{x:AppThemeBinding Light={x:StaticResource Gray500}, Dark={x:StaticResource Gray400}}" />
+                            TextColor="{x:AppThemeBinding Light={x:StaticResource Gray500},
+                                                          Dark={x:StaticResource Gray400}}" />
                         <Button
-                            Command="{x:Binding BindingContext.AddVendorCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                            Command="{x:Binding BindingContext.AddVendorCommand,
+                                                Source={RelativeSource AncestorType={x:Type ContentPage}}}"
                             HorizontalOptions="Center"
                             Text="{x:Static AppResources.AddNewVendor}" />
                     </VerticalStackLayout>
@@ -75,7 +77,7 @@
                                                           Converter={StaticResource StringNotNullOrEmptyToBoolConverter}}"
                                     Text="{x:Binding Description}"
                                     TextColor="Gray" />
-                                <ImageButton
+                                <!--<ImageButton
                                     Grid.Row="0"
                                     Grid.RowSpan="2"
                                     Grid.Column="1">
@@ -86,7 +88,7 @@
                                             Size="24"
                                             Color="Gray" />
                                     </ImageButton.Source>
-                                </ImageButton>
+                                </ImageButton>-->
                             </Grid>
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup Name="CommonStates">

@@ -47,7 +47,13 @@
                                              VerticalOptions="Fill">
                             <Button Command="{Binding BindingContext.CreateVendorCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
                                     Text="{x:Static AppResources.CreateNewVendor}" />
-                            <Button Command="{Binding BindingContext.EditSelectedVendorCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" Text="{x:Static AppResources.EditSelectedVendor}"> <Button.Triggers> <DataTrigger TargetType="Button" Binding="{Binding OverlaySelectedVendor}" Value="{x:Null}"> <Setter Property="IsEnabled" Value="False" /> </DataTrigger> </Button.Triggers> </Button>
+                            <Button Command="{Binding BindingContext.EditSelectedVendorCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" Text="{x:Static AppResources.EditSelectedVendor}">
+                                <Button.Triggers>
+                                    <DataTrigger TargetType="Button" Binding="{Binding OverlaySelectedVendor}" Value="{x:Null}">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+                            </Button>
                         </VerticalStackLayout>
                     </SfComboBox.DropdownFooterView>
                 </SfComboBox>

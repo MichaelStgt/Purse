@@ -54,6 +54,8 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
 		<NoWarn>$(NoWarn);CA2252</NoWarn>
+		<UseSharedCompilation>false</UseSharedCompilation>
+		<UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
 	</PropertyGroup>
 
 
@@ -118,6 +120,10 @@
 		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.BeforeValidationRefactoring.cs" />
 		<Compile Remove="Archive\ViewModel\TransactionDetailViewModel.Validations.BeforeValidationRefactoring.cs" />
 		<Compile Remove="Archive\Messaging\TransactionChangedMessage.cs" />
+		<Compile Remove="Controls\NumericEntry.xaml.cs" />
+		<Compile Remove="Controls\NumericEntry2.xaml.cs" />
+		<Compile Remove="Controls\SafePicker.cs" />
+		<Compile Remove="Controls\SafePicker2.cs" />
 		<Compile Remove="Services\DataSeedingService.cs" />
 		<Compile Remove="Services\WindowCreator.original.cs" />
 		<Compile Remove="ViewModel\ObservableViewModel.cs" />
@@ -146,6 +152,8 @@
 		<MauiImage Remove="Resources\Images\NuvelRegularLatinSmallLetterP.svg" />
 	</ItemGroup>
 	<ItemGroup>
+		<MauiXaml Remove="Controls\NumericEntry.xaml" />
+		<MauiXaml Remove="Controls\NumericEntry2.xaml" />
 		<MauiXaml Remove="View\Main\MainPage.Original.xaml" />
 		<MauiXaml Remove="View\PagePlatformHeader.xaml" />
 	</ItemGroup>
@@ -200,12 +208,6 @@
 		<CompilerVisibleProperty Include="FontGenStripWords" />
 	</ItemGroup>
 	<ItemGroup>
-		<MauiXaml Update="Controls\NumericEntry2.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Controls\NumericEntry.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
 		<MauiXaml Update="Resources\Styles\ApplicationColors.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -244,12 +246,6 @@
 		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Update="Controls\NumericEntry2.xaml.cs">
-			<DependentUpon>NumericEntry2.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Controls\NumericEntry.xaml.cs">
-			<DependentUpon>NumericEntry.xaml</DependentUpon>
-		</Compile>
 		<Compile Update="Resources\Strings\AccessibiltyResources.Designer.cs">
 			<DependentUpon>AccessibiltyResources.resx</DependentUpon>
 			<DesignTime>True</DesignTime>
@@ -321,6 +317,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Archive\ViewModel\" />
+		<Folder Include="Controls\" />
 		<Folder Include="Preferences\" />
 		<Folder Include="ViewModel\Transactions\Save\" />
 	</ItemGroup>
